@@ -23,3 +23,5 @@ const FreeNFTProject: NextPage = () => {
     </div>
   )
 }
+
+export default FreeNFTProject;

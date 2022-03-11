@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 
 const NFT: NextPage = () => {
+  const router = useRouter();
   return (
     <div>
       <div>
@@ -20,7 +22,7 @@ const NFT: NextPage = () => {
                 strokeLinejoin="round"
               />
             </svg>
-
+            <div>{router.query.id}.</div>
             <input type="file" />
           </label>
         </div>
