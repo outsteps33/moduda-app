@@ -1,0 +1,39 @@
+.carousel.carousel-slider {
+  overflow: inherit;
+}
+
+.carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
+  background-color: transparent;
+  margin-right: 100px;
+  color: white;
+}
+
+
+.carousel .control-prev.control-arrow, .carousel .control-prev.control-arrow:hover {
+  background-color: transparent;
+  margin-left: 100px;
+  color: white;
+}
+
+
+.carousel .control-next.control-arrow:before {
+  content: '';
+  color: white;
+  border: solid ;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 14px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.carousel .control-prev.control-arrow:before {
+  content: '';
+  color: white;
+  border: solid ;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 14px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
