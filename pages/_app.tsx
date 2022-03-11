@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-// import '../styles/arrow.css';
+import '../styles/arrow.css';
 import { SWRConfig } from 'swr';
 
 
