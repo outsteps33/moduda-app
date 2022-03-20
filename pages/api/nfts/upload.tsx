@@ -10,9 +10,9 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   if(req.method === 'GET') {
-    const nfts = await client.nft.findMany({});
+    // const nfts = await client.nft.findMany({});
 
-    res.json({ ok: true,  nfts: nfts});
+    // res.json({ ok: true,  nfts: nfts});
   } 
 
   if(req.method === 'POST') {
