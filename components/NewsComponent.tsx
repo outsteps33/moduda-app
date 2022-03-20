@@ -80,7 +80,7 @@ export const NewsComponent:React.FC<NewsProps> = ({
       <div className="pt-3 grid grid-cols-2" > 
         {news.filter((t:any, i:any)=> i < 2 ).map((v:any,i:any)=> (
           <a style={{fontSize:"16px", lineHeight:'19px', padding: '0 5px 12px 5px'}}
-            href={`https://news.zum.com${v.videoId}`} 
+            href={`${v.url}`} 
             target= "_blank"
           >
             <div style={{}}>
@@ -100,7 +100,7 @@ export const NewsComponent:React.FC<NewsProps> = ({
           {news.filter((t:any, i:any)=> i < 6 && i >1 ).map((v:any,i:any)=> (
             <div style={{ padding: '11px 6px 10px 2px', borderTop:'1px solid #efeff0'}}>
               <a className="" 
-                href={`${v.videoId}`} 
+                href={`${v.url}`} 
                 target= "_blank"
               >
                 <Text2 className="text-gray-800 " style={{fontSize:'16px'}}>{v.title}</Text2>

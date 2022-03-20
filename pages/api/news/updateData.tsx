@@ -10,7 +10,62 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   try {
-    const browser = await puppeteer.launch({
+    
+    const nateRanking = await getNews();
+    console.log(nateRanking)
+    const exist = await client.news.findMany({ take: 10});
+    console.log(exist)
+    if(exist.length) {
+      nateRanking.forEach(async (v, i) => {
+        await client.news.update({
+          where:{ id: i },
+          data: {
+            title: nateRanking[i].name,
+            thumbnail: nateRanking[i].image,
+            url: nateRanking[i].videoId
+          }
+        })
+      });
+      return res.status(200).json({
+        ok: true,
+        message: 'updated data',
+      });
+    } else {
+      nateRanking.forEach(async (v, i) => {
+        await client.news.create({
+          data: {
+            title: nateRanking[i].name,
+            thumbnail: nateRanking[i].image,
+            url: nateRanking[i].videoId
+          }
+        })
+      });
+    
+      return res.status(200).json({
+        ok: true,
+        message: 'created data',
+      });
+
+    }
+    // 브라우저를 종료한다.
+   
+    
+  } catch(e) {
+    console.log(e);
+  }
+    
+  
+}
+
+export default withHandler({
+  methods: ["GET"], 
+  handler, 
+  isPrivate: false
+});
+
+
+async function getNews() {
+  const browser = await puppeteer.launch({
     headless: true,
     args: [
       '--no-sandbox',
@@ -82,72 +137,6 @@ async function handler (
 
       }
     });
-
-    // const list2 = $("#postRankSubject > ul");
-    
-    // list2.each((index, list) => {
-    //   let num = 0;
-    //   const src2 = $(list).find("li:nth-child(2) > a").attr('href');
-    //   const up = $(list).find("li:nth-child(2) > dl > dd > span.up");
-    //   const name2 = $(list).find("li:nth-child(2) > a").text();
-      
-    //   if(up.length === 1 && num <6) {
-    //     nateRanking.push({
-    //       name: name2,
-    //       videoId: 'https:' +  src2,
-    //       image: ""
-    //     });
-    //     num++;
-    //   }
-    // });
-    
-    const exist = await client.news.findMany({ take: 10});
-    if(exist.length) {
-      nateRanking.forEach(async (v, i) => {
-        await client.news.update({
-          where:{ id: i },
-          data: {
-            title: nateRanking[i].name,
-            thumbnail: nateRanking[i].image,
-            url: nateRanking[i].videoId
-          }
-        })
-      });
-      browser.close();
-      return res.status(200).json({
-        ok: true,
-        message: 'updated data',
-      });
-    } else {
-      nateRanking.forEach(async (v, i) => {
-        await client.news.create({
-          data: {
-            title: nateRanking[i].name,
-            thumbnail: nateRanking[i].image,
-            url: nateRanking[i].videoId
-          }
-        })
-      });
-      browser.close();
-      return res.status(200).json({
-        ok: true,
-        message: 'created data',
-      });
-
-    }
-    // 브라우저를 종료한다.
-   
-    
-  } catch(e) {
-    console.log(e);
-  }
-    // const news = await client.news.findMany();
-    
-  
+    browser.close();
+    return nateRanking;
 }
-
-export default withHandler({
-  methods: ["POST"], 
-  handler, 
-  isPrivate: false
-});

@@ -114,7 +114,7 @@ async function handler (
   
 
 export default withHandler({
-  methods: ["POST"], 
+  methods: ["GET"], 
   handler, 
   isPrivate: false
 });
