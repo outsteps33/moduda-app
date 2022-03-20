@@ -114,7 +114,7 @@ async function handler (
       res.status(401).json({ ok: false });
     }
   } catch (err) {
-    res.status(500).json({ ok: false, message: err.message });
+    res.status(500).json({ ok: false});
   }
 
     
