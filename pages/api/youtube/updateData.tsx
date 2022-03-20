@@ -5,7 +5,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
 
-
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {

@@ -2,6 +2,7 @@ import client from '@libs/server/client';
 import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { withApiSession } from '@libs/server/withSession';
 import { NextApiRequest, NextApiResponse } from 'next';
+import chromium from 'chrome-aws-lambda';
 import * as puppeteer from 'puppeteer';
 import cheerio from 'cheerio';
 
@@ -65,15 +66,23 @@ export default withHandler({
 
 
 async function getNews() {
-  const browser = await puppeteer.launch({
+  // const browser = await puppeteer.launch({
+  //   headless: true,
+  //   args: [
+  //     '--no-sandbox',
+  //     '--disable-setuid-sandbox',
+  //     '--disable-dev-shm-usage',
+  //     '--single-process'
+  //   ],
+  // });
+  const browser = await chromium.puppeteer.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
     headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--single-process'
-    ],
+    ignoreHTTPSErrors: true,
   });
+  
     const page = await browser.newPage();
     let nateRanking: any[]= [];
 

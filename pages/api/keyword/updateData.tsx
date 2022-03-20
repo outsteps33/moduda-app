@@ -3,6 +3,7 @@ import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { withApiSession } from '@libs/server/withSession';
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
+import chromium from 'chrome-aws-lambda';
 import * as puppeteer from 'puppeteer';
 import cheerio from 'cheerio';
 
@@ -122,15 +123,14 @@ export default withHandler({
 async function zumRanking() {
   try {
       
-    const browser = await puppeteer.launch({
+    const browser = await chromium.puppeteer.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
     headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--single-process'
-    ],
-  });
+    ignoreHTTPSErrors: true,
+  })
+
     
     
     const page = await browser.newPage();
@@ -170,15 +170,14 @@ async function zumRanking() {
 
 async function getnateRanking () {
   try {
-    const browser = await puppeteer.launch({
+    const browser = await chromium.puppeteer.launch({
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
     headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--single-process'
-    ],
-  });
+    ignoreHTTPSErrors: true,
+  })
+
     const page = await browser.newPage();
     let nateRanking: any[]= [];
     // 페이지의 크기를 설정한다.
