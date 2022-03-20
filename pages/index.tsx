@@ -60,9 +60,9 @@ const TrendMain: NextPage = () => {
   };
  
   
-  const { data:keyword } = useSWR<KeywordResponse>("/api/keyword/getData");
-  const { data: news } = useSWR<NewsdResponse>("/api/news/getData");
-  const { data: youtube } = useSWR<YoutubeResponse>("/api/youtube/getData");
+  const { data:keyword } = useSWR<KeywordResponse>( typeof window === "undefined" ? null : "/api/keyword/getData");
+  const { data: news } = useSWR<NewsdResponse>( typeof window === "undefined" ? null : "/api/news/getData");
+  const { data: youtube } = useSWR<YoutubeResponse>( typeof window === "undefined" ? null : "/api/youtube/getData");
   
 
   return (
