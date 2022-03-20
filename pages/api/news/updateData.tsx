@@ -2,9 +2,9 @@ import client from '@libs/server/client';
 import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { withApiSession } from '@libs/server/withSession';
 import { NextApiRequest, NextApiResponse } from 'next';
-import chromium from 'chrome-aws-lambda';
 import * as puppeteer from 'puppeteer';
 import cheerio from 'cheerio';
+import axios from 'axios';
 
 
 async function handler (
@@ -13,7 +13,6 @@ async function handler (
   try {
     
     const nateRanking = await getNews();
-    console.log(nateRanking)
     const exist = await client.news.findMany({ take: 10});
     console.log(exist)
     if(exist.length) {
@@ -30,12 +29,13 @@ async function handler (
       return res.status(200).json({
         ok: true,
         message: 'updated data',
+        data: nateRanking
       });
     } else {
       nateRanking.forEach(async (v, i) => {
         await client.news.create({
           data: {
-            title: nateRanking[i].name,
+            title: (nateRanking[i].name),
             thumbnail: nateRanking[i].image,
             url: nateRanking[i].videoId
           }
@@ -64,40 +64,11 @@ export default withHandler({
   isPrivate: false
 });
 
-
 async function getNews() {
-  // const browser = await puppeteer.launch({
-  //   headless: true,
-  //   args: [
-  //     '--no-sandbox',
-  //     '--disable-setuid-sandbox',
-  //     '--disable-dev-shm-usage',
-  //     '--single-process'
-  //   ],
-  // });
-  const browser = await chromium.puppeteer.launch({
-    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
-    headless: true,
-    ignoreHTTPSErrors: true,
-  });
-  
-    const page = await browser.newPage();
-    let nateRanking: any[]= [];
-
-    
-    // 페이지의 크기를 설정한다.
-    await page.setViewport({
-      width: 1366,
-      height: 768
-    });
-
-    await page.goto('https://news.zum.com/issues?cm=news_lnb');
-  
-    const zcontent = await page.content();
+    const zcontent = await axios.get('https://news.zum.com/issues?cm=news_lnb');
     // $에 cheerio를 로드한다.
-    const z$ = cheerio.load(zcontent);
+    let nateRanking: any[] = [];
+    const z$ = cheerio.load(zcontent.data);
     const zlists = z$("#news_issue_wrap > div > div > aside > section.related_news_wrap > ul > li");
 
     let ztemp = {
@@ -120,18 +91,14 @@ async function getNews() {
 
 
     
-    
-    await page.goto('https://news.nate.com/rank/?mid=n1000');
-  
-    const content = await page.content();
-    // $에 cheerio를 로드한다.
-    const $ = cheerio.load(content);
+    const zcontents = await axios.get('https://news.nate.com/rank/?mid=n1000');
+    const $ = cheerio.load(zcontents.data);
     const lists = $("#newsContents > div > div.postRankSubjectList.f_clear > div");
-
+    // console.log(zcontents.data)
     let temp = {
     }
     lists.each((index, list) => {
-      console.log(index)
+    
       if(index < 5 ) {
         const src = $(list).find("div > a").attr('href');
         const name = $(list).find("div > a > span.tb > strong").text();
@@ -139,13 +106,12 @@ async function getNews() {
         const image = $(list).find("div > a > span.ib > em > img").attr('src');
         temp = {
           videoId: 'https:' + src,
-          name,
+          name:name,
           image: 'https:' + image
         }
         nateRanking.push(temp);
 
       }
     });
-    browser.close();
     return nateRanking;
 }
