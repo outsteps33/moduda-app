@@ -122,30 +122,12 @@ export default withHandler({
 
 async function zumRanking() {
   try {
-      
-    const browser = await chromium.puppeteer.launch({
-    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
-    headless: true,
-    ignoreHTTPSErrors: true,
-  })
+    let nateRanking: any[] =[];
+    const content = await axios.get('https://search.zum.com/search.zum?method=uni&option=accu&qm=f_typing&rd=1&query=%EC%8B%A4%EC%8B%9C%EA%B0%84');
+    const $ = cheerio.load(content.data);
 
-    
-    
-    const page = await browser.newPage();
-    let nateRanking: any[]= [];
-    // 페이지의 크기를 설정한다.
-    await page.setViewport({
-      width: 1366,
-      height: 768
-    });
-    await page.goto('https://search.zum.com/search.zum?method=uni&option=accu&qm=f_typing&rd=1&query=%EC%8B%A4%EC%8B%9C%EA%B0%84');
 
-    //#iskwClose > div > div.rank > ol > li:nth-child(1) > a > span
-    const content = await page.content();
     // $에 cheerio를 로드한다.
-    const $ = cheerio.load(content);
     const lists = $("#issue_wrap > ul:nth-child(1) > li");
     lists.each((index, list) => {
       const name = $(list).find("div > a:nth-child(1) > span.txt").text();
@@ -159,9 +141,6 @@ async function zumRanking() {
     });
       
   
-    // 브라우저를 종료한다.
-    browser.close();
-
     return nateRanking;
   } catch(e) {
 
@@ -170,27 +149,11 @@ async function zumRanking() {
 
 async function getnateRanking () {
   try {
-    const browser = await chromium.puppeteer.launch({
-    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
-    headless: true,
-    ignoreHTTPSErrors: true,
-  })
+    let nateRanking: any[] =[];
+    const content = await axios.get('https://m.nate.com/');
+    const $ = cheerio.load(content.data);
 
-    const page = await browser.newPage();
-    let nateRanking: any[]= [];
-    // 페이지의 크기를 설정한다.
-    await page.setViewport({
-      width: 1366,
-      height: 768
-    });
-    await page.goto('https://m.nate.com/');
-
-    //#iskwClose > div > div.rank > ol > li:nth-child(1) > a > span
-    const content = await page.content();
     // $에 cheerio를 로드한다.
-    const $ = cheerio.load(content);
     const lists = $("#iskwClose > div > div.rank > ol > li");
     console.log(lists)
     lists.each((index, list) => {
@@ -209,7 +172,6 @@ async function getnateRanking () {
     
   
     // 브라우저를 종료한다.
-    browser.close();
     return nateRanking;
     // return this.contents.findOne({where: { category: 'Keyword'}});
   } catch(e) {
