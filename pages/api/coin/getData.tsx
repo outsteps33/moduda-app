@@ -5,33 +5,18 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 
 
-
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  
+    
+  const coin = await client.coin.findMany({ take: 5});
+  res.json({ ok: true, coin});
 
-  // const { id } = req.query;
-  // const freeNFTProject = await client.freeNFTProject.findUnique({
-  //   where: {
-  //     id: +id.toString()
-  //   },
-  //   include: {
-  //     user: {
-  //       select: {
-  //         id: true, name: true
-  //       }
-  //     },
-
-  //   }
-  // })
-  res.json({ ok: true,  })
 }
 
 export default withHandler({
   methods: ["GET"], 
   handler, 
-  isPrivate: true
+  isPrivate: false
 });
 
-// export default withHandler("POST", handler); 

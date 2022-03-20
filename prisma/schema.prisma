@@ -12,133 +12,50 @@ datasource db {
   referentialIntegrity  = "prisma"
 }
 
-model User {
+model Keyword {
   id Int @id @default(autoincrement())
-  walletAddress String?
-  name String 
-  email String? @unique
-  password String?           
-  avatar String?
-  platform String?
-  phone String? @unique
-  role String @default("user")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  token Token[]
-  post Post[] //질문 포스트
-  answer Answer[] //질문 답변
-  like Like[] //좋아요
-}
-
-model Token {
-  id Int @id @default(autoincrement())
-  payload String @unique
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-}
-
-model Author {
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  name String @unique
-  thumbnail String?
-  description String @db.MediumText
-  updatedAt DateTime @updatedAt
-  nft Nft[]
-}
-
-model Nft {
-  id Int @id @default(autoincrement())
-  author Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId Int
   title String
-  blockChain String?
-  marketPlace String? //마켓 종류
-  address String //주소
-  price Int //floor_price
-  description String @db.MediumText
-  image String
-  like Like[]
-  ranking Ranking[]
+  rank Int @unique
+  up_down String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@index([authorId])
 }
 
-model FreeNFTProject {
+model News {
   id Int @id @default(autoincrement())
-  title String  //프로젝트 이름
-  timeline DateTime
-  address String
+  title String
+  thumbnail String?
+  url String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Youtube {
+  id Int @id @default(autoincrement())
+  title String
+  rank Int 
+  videoId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Coin {
+  id Int @id @default(autoincrement())
+  title String
+  rank Int 
+  up_down String
+  url String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blog {
+  id Int @id @default(autoincrement())
+  title String
   thumbnail String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Content {
-  id Int @id @default(autoincrement())
-  title String  //프로젝트 이름
   content String @db.LongText
-  category String //news or blog
-  thumbnail String 
-  address String? //news일때만
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-model Ranking {
-  id Int @id @default(autoincrement())
-  nft Nft @relation(fields: [nftId], references: [id], onDelete: Cascade)
-  nftId Int
-  title String //지난주 랭킹 ( 2주차)
-  medal String // gold, silver , bronze
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
-  @@index([nftId])
-}
 
-model Post {
-  id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int
-  question String @db.MediumText
-  answer Answer[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-
-}
-
-model Answer {
-  id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int
-  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId Int
-  answer String @db.MediumText
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([postId])
-}
-
-model Like {
-  id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int
-  nft Nft @relation(fields: [nftId], references: [id], onDelete: Cascade)
-  nftId Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([nftId])
-
-}
