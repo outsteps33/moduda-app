@@ -8,13 +8,14 @@ import axios from 'axios';
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-
+  console.log("1")
     const test = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YOUTUBE_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=10`);
+    console.log(test.data.items[0].snippet.title)
     const exist = await client.youtube.findMany({ take: 10 });
     if(exist.length) {
       for(let i =0 ; i< 8 ;i++) {
         await client.youtube.update({
-          where:{ id: i },
+          where:{ id: i+1 },
           data: {
             title: test.data.items[i].snippet.title,
             rank: i+1,
@@ -48,7 +49,7 @@ async function handler (
   
 
 export default withHandler({
-  methods: ["POST"], 
+  methods: ["GET"], 
   handler, 
   isPrivate: false
 });

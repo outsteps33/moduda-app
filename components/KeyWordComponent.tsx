@@ -98,7 +98,7 @@ export const KeyWordComponent:React.FC<KeywordProps> = ({
           ))}
         </div>
         <div className="">
-          {array.filter((t:any, i:any)=> i < 10 && i > 4 ).map((v:any,i:any)=> (
+          {keywords.filter((t:any, i:any)=> i < 10 && i > 4 ).map((v:any,i:any)=> (
             <a className="flex items-center justify-between cursor-pointer hover:bg-gray-300" style={{fontSize:"16px", padding: '9px 0px 8px 0px'}}
               href={`https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=${v.title}`} 
               target= "_blank"

@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import * as puppeteer from 'puppeteer';
 import cheerio from 'cheerio';
 import axios from 'axios';
-
+import iconv from 'iconv-lite';
 
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
@@ -18,7 +18,7 @@ async function handler (
     if(exist.length) {
       nateRanking.forEach(async (v, i) => {
         await client.news.update({
-          where:{ id: i },
+          where:{ id: i+1 },
           data: {
             title: nateRanking[i].name,
             thumbnail: nateRanking[i].image,
@@ -59,7 +59,7 @@ async function handler (
 }
 
 export default withHandler({
-  methods: ["POST"], 
+  methods: ["GET"], 
   handler, 
   isPrivate: false
 });
@@ -75,7 +75,7 @@ async function getNews() {
       
     }
     zlists.each((index, list) => {
-      if(index < 3) {
+      if(index < 2) {
         const src = z$(list).find("a").attr('href');
         const name = z$(list).find("a > div.title").text();
         const image = z$(list).find("a > div.thumb > img").attr('src');
@@ -89,16 +89,21 @@ async function getNews() {
       }
     });
 
-
+    const headers = {
+      'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      'Accept': '*/*'
+    }
     
-    const zcontents = await axios.get('https://news.nate.com/rank/?mid=n1000');
-    const $ = cheerio.load(zcontents.data);
+    const zcontents = await axios.get('https://news.nate.com/rank/?mid=n1000', {responseType: "arraybuffer"});
+
+
+    const contnet = iconv.decode(zcontents.data, "EUC-KR").toString()
+    const $ = cheerio.load(contnet);
     const lists = $("#newsContents > div > div.postRankSubjectList.f_clear > div");
     // console.log(zcontents.data)
     let temp = {
     }
     lists.each((index, list) => {
-    
       if(index < 5 ) {
         const src = $(list).find("div > a").attr('href');
         const name = $(list).find("div > a > span.tb > strong").text();
@@ -106,7 +111,7 @@ async function getNews() {
         const image = $(list).find("div > a > span.ib > em > img").attr('src');
         temp = {
           videoId: 'https:' + src,
-          name:name,
+          name: name,
           image: 'https:' + image
         }
         nateRanking.push(temp);

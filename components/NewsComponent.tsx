@@ -63,7 +63,7 @@ const array = [
 export const NewsComponent:React.FC<NewsProps> = ({
   news
 }) => {
-  
+  console.log(news)
 
   return (
     <div className="sm:max-w-md sm:mx-auto bg-white pb-5 shadow-md rounded-sm mt-5" style={{padding: '0px 15px 4px 15px'}}>
@@ -97,7 +97,7 @@ export const NewsComponent:React.FC<NewsProps> = ({
       </div>
       <div className="pt-2 pb-2"> 
         <div>
-          {news.filter((t:any, i:any)=> i < 6 && i >1 ).map((v:any,i:any)=> (
+          {news.filter((t:any, i:any)=> i < 5 && i >1 ).map((v:any,i:any)=> (
             <div style={{ padding: '11px 6px 10px 2px', borderTop:'1px solid #efeff0'}}>
               <a className="" 
                 href={`${v.url}`} 
