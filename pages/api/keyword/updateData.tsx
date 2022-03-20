@@ -12,11 +12,8 @@ import cheerio from 'cheerio';
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  try {
-    const { authorization } = req.headers;
 
-    if (authorization === `Bearer ${process.env.API_SECRET_KEY}`) {
-      const zumResult = await zumRanking();
+    const zumResult = await zumRanking();
     const nateResult = await getnateRanking();
 
     console.log(zumResult)
@@ -103,23 +100,15 @@ async function handler (
                 rank: i+1,
                 up_down: 'same'
               }
-            });
+            })
           }
-        return res.status(200).json({
-          ok: true,
-          message: 'created data',
-        });  
+          
       }
-    } else {
-      res.status(401).json({ ok: false });
-    }
-  } catch (err) {
-    res.status(500).json({ ok: false});
-  }
-
-    
       
-      
+      return res.status(200).json({
+        ok: true,
+        message: 'created data',
+      });
 
     } 
   

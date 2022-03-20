@@ -10,11 +10,7 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
 
-  try {
-    const { authorization } = req.headers;
-
-    if (authorization === `Bearer ${process.env.API_SECRET_KEY}`) {
-      const test = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YOUTUBE_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=10`);
+    const test = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YOUTUBE_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=10`);
     const exist = await client.youtube.findMany({ take: 10 });
     if(exist.length) {
       for(let i =0 ; i< 8 ;i++) {
@@ -46,13 +42,6 @@ async function handler (
         message: 'created data',
       });
     }
-    } else {
-      res.status(401).json({ ok: false });
-    }
-  } catch (err) {
-    res.status(500).json({ ok: false });
-  }
-    
     
   }
 
