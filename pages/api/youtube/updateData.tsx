@@ -10,7 +10,7 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
 
-    const test = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${'AIzaSyAXJr2PugldL9bm_ALzwt406loTmfslDoM'}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=10`);
+    const test = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YOUTUBE_KEY}&part=snippet&chart=mostPopular&regionCode=kr&maxResults=10`);
     const exist = await client.youtube.findMany({ take: 10 });
     if(exist.length) {
       for(let i =0 ; i< 8 ;i++) {
