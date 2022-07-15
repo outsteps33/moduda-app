@@ -2,12 +2,8 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { PlusSmIcon } from '@heroicons/react/solid'
-import Logo from '../images/NLogo.png';
-import { Variants } from 'framer-motion';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import Image from 'next/image';
+import { useRouter } from 'next/router'
 
 const Container = styled.div`
   &:hover {
@@ -19,11 +15,11 @@ const Container = styled.div`
 `;
 
 const navigation = [
-  { name: '무료 NFT 이벤트', href: 'freeNFT', current: true },
-  { name: 'NFT 아티스트', href: 'artists', current: false },
-  { name: '신규 NFT', href: 'newNFT', current: false },
-  { name: 'NFT 랭킹', href: 'ranking', current: false },
-  { name: 'NFT 블로그', href: 'blog', current: false },
+  { name: '국비지원컨설팅', href: 'home', current: false },
+  { name: '소개', href: 'intro', current: false },
+  { name: '신청대상', href: 'user', current: true },
+  { name: '진행과정', href: 'process', current: true },
+  { name: '신청하기', href: 'apply', current: true },
   // { name: '출석체크', href: 'attendance-check', current: false },
   // { name: '낙서장', href: 'graffiti', current: false },
 ]
@@ -34,9 +30,8 @@ function classNames(...classes: any) {
 
 
 export const Nav = () => {
-  const router = useRouter();
+  const history = useRouter();
   const [isScroll, setIsScroll] = useState(false);
-  const [isHover, setIsHover] = useState(false);
   const changeBackground = () => {
     if(window.scrollY > 0 ) {
       setIsScroll(true);
@@ -44,14 +39,7 @@ export const Nav = () => {
       setIsScroll(false);
     }
   }
-  const IsHover = () => {
-    console.log("hover")
-    setIsHover(true)
-  }
 
-  const IsUnHover = () => {
-    setIsHover(false);
-  }
 
   // useEffect(()=> {
   //   if (typeof window === 'undefined') {
@@ -69,10 +57,6 @@ export const Nav = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeBackground);
-    let nav = document.getElementById("nav");
-    nav?.addEventListener('mouseover', IsHover)
-    nav?.addEventListener('mouseout', IsUnHover)
     window.scrollTo({
       top:0,
       behavior:"smooth"
@@ -83,17 +67,17 @@ export const Nav = () => {
     window.location.reload();
   }
   
-  
+  //style={{backgroundColor:'rgb(09,10,23,0.8)'
   return (
     <Disclosure as="nav" id='nav'  >
       {({ open }) => (
-        <Container className={classNames(isScroll ? 'fixed top-0 w-full text-gray-400 bg-white' : 'absolute  w-full ', 'bg-transparent hover:bg-white hover:text-gray-400  top-0 z-50')}>
+        <Container className={classNames( 'fixed w-full text-gray-400  hover:text-gray-400  top-0 z-50')} style={{backgroundColor:'white', backgroundSize:'contain'}}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-between h-20 items-center">
               <div className="flex">
                 <div className="-ml-2 mr-2 flex items-center md:hidden">
                   {/* Mobile menu buttonb */}
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
                     ) : (
@@ -101,33 +85,18 @@ export const Nav = () => {
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="flex-shrink-0 flex items-center">
-                  
-                  <Image
-                    className="w-auto cursor-pointer"
-                    onClick={() => moveToTop()}
-                    src={Logo}
-                    width={150}
-                    height={150}
-                    alt="Workflow"
-                  />
-                </div>
-                <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4 hover:text-black">
+                
+                <div className="hidden md:ml-6 md:flex md:items-center md:space-x-6 ">
                   {navigation.map((item) => (
                     <div
                       key={item.name}
                       className={classNames(
-                          (isScroll || isHover) ? 'text-gray-500' :'text-white ',
-                        'px-3 py-2 rounded-md font-medium hover:text-black cursor-pointer'
+                        item.name ==='국비지원컨설팅' ? 'font-bold text-lg text-[18px]'  : 'text-[16px]' , 'px-3 py-2 rounded-md text-black cursor-pointer '
                       )}
-                      style={{fontSize: '16px', color: ''}}
+                      // style={{fontSize: '16px', color: ''}}
                       aria-current={item.current ? 'page' : undefined}
                       onClick={() => {
-                        if((window.location.pathname ==='/') && (item.href === 'freeNFT' || item.href === 'artists' || item.href === 'newNFT' || item.href === 'ranking')) {
-                          goToViolation(item.href)
-                        } else {
-                          router.push(`/${item.href}`)
-                        }
+                        goToViolation(item.href)
                       }}
                     >
                       {item.name}
@@ -154,18 +123,18 @@ export const Nav = () => {
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navigation.map((item) => (
-                <Disclosure.Button
+                <div
                   key={item.name}
-                  as="a"
-                  href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-black' : 'text-white hover:bg-gray-700 hover:text-black',
-                    'block px-3 py-2 rounded-md text-xs font-medium'
+                    item.name ==='국비지원컨설팅' ? 'font-bold' : '' , 'px-3 py-2 rounded-md text-black cursor-pointer '
                   )}
+                  onClick={() => {
+                    goToViolation(item.href)
+                  }}
                   aria-current={item.current ? 'page' : undefined}
                 >
                   {item.name}
-                </Disclosure.Button>
+                </div>
               ))}
             </div>
           </Disclosure.Panel>
