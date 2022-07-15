@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 // import MainPoster from '../images/poster.png';
 // import Background from '../images/backgroundColor.png';
-import Background from '../images/Background.png';
+// import Background from '../images/Background.png';
 import BackgroundItem from '../images/BackgroundItem.png';
 import SemiBackground from '../images/semi_background.png';
 import Feature1 from '../images/fature1.png';
@@ -13,7 +13,7 @@ import Apply2 from '../images/apply2.png';
 import Apply3 from '../images/apply3.png';
 import Apply4 from '../images/apply4.png';
 import Arrow from '../images/arrow.png';
-// const Background = require('../images/backgroundColor.png');
+const Background = require('../images/Background.png');
 
 import Image from "next/image";
 import { Nav } from "@components/nav";
