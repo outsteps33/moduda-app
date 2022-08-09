@@ -7,7 +7,7 @@ import Open from '../images/open.png';
 import User from '../images/user.png';
 
 const Footer = styled.div`
-  display: fixed;
+  position: fixed;
   bottom: 0px;
 `;
 const Container = styled.div`

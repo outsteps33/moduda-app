@@ -31,7 +31,7 @@ const SubTitle = styled.div`
 
 const MobileContainer = styled.div`
   padding-top: 110px;
-  height:100vh;
+  height:1000vh;
 `;
 
 const HightLight = styled.span`
