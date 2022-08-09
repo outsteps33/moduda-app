@@ -1,145 +1,152 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useEffect, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router'
+import Image from 'next/image';
+import DesktopLogo from '../images/desktopLogo.png';
+import MobLogo from '../images/mobileLogo.png';
+import { NavButton, NormalButton } from 'css/button';
+import Ham from '../images/ham_menu.png';
 
-const Container = styled.div`
-  &:hover {
-    background-color: white;
-  }
-  -webkit-transition: background-color 300ms linear;
-  -ms-transition: background-color 300ms linear;
-  transition: background-color 300ms linear;
+const Container= styled.div`
+
 `;
 
-const navigation = [
-  { name: '국비지원컨설팅', href: 'home', current: false },
-  { name: '소개', href: 'intro', current: false },
-  { name: '신청대상', href: 'user', current: true },
-  { name: '진행과정', href: 'process', current: true },
-  { name: '신청하기', href: 'apply', current: true },
-  // { name: '출석체크', href: 'attendance-check', current: false },
-  // { name: '낙서장', href: 'graffiti', current: false },
-]
+const DeskTopContainer = styled.div`
+  display: none;
+  @media (min-width: 640px) { 
+    width: 100vw;
+    height: 120px;
+  
+    position: fixed;
+    top:0px;
+    z-index: 10;
+    background-color: #242527;
+    border-bottom: 1px solid #828282;
+  }
+`;
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
-}
+const Menus = styled.div`
+  display: grid;
+  place-content: center;
+  height: 100%;
+`;
 
+
+
+const Menu = styled.div`
+  width: 1140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 35px;
+  color: #E0E0E0;
+`;
+
+const Logo = styled.div`
+  width: 122px;
+  height:37px;
+`;
+
+const Features = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+`;
+
+const Button = styled.span`
+  padding: 12px 36px;
+  text-align: center;
+
+  // font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 12px;
+
+  background: linear-gradient(93.86deg, #8A34F7 -0.78%, #0581FB 100%);
+  border-radius: 12px;
+
+  
+`;
+// 모바일
+
+const MobileLogo = styled.div`
+  padding: 15px 10px 10px 15px;
+`;
+
+const HamMenu = styled.div`
+  padding: 10px;
+`;
+
+
+const MobileContainer = styled.div`
+  position: fixed;
+  background-color: #242527;
+  width: 100vw;
+  border-bottom: 0.3px solid #828282;
+
+  @media (min-width: 640px) { 
+    display: none;
+  }
+`;
+
+const MobileMenu = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const Nav = () => {
   const history = useRouter();
-  const [isScroll, setIsScroll] = useState(false);
-  const changeBackground = () => {
-    if(window.scrollY > 0 ) {
-      setIsScroll(true);
-    } else {
-      setIsScroll(false);
-    }
-  }
-
-
-  // useEffect(()=> {
-  //   if (typeof window === 'undefined') {
-  //     global.window = {}
-  // }
-  // },[])
-  const goToViolation =(id: any)=>{
-    const violation = document.getElementById(id); 
-    if(violation) {
-      window.scrollTo({
-        top:violation.offsetTop,
-        behavior:"smooth"
-    });
-    }
-  };
+ 
 
   useEffect(() => {
     window.scrollTo({
       top:0,
-      behavior:"smooth"
+      behavior: "smooth"
     });
   },[]);
 
-  const moveToTop = ()  => {
-    window.location.reload();
-  }
   
-  //style={{backgroundColor:'rgb(09,10,23,0.8)'
   return (
-    <Disclosure as="nav" id='nav'  >
-      {({ open }) => (
-        <Container className={classNames( 'fixed w-full text-gray-400  hover:text-gray-400  top-0 z-50')} style={{backgroundColor:'white', backgroundSize:'contain'}}>
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex justify-between h-20 items-center">
-              <div className="flex">
-                <div className="-ml-2 mr-2 flex items-center md:hidden">
-                  {/* Mobile menu buttonb */}
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                    {open ? (
-                      <XIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                    )}
-                  </Disclosure.Button>
-                </div>
-                
-                <div className="hidden md:ml-6 md:flex md:items-center md:space-x-6 ">
-                  {navigation.map((item) => (
-                    <div
-                      key={item.name}
-                      className={classNames(
-                        item.name ==='국비지원컨설팅' ? 'font-bold text-lg text-[18px]'  : 'text-[16px]' , 'px-3 py-2 rounded-md text-black cursor-pointer '
-                      )}
-                      // style={{fontSize: '16px', color: ''}}
-                      aria-current={item.current ? 'page' : undefined}
-                      onClick={() => {
-                        goToViolation(item.href)
-                      }}
-                    >
-                      {item.name}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <button
-                    type="button"
-                    className="text-black"
-                  >
-                    <img src={'https://storage.googleapis.com/opensea-static/Logomark/OpenSea-Full-Logo%20(light).svg'} 
-                      className="h-6 mt-2"
-                    />
-                  </button>
-                </div>
-                
-              </div> */}
-            </div>
-          </div>
+    <Container>
 
-          <Disclosure.Panel className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map((item) => (
-                <div
-                  key={item.name}
-                  className={classNames(
-                    item.name ==='국비지원컨설팅' ? 'font-bold' : '' , 'px-3 py-2 rounded-md text-black cursor-pointer '
-                  )}
-                  onClick={() => {
-                    goToViolation(item.href)
-                  }}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </div>
-              ))}
+      <MobileContainer>
+        <MobileMenu>
+          <MobileLogo>
+            <div>
+              <Image src={MobLogo}  width={24} height={21.71} layout="fixed"/>
             </div>
-          </Disclosure.Panel>
-        </Container>
-      )}
-    </Disclosure>
+          </MobileLogo>
+          <HamMenu>
+            <div>
+              <Image src={Ham}  width={30} height={30} layout="fixed"/>
+            </div>
+          </HamMenu>
+        </MobileMenu>
+      </MobileContainer>
+      <DeskTopContainer>
+
+        {/* 데스크탑 버전 */}
+        <Menus>
+          <Menu>
+            <Logo><Image src={DesktopLogo}  width={122} height={37} layout="fixed"/></Logo>
+            <Features>
+              <div>평판 작성하기</div>
+              <div>평판 조회하기</div>
+              <div>결과 열람하기</div>
+              <div>이용권 구매하기</div>
+              <div>마이페이지</div>
+              <NavButton>회원가입 / 로그인</NavButton>
+            </Features>
+          </Menu>
+        </Menus>
+      </DeskTopContainer>
+    </Container>
   )
 }
