@@ -40,16 +40,20 @@ export const MoveButton = styled.button`
 
 //테두리 하이라이트 버튼
 export const HButton = styled.button`
-  font-family: 'Pretendard';
+  font-family: Pretendard;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
+  padding: 7px 40px;
   
   border-radius: 6.90757px;
-  border: 1px solid;
-  // linear-gradient(to right, #00D1C2, #ffcdf3aa, #006DD0);
-  border-image: linear-gradient(to right, #00D1C2, #006DD0);
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #00D1C2 0%, #006DD0 100%);
+  border-image-slice: 1;
+
+  
+  // border-image: linear-gradient(to right, #00D1C2, #006DD0);
 
   background: linear-gradient(93.86deg, #00D1C2 -0.78%, #006DD0 100%);
   -webkit-background-clip: text;

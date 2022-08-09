@@ -31,7 +31,7 @@ const SubTitle = styled.div`
 
 const MobileContainer = styled.div`
   padding-top: 110px;
-  height:1000vh;
+  height: 300vh;
 `;
 
 const HightLight = styled.span`
@@ -84,7 +84,7 @@ const Main: NextPage = () => {
           시간과 노력을 들여 진행한 채용이 실패로 돌아가지 않도록.<br />
           추천서에서 도움을 드리겠습니다.
         </Description>
-        <div style={{display:'flex', justifyContent: 'center'}}>
+        <div style={{display:'flex', justifyContent: 'center', marginTop:'27px'}}>
           <HButton>추천서 시작하기</HButton>
         </div>
       </MobileContainer>
