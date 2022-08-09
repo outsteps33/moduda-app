@@ -47,9 +47,11 @@ export const HButton = styled.button`
   line-height: 16px;
   padding: 7px 40px;
   
-  border-radius: 6.90757px;
+  
   border: 2px solid transparent;
+  border-radius: 6.9px;
   border-image: linear-gradient(to right, #00D1C2 0%, #006DD0 100%);
+  // border-iamge: linear-gradient(#444444, #444444), linear-gradient(to right, #00D1C2, #ffcdf3aa, #006DD0);
   border-image-slice: 1;
 
   
