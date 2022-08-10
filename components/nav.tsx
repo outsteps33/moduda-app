@@ -20,7 +20,7 @@ const DeskTopContainer = styled.div`
 
   @media (min-width: 640px) { 
     width: 100vw;
-    height: 120px;
+    height: 100px;
   
     position: fixed;
     top:0px;

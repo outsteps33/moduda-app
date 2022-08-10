@@ -144,7 +144,7 @@ export const AuthenticationForm = () => {
         <InputTitle>추천인 아이디</InputTitle>
         <Input placeholder="추천인 아이디를 입력해주세요. (선택)"></Input>
       </div>
-      <div style={{display:'grid', justifyContent:'center', marginTop:'32px'}}>
+      <div style={{display:'grid', justifyContent:'center', marginTop:'20px'}}>
         <MainButton>회사 인증하기</MainButton>
       </div>
     </FormContainer>
