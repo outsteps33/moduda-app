@@ -13,17 +13,23 @@ const Container= styled.div`
 `;
 
 const DeskTopContainer = styled.div`
-  display: none;
+  
+  @media (max-width: 640px) { 
+    display: none;
+  }
+
   @media (min-width: 640px) { 
     width: 100vw;
     height: 120px;
   
     position: fixed;
     top:0px;
-    z-index: 10;
     background-color: #242527;
     border-bottom: 1px solid #828282;
   }
+  
+
+
 `;
 
 const Menus = styled.div`
@@ -130,9 +136,10 @@ export const Nav = () => {
           </HamMenu>
         </MobileMenu>
       </MobileContainer>
-      <DeskTopContainer>
 
-        {/* 데스크탑 버전 */}
+      {/* 데스크탑 버전 */}
+      <DeskTopContainer>
+        
         <Menus>
           <Menu>
             <Logo><Image src={DesktopLogo}  width={122} height={37} layout="fixed"/></Logo>

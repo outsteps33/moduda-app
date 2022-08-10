@@ -5,9 +5,15 @@ import { useRouter } from 'next/router'
 
 const FooterContainer = styled.div`
   width: 100vw;
+  @media (max-width: 640px) { 
+    height: 100px;
+  }
   height: 200px;
-
+  position: fixed;
+  bottom: 0;
   background: #2D2E42; 
+
+
 `;
 
 const FooterDescriptions = styled.div`
@@ -20,14 +26,17 @@ const FooterDescriptions = styled.div`
 `;
 
 const FooterDescription = styled.div`
-  width: 1140px;
-
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 35px;
-  color: #E0E0E0;
+  @media (min-width: 640px) { 
+   
+    width: 100vw;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 35px;
+    color: #E0E0E0;
+  
+  }  
 `;
 
 export const Footer = () => {

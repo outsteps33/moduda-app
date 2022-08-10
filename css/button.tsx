@@ -32,6 +32,22 @@ export const NormalButton = styled.button`
   border-radius: 12px;
 `;
 
+//메인 모바일 크기 버튼
+export const MainButton = styled.button`
+  padding: 7px 40px;
+  text-align: center;
+  color: #FFFFFF;
+  
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+
+  background: linear-gradient(93.86deg, #00D1C2 -0.78%, #006DD0 100%);
+  border-radius: 6.90757px;
+`;
+
 
 //다음페이지 이동 버튼
 export const MoveButton = styled.button`
@@ -53,9 +69,7 @@ export const HButton = styled.button`
   border-image: linear-gradient(to right, #00D1C2 0%, #006DD0 100%);
   // border-iamge: linear-gradient(#444444, #444444), linear-gradient(to right, #00D1C2, #ffcdf3aa, #006DD0);
   border-image-slice: 1;
-
   
-  // border-image: linear-gradient(to right, #00D1C2, #006DD0);
 
   background: linear-gradient(93.86deg, #00D1C2 -0.78%, #006DD0 100%);
   -webkit-background-clip: text;

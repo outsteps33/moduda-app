@@ -12,50 +12,64 @@ datasource db {
   referentialIntegrity  = "prisma"
 }
 
-model Keyword {
+model User {
   id Int @id @default(autoincrement())
-  title String
-  rank Int @unique
-  up_down String
+  email String? @unique
+  name String 
+  role String   //직책
+  company String
+  companyNumber String
+  ticket Int @default(0)
+  password String
+  avatar String?
+  phone String? @unique
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  
+  answer Answer[]
 }
 
-model News {
+//평판 질문 table
+model Question {
   id Int @id @default(autoincrement())
-  title String
-  thumbnail String?
-  url String
+  category String
+  question String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  answer Answer[]
 }
 
-model Youtube {
+//입시자원자 table
+model Applier {
   id Int @id @default(autoincrement())
-  title String
-  rank Int 
-  videoId String
+  name String
+  role String  //직무
+  phone String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  answer Answer[]
 }
 
-model Coin {
+//평판데이터 table
+model Answer {
   id Int @id @default(autoincrement())
-  title String
-  rank Int 
-  up_down String
-  url String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionId Int
+  applier Applier @relation(fields: [applierId], references: [id], onDelete: Cascade)
+  applierId Int
+  answer String @db.MediumText
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([questionId])
+  @@index([applierId])
 }
 
-model Blog {
-  id Int @id @default(autoincrement())
-  title String
-  thumbnail String
-  content String @db.LongText
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
 
 
