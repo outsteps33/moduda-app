@@ -1,3 +1,4 @@
+import { AgreementForm } from "@components/AgreementForm";
 import { AuthenticationForm } from "@components/AuthenticationForm";
 import { Footer } from "@components/Footer";
 import { MobileFooter } from "@components/MobileFooter";
@@ -10,7 +11,7 @@ const Agreement: NextPage = () => {
   return (
     <div style={{backgroundColor: '#242527'}}>
       <Nav />
-      <AuthenticationForm />
+      <AgreementForm />
       {/* <Footer /> */}
       <MobileFooter />
     </div>

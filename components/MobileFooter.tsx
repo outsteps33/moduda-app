@@ -10,6 +10,7 @@ const Footer = styled.div`
   position: fixed;
   bottom: 0px;
 `;
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
