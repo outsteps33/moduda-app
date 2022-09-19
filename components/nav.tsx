@@ -14,18 +14,17 @@ const Container= styled.div`
 
 const DeskTopContainer = styled.div`
   
-  @media (max-width: 640px) { 
-    display: none;
-  }
+  display: none;
+  
 
   @media (min-width: 640px) { 
     width: 100vw;
     height: 100px;
-  
+    z-index: 99;
+    border-bottom: 0.5px solid #8A8A8A;
     position: fixed;
-    top:0px;
-    background-color: #242527;
-    border-bottom: 1px solid #828282;
+    top: 0px;
+    background-color: white;
   }
   
 
@@ -41,7 +40,7 @@ const Menus = styled.div`
 
 
 const Menu = styled.div`
-  width: 1140px;
+  width: 80vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,12 +50,12 @@ const Menu = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 35px;
-  color: #E0E0E0;
+  color: #000000;
 `;
 
 const Logo = styled.div`
-  width: 122px;
-  height:37px;
+  width: 197;
+  height:44;
 `;
 
 const Features = styled.div`
@@ -83,7 +82,7 @@ const Button = styled.span`
 // 모바일
 
 const MobileLogo = styled.div`
-  padding: 15px 10px 10px 15px;
+  
 `;
 
 const HamMenu = styled.div`
@@ -93,10 +92,11 @@ const HamMenu = styled.div`
 
 const MobileContainer = styled.div`
   position: fixed;
-  background-color: #242527;
+  background-color: white;
   width: 100vw;
-  border-bottom: 0.3px solid #828282;
-
+  height: 72px;
+  border-bottom: 0.5px solid #8A8A8A;
+  z-index: 99;
   @media (min-width: 640px) { 
     display: none;
   }
@@ -105,6 +105,9 @@ const MobileContainer = styled.div`
 const MobileMenu = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 0px 0px 10px;
 `;
 
 export const Nav = () => {
@@ -126,7 +129,7 @@ export const Nav = () => {
         <MobileMenu>
           <MobileLogo>
             <div>
-              <Image src={MobLogo}  width={24} height={21.71} layout="fixed"/>
+              <Image src={MobLogo}  width={192} height={44} layout="fixed"/>
             </div>
           </MobileLogo>
           <HamMenu>
@@ -142,14 +145,14 @@ export const Nav = () => {
         
         <Menus>
           <Menu>
-            <Logo><Image src={DesktopLogo}  width={122} height={37} layout="fixed"/></Logo>
+            <Logo><Image src={MobLogo}  width={192} height={44} layout="fixed"/></Logo>
             <Features>
-              <div>평판 작성하기</div>
-              <div>평판 조회하기</div>
-              <div>결과 열람하기</div>
-              <div>이용권 구매하기</div>
-              <div>마이페이지</div>
-              <NavButton>회원가입 / 로그인</NavButton>
+              <div>모두다 소개</div>
+              <div>업무 소개</div>
+              <div>사이다 강의</div>
+              <div>성공사례</div>
+              <div>상담신청</div>
+              {/* <NavButton>회원가입 / 로그인</NavButton> */}
             </Features>
           </Menu>
         </Menus>

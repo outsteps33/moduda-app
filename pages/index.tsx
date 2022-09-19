@@ -3,11 +3,17 @@ import Image from "next/image";
 import { Nav } from "@components/nav";
 import { ReputationBar } from "@components/ReputationBar";
 import { MobileFooter } from "@components/MobileFooter";
-
+import MobileKakao from '../images/kakao.png';
 import styled from 'styled-components';
 import { Footer } from "@components/Footer";
 import { NormalButton, HButton } from "css/button";
-
+import { Hero } from "@components/Hero";
+import { Services } from "@components/Service";
+import { Review } from "@components/Review";
+import { ApplyForm } from "@components/ApplyForm";
+import Phone from '../images/phoneImg.png';
+import Ebook from '../images/ebookbanner.png';
+import DesktopEbookImage from '../images/ebookbanner_web.png';
 const temp_reputation = [{
   question: 'Q1. 업무에 필요한 지식과 기술을 갖추고, 업무에 실제로 활용하나요?',
   reputation: ["기본적인 업무 역량이 부족하다.", "업무를 수행하는데에 문제가 없다.", "업무 지식과 스킬이 뛰어나다."]
@@ -67,27 +73,65 @@ const Description = styled.div`
   color: #FFFFFF;
 `;
 
+const MobKakao = styled.div`
+  display: block;
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
 
+const KaKao = styled.div`
+  display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+`;
 
+const MobilePhone = styled.div`
+  display: block;
+  padding-top: 70px;
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
 
+const MobileEbook = styled.div`
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
+
+const DesktopEbook = styled.div`
+
+  display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+`;
 const Main: NextPage = () => {
   
   
   return (
-    <div style={{backgroundColor:'#242527'}} >
+    <div >
       <Nav />
-      <MobileContainer>
-        <SubTitle style={{color: 'white'}}>채용실패를 방지하는 가장 쉬운 방법</SubTitle>
-        <Title><HightLight>추천서</HightLight> 평판 체크</Title>
-        <Description>
-          추천서는 지원자의 평판을 체크하는 서비스입니다.<br />
-          시간과 노력을 들여 진행한 채용이 실패로 돌아가지 않도록.<br />
-          추천서에서 도움을 드리겠습니다.
-        </Description>
-        <div style={{display:'flex', justifyContent: 'center', marginTop:'27px'}}>
-          <HButton>추천서 시작하기</HButton>
-        </div>
-      </MobileContainer>
+      <MobilePhone>
+        <Image src={Phone} width="100%" height="17" layout="responsive" />
+      </MobilePhone>
+      <Hero />
+      <Services />
+      <MobKakao>
+        <Image src={MobileKakao} width="100%" height="50" layout="responsive" />
+      </MobKakao>
+      <Review />
+      <div>
+        <MobileEbook>
+          <Image src={Ebook} width="100%" height="20" layout="responsive" />
+        </MobileEbook>
+        <DesktopEbook>
+          <Image src={DesktopEbookImage} width="100%" height="9" layout="responsive" />
+        </DesktopEbook>
+      </div>
+      <ApplyForm />
       {/* <Footer /> */}
       <MobileFooter />
     </div>

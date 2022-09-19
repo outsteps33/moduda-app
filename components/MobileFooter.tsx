@@ -9,6 +9,7 @@ import User from '../images/user.png';
 const Footer = styled.div`
   position: fixed;
   bottom: 0px;
+
 `;
 
 const Container = styled.div`
@@ -41,23 +42,23 @@ export const MobileFooter = () => {
       <Container >
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Home} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>홈</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>모두다 소개</span>
         </div>
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Search} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>평판 조회</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>업무 소개</span>
         </div>
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Write} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>평판 작성</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>사이다 강의</span>
         </div>
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Open} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>결과 열람</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>성공사례</span>
         </div>
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={User} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>마이페이지</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}>상담신청</span>
         </div>
       </Container>
     </Footer>
