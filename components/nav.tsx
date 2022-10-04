@@ -62,7 +62,7 @@ const Logo = styled.div`
 const Features = styled.div`
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 `;
 
 const Button = styled.span`

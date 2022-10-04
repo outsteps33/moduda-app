@@ -2,7 +2,8 @@ import { Text36, Text15, Text20, TextHover20 } from 'css/text';
 import styled from 'styled-components';
 import Image from 'next/image';
 import PlusImage from '../images/plus.png';
-// import Previous ㄹ
+import After from '../images/after.png';
+import Previous from '../images/previous.png';
 
 const MobileReivewContainer  = styled.div`
 
@@ -17,7 +18,7 @@ const DesktopReviewContainer = styled.div`
 
 
 @media (min-width: 640px) { 
-  height: 420px;
+  // height: 420px;
   background : #F5F5F4;
   display:flex;
   justify-content: space-between;
@@ -177,6 +178,10 @@ export const Review = () => {
         
 
       </DesktopReviewContainer>
+      <div className="flex gap-3 justify-end pr-[100px] pt-[26px]" style={{backgroundColor:'#F5F5F4', height:'150px'}}>
+        <div><Image src={Previous} width={36} height={36} layout="fixed"/></div>
+        <div><Image src={After} width={36} height={36} layout="fixed"/></div>
+      </div>
     </div>
   )
 }
