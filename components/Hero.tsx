@@ -21,12 +21,12 @@ export const Hero = () => {
         showArrows={false} 
         showIndicators={false} 
         showThumbs={false} 
-        autoPlay={true}
+        autoPlay={false}
         useKeyboardArrows={false}
         stopOnHover={true}
       >
         <div style={{backgroundImage: `url(${HeroImage1})`,backgroundSize:'cover', backgroundRepeat:"no-repeat", width:"100%", height:"41vw"}} >
-            
+            {/* <div className="pt-[30vw]">dfdfdfd1</div> */}
             
         </div>
         <div style={{backgroundImage: `url(${HeroImage2})`,backgroundSize:'cover', backgroundRepeat:"no-repeat", width:"100%", height:"41vw"}} >

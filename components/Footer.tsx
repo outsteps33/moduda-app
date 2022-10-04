@@ -2,7 +2,9 @@
 import { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router'
+import Logo from '../images/black_logo.png';
 
+  import Image from 'next/image';
 const FooterContainer = styled.div`
   width: 100vw;
  
@@ -41,11 +43,13 @@ const FooterDescription = styled.div`
 
 export const Footer = () => {
   const history = useRouter();
-  
   return (
-    <FooterContainer className="border-t-[1px]">
+    <FooterContainer className="border-t-[1px] py-20">
       <FooterDescriptions>
         <FooterDescription>
+          <div className="pt-20">
+            <Image src={Logo}  width={302} height={68.18} layout="fixed"/>
+          </div>
           사업자등록번호 : 416-08-53233 | 대표자 : 송범석 | 개인정보보호책임자 : 송범석 <br />
           대표번호 : 010-8992-5465 ( AM 08:00 - PM 11:00 )<br />
             © 2022 CCS, Inc. All rights reserved.<br />
