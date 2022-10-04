@@ -4,6 +4,7 @@ import { Nav } from "@components/nav";
 import { ReputationBar } from "@components/ReputationBar";
 import { MobileFooter } from "@components/MobileFooter";
 import MobileKakao from '../images/kakao.png';
+import WebKakao from '../images/kakao_web.png';
 import styled from 'styled-components';
 import { Footer } from "@components/Footer";
 import { NormalButton, HButton } from "css/button";
@@ -122,6 +123,10 @@ const Main: NextPage = () => {
       <MobKakao>
         <Image src={MobileKakao} width="100%" height="50" layout="responsive" />
       </MobKakao>
+      <KaKao>
+        <Image src={WebKakao} width="100%" height="25" layout="responsive" />
+      </KaKao>
+      
       <Review />
       <div>
         <MobileEbook>
@@ -133,6 +138,7 @@ const Main: NextPage = () => {
       </div>
       <ApplyForm />
       {/* <Footer /> */}
+      <Footer />
       <MobileFooter />
     </div>
   )

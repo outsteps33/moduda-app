@@ -2,7 +2,7 @@ import { Text36, Text15, Text20, TextHover20 } from 'css/text';
 import styled from 'styled-components';
 import Image from 'next/image';
 import PlusImage from '../images/plus.png';
-
+// import Previous ㄹ
 
 const MobileReivewContainer  = styled.div`
 
@@ -43,10 +43,10 @@ const Button = styled.div`
 
 const ReviewBox = styled.div`
 
-  width: 45vw;
+  
   @media (min-width: 640px) { 
     padding: 36px 40px;
-    width: 282px;
+    width: 382px;
     height: 180px;
   }
 
@@ -62,6 +62,7 @@ const ReviewBox = styled.div`
 `;
 
 const ReviewTitle = styled.div`
+  width: 30vw;
 `;
 
 const ReviewDate = styled.div`
@@ -77,6 +78,41 @@ const More = styled.div`
   border-radius: 19px;
   font-size: 12px;
   padding: 2px 5px;
+`;
+
+const Container = styled.div`
+  overflow: hidden; 
+  overflow-x: scroll; 
+  display: flex; 
+  padding: 10px 20px;
+  gap: 20px;
+  -webkit-overflow-scrolling: touch;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  width: 70vw;
+  
+`;
+
+const Box = styled.div`
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 36px 40px;
+  gap: 68px;
+
+  width: 482px;
+  height: 180px;
+
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
 `;
 
 
@@ -118,50 +154,25 @@ export const Review = () => {
         </div>
       </MobileReivewContainer>
       <DesktopReviewContainer>
-        <Title>
+        <div style={{width:'280px'}}>
           <Text36>모두다행정사</Text36>
           <Text36 style={{color:'#0054EB'}}>성공 사례</Text36>
           MODUDA SUCCESSFUL CASE
           <Button><Text15> 성공사례 모두 보러 가기</Text15></Button>
-        </Title>
-        <div style={{display: 'flex', gap: 20}}>
-          <ReviewBox>
-            <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px'}}>
-              <Text20>택배기사 구제 사례</Text20>
-              <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                <Text20 style={{color:'#BDBEBE'}}>2022.05.18</Text20>
-                <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
-              </div>
-            </div>
-          </ReviewBox>
-          <ReviewBox>
-            <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px'}}>
-              <Text20>택배기사 구제 사례</Text20>
-              <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                <Text20 style={{color:'#BDBEBE'}}>2022.05.18</Text20>
-                <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
-              </div>
-            </div>
-          </ReviewBox>
-          <ReviewBox style={{background: 'linear-gradient(138.57deg, #0054EB 7.65%, #209AF8 76.56%)'}}>
-            <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px'}}>
-              <Text20>택배기사 구제 사례</Text20>
-              <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                <Text20 style={{color:'#BDBEBE'}}>2022.05.18</Text20>
-                <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
-              </div>
-            </div>
-          </ReviewBox>
-          <ReviewBox>
-            <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px'}}>
-              <Text20>택배기사 구제 사례</Text20>
-              <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                <Text20 style={{color:'#BDBEBE'}}>2022.05.18</Text20>
-                <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
-              </div>
-            </div>
-          </ReviewBox>
         </div>
+        <Container >
+          {[0,0,0,0,0,0,0,0,0].map((v) => (
+            <ReviewBox >
+              <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
+                <Text20>택배기사 구제 사례</Text20>
+                <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                  <Text20 style={{color:'#BDBEBE'}}>2022.05.18</Text20>
+                  <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
+                </div>
+              </div>
+          </ReviewBox>
+          ))}
+        </Container>
         
         
 

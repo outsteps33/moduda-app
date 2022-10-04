@@ -14,7 +14,7 @@ const HeroContainer = styled.div`
 
 export const Hero = () => {
   return (
-    <HeroContainer>
+    <HeroContainer className="sm:pt-10">
       <Carousel 
         infiniteLoop={true} 
         showStatus={false} 

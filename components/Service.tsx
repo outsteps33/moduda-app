@@ -15,10 +15,10 @@ const ServiceContainer = styled.div`
     padding-bottom: 30px;
   
 
-  @media (min-width: 640px) {
+  @media (min-width: 720px) {
     height: 400px;
     display:flex;
-    justify-content: space-between;
+    justify-content:space-between;
   
     padding-top: 112px;
     padding-left: 98px;
@@ -30,8 +30,9 @@ const ServiceContainer = styled.div`
 
 const Title = styled.div`
 
-  @media (min-width: 640px) {
+  @media (min-width: 720px) {
     display: block;
+    margin-top: 30px;
   }
 `;
 
@@ -40,8 +41,14 @@ const Title = styled.div`
 const SubTitle = styled.div`
   display: flex;
 
-  @media (min-width: 640px) {
+  @media (min-width: 720px) {
     display: block;
+    font-size: 23px;
+  }
+
+  @media (min-width: 1200px) {
+    display: block;
+    font-size: 30px;
   }
 `;
 
@@ -69,7 +76,7 @@ const Service = styled.div`
     padding-top:12px;
   
 
-  @media (min-width: 640px) {
+  @media (min-width: 720px) {
     font-size: 30px;
     line-height: 42px;
 
@@ -89,22 +96,32 @@ const Service = styled.div`
 const ArrowImage = styled.div`
   padding-left: 8px;
 `;
+const Text = styled.div`
+  font-family: 'Pretendard';
+  font-style: normal;
+  line-height: 42px;
+  /* or 117% */
 
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.05em;
+`;
 export const Services = () => {
   return (
       
       <ServiceContainer>
-        <Title>
-          <SubTitle>
-            <Text36>모두다행정사<span></span></Text36>
-            <Text36 style={{color:'#0054EB'}}>프리미엄 서비스</Text36>
-          </SubTitle>
+        <div>
+          <div className="md:text-[25px] lg:text-[32px] mt-7">
+            <Text>모두다행정사</Text>
+            <Text style={{color:'#0054EB'}} className="font-semibold">프리미엄 서비스</Text>
+          </div>
           MODUDA PREMIUM SERVICE
-        </Title>
-        <Service style={{marginTop:'10px'}}>
+        </div>
+        <Service className="mt-[10px] md:mt-[0px]" >
 
-          <div className="flex gap-7 items-center">
-            <div><Image src={Dig} width="20" height="20" /></div>
+          <div className="flex gap-2 items-center md:block">
+            <div className="md:hidden"><Image src={Dig} width="20" height="20" /></div>
+            <div className="hidden md:block"><Image src={Dig} width="30" height="30" /></div>
             <div>
               <Subdescription>모두다 진단</Subdescription>
               <SubTitle>
@@ -120,8 +137,9 @@ export const Services = () => {
         </Service>
 
         <Service>
-          <div className="flex gap-6 items-center">
-            <div><Image src={Ebook} width="25" height="20" /></div>
+          <div className="flex gap-6 items-center md:block">
+            <div className="md:hidden"><Image src={Ebook} width="25" height="20" /></div>
+            <div className="hidden md:block"><Image src={Ebook} width="37.5" height="30" /></div>
             <div>
             <Subdescription>모두다 PDF</Subdescription>
             <SubTitle>
@@ -135,8 +153,9 @@ export const Services = () => {
           </div>
         </Service>
         <Service>
-          <div className="flex gap-5 items-center">
-            <div><Image src={Edu} width="30" height="20" /></div>
+          <div className="flex gap-5 items-center md:block">
+            <div className="md:hidden"><Image src={Edu} width="30" height="20" /></div>
+            <div className="hidden md:block"><Image src={Edu} width="45" height="30" /></div>
             <div>
             <Subdescription>모두다 교육</Subdescription>
             <SubTitle>

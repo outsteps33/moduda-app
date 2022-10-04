@@ -11,12 +11,12 @@ export const Text36 = styled.div`
 
   color: #000000;
   
-  @media (max-width: 640px) { 
-    font-size: 12px;
+  @media (max-width: 720px) { 
+    font-size: 30px;
     line-height: 10px;  
   }
 
-  @media (min-width: 640px) { 
+  @media (min-width: 1200px) { 
     font-size: 36px;
     line-height: 42px;
   }

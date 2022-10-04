@@ -18,6 +18,7 @@ const DeskTopContainer = styled.div`
   
 
   @media (min-width: 640px) { 
+    display: block;
     width: 100vw;
     height: 100px;
     z-index: 99;
@@ -128,12 +129,12 @@ export const Nav = () => {
       <MobileContainer>
         <MobileMenu>
           <MobileLogo>
-            <div>
+            <div className="cursor-pointer" onClick={() => history.push('/')}>
               <Image src={MobLogo}  width={192} height={44} layout="fixed"/>
             </div>
           </MobileLogo>
           <HamMenu>
-            <div>
+            <div className="cursor-pointer" onClick={() => history.push('/')}>
               <Image src={Ham}  width={30} height={30} layout="fixed"/>
             </div>
           </HamMenu>
@@ -145,13 +146,13 @@ export const Nav = () => {
         
         <Menus>
           <Menu>
-            <Logo><Image src={MobLogo}  width={192} height={44} layout="fixed"/></Logo>
+            <Logo className="cursor-pointer" onClick={() => history.push('/')}><Image src={MobLogo}  width={192} height={44} layout="fixed"/></Logo>
             <Features>
-              <div>모두다 소개</div>
-              <div>업무 소개</div>
-              <div>사이다 강의</div>
-              <div>성공사례</div>
-              <div>상담신청</div>
+              <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/intro')}>모두다 소개</div>
+              {/* <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/')}>업무 소개</div> */}
+              <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/')}>사이다 강의</div>
+              <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/review')}>성공사례</div>
+              <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/apply')}>상담신청</div>
               {/* <NavButton>회원가입 / 로그인</NavButton> */}
             </Features>
           </Menu>
