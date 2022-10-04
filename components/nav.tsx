@@ -7,7 +7,7 @@ import DesktopLogo from '../images/desktopLogo.png';
 import MobLogo from '../images/mobileLogo.png';
 import { NavButton, NormalButton } from 'css/button';
 import Ham from '../images/ham_menu.png';
-
+import Wphone from '../images/Wphone.png';
 const Container= styled.div`
 
 `;
@@ -62,7 +62,7 @@ const Logo = styled.div`
 const Features = styled.div`
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
 `;
 
 const Button = styled.span`
@@ -155,6 +155,7 @@ export const Nav = () => {
               <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/apply')}>상담신청</div>
               {/* <NavButton>회원가입 / 로그인</NavButton> */}
             </Features>
+              <div className="pt-3"><Image src={Wphone}  width={250} height={110} layout="fixed"/></div>
           </Menu>
         </Menus>
       </DeskTopContainer>
