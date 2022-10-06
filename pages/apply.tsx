@@ -47,24 +47,6 @@ const Apply: NextPage = () => {
               />
             </div>
           </div>
-
-          <div>
-            <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
-                성명
-              </label>
-              <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
-                })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="w-full"
-              />
-            </div>
-          </div>
           <div>
             <div className="mt-2 px-5">
               <label htmlFor="email" className="block text-sm mb-1 ">

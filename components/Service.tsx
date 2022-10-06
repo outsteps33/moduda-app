@@ -99,7 +99,11 @@ const ArrowImage = styled.div`
 const Text = styled.div`
   font-family: 'Pretendard';
   font-style: normal;
-  line-height: 42px;
+  line-height: 20px;
+  @media (min-width: 640px) {
+    line-height: 42px;
+  
+  }
   /* or 117% */
 
   display: flex;
@@ -136,7 +140,7 @@ export const Services = () => {
           </div>
         </Service>
 
-        <Service>
+        <Service onClick={() => window.location.href="http://moduda2021.cafe24.com/"}>
           <div className="flex gap-6 items-center md:block">
             <div className="md:hidden"><Image src={Ebook} width="25" height="20" /></div>
             <div className="hidden md:block"><Image src={Ebook} width="37.5" height="30" /></div>
