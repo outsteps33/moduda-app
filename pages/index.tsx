@@ -120,10 +120,10 @@ const Main: NextPage = () => {
       </MobilePhone>
       <Hero />
       <Services />
-      <MobKakao onClick={() => window.location.href ="https://pf.kakao.com/_NxagQl"}>
+      <MobKakao className="cursor-pointer" onClick={() => window.open("https://pf.kakao.com/_NxagQl")}>
         <Image src={MobileKakao} width="100%" height="50" layout="responsive" />
       </MobKakao>
-      <KaKao onClick={() => window.location.href ="https://pf.kakao.com/_NxagQl"}>
+      <KaKao className="cursor-pointer" onClick={() => window.open("https://pf.kakao.com/_NxagQl")}>
         <Image src={WebKakao} width="100%" height="25" layout="responsive" />
       </KaKao>
       

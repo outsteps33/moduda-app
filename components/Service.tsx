@@ -5,6 +5,7 @@ import { Text36 } from 'css/text';
 import Dig from '../images/진단.png';
 import Ebook from '../images/ebook.png';
 import Edu from '../images/youtube.png';
+import { useRouter } from 'next/router';
 
 const ServiceContainer = styled.div`
 
@@ -111,6 +112,7 @@ const Text = styled.div`
   letter-spacing: -0.05em;
 `;
 export const Services = () => {
+  const history = useRouter();
   return (
       
       <ServiceContainer>
@@ -121,7 +123,7 @@ export const Services = () => {
           </div>
           MODUDA PREMIUM SERVICE
         </div>
-        <Service className="mt-[10px] md:mt-[0px]" >
+        <Service className="mt-[10px] md:mt-[0px] cursor-pointer hover:text-gray-500" onClick={() => history.push('apply')} >
 
           <div className="flex gap-2 items-center md:block">
             <div className="md:hidden"><Image src={Dig} width="20" height="20" /></div>
@@ -140,11 +142,11 @@ export const Services = () => {
           </div>
         </Service>
 
-        <Service onClick={() => window.location.href="http://moduda2021.cafe24.com/"}>
+        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open("http://moduda2021.cafe24.com/")}>
           <div className="flex gap-6 items-center md:block">
             <div className="md:hidden"><Image src={Ebook} width="25" height="20" /></div>
             <div className="hidden md:block"><Image src={Ebook} width="37.5" height="30" /></div>
-            <div>
+            <div className="">
             <Subdescription>모두다 PDF</Subdescription>
             <SubTitle>
               <SubTitle>면허구제 E-book</SubTitle>
@@ -156,8 +158,8 @@ export const Services = () => {
             </div>
           </div>
         </Service>
-        <Service>
-          <div className="flex gap-5 items-center md:block">
+        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open('https://www.youtube.com/c/%EC%86%A1%EB%B2%94%EC%84%9D')}>
+          <div className="flex gap-5 items-center md:block ">
             <div className="md:hidden"><Image src={Edu} width="30" height="20" /></div>
             <div className="hidden md:block"><Image src={Edu} width="45" height="30" /></div>
             <div>
