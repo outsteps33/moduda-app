@@ -96,6 +96,21 @@ const Container = styled.div`
   
 `;
 
+const MContainer = styled.div`
+  overflow: hidden; 
+  overflow-x: scroll; 
+  display: flex; 
+  padding: 10px 20px;
+  gap: 20px;
+  -webkit-overflow-scrolling: touch;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  width: 98vw;
+  
+`;
+
 const Box = styled.div`
   box-sizing: border-box;
 
@@ -131,27 +146,19 @@ export const Review = () => {
             <More>성공사례 모두 보러 가기</More>
           </div>
           <div className="px-2 text-xs mb-4"> MODUDA SUCCESSFUL CASE</div>
-          <div className="grid grid-cols-2">
-            <ReviewBox>
-              <div className="p-5" style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px'}}>
-                <div className="text-sm">택배기사 구제 사례</div>
+          <MContainer >
+          {[0,0,0,0,0,0,0,0,0].map((v) => (
+            <ReviewBox >
+              <div style={{display:'grid',padding: '15px', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
+                <Text15>택배기사 구제 사례</Text15>
                 <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <Text20 style={{color:'#BDBEBE', fontSize:'12px'}}>2022.05.18</Text20>
-                  <Plus><Image src={PlusImage} width={10} height={10} /></Plus>
+                  <Text15 style={{color:'#BDBEBE'}}>2022.05.18</Text15>
+                  <Plus><Image src={PlusImage} width={14} height={14} /></Plus>
                 </div>
               </div>
-            </ReviewBox>
-            <ReviewBox>
-              <div className="p-5" style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px'}}>
-                <div className="text-sm">택배기사 구제 사례</div>
-                <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <Text20 style={{color:'#BDBEBE', fontSize:'12px'}}>2022.05.18</Text20>
-                  <Plus><Image src={PlusImage} width={10} height={10} /></Plus>
-                </div>
-              </div>
-            </ReviewBox>
-
-          </div>
+              </ReviewBox>
+              ))}
+            </MContainer>
         </div>
       </MobileReivewContainer>
       <DesktopReviewContainer>
@@ -178,7 +185,7 @@ export const Review = () => {
         
 
       </DesktopReviewContainer>
-      <div className="flex gap-3 justify-end pr-[100px] pt-[26px]" style={{backgroundColor:'#F5F5F4', height:'150px'}}>
+      <div className="hidden gap-3 justify-end pr-[100px] pt-[26px] sm:flex" style={{backgroundColor:'#F5F5F4', height:'150px'}}>
         <div><Image src={Previous} width={36} height={36} layout="fixed"/></div>
         <div><Image src={After} width={36} height={36} layout="fixed"/></div>
       </div>
