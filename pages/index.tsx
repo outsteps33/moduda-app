@@ -116,7 +116,9 @@ const Main: NextPage = () => {
   return (
     <div >
       <Nav />
-      <FixedApplyForm />
+      <div className="hidden sm:block">
+        <FixedApplyForm />
+      </div>
       <MobilePhone>
         <Image src={Phone} width="100%" height="17" layout="responsive" />
       </MobilePhone>

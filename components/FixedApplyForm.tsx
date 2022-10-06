@@ -43,7 +43,7 @@ export const FixedApplyForm = () => {
   }
 
   return (
-    <FormContainer style={{ width:"194px", zIndex:'99'}} className="fixed right-[30px] top-[120px]  px-[10px] bg-gray-600 border-2 rounded-md hidden sm:block" >
+    <FormContainer style={{ width:"194px", zIndex:'99'}} className="fixed right-[30px] top-[120px]  px-[10px] bg-gray-600 border-2 rounded-md  sm:block" >
       <Title>
         <div style={{color:'white', fontSize:'15px'}}> <span style={{fontSize:'13px', textAlign: 'center', fontWeight:'600'}}>SMS 빠른 상담 신청</span></div>
         <form className="space-y-2 " onSubmit={handleSubmit(onSubmit, inValid)}>

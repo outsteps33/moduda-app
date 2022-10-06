@@ -5,6 +5,7 @@ import { Text36 } from 'css/text';
 import Dig from '../images/진단.png';
 import Ebook from '../images/ebook.png';
 import Edu from '../images/youtube.png';
+import Blog from '../images/blog.png';
 import { useRouter } from 'next/router';
 
 const ServiceContainer = styled.div`
@@ -168,6 +169,22 @@ export const Services = () => {
               <SubTitle>유튜브 영상</SubTitle>
               <div style={{display:'flex', height:'22px'}}>
                 <SubTitle>보러 가기</SubTitle>
+                <ArrowImage><Image src={Arrow} width={21.11} height={22}></Image></ArrowImage>
+              </div> 
+            </SubTitle>
+            </div>
+          </div>
+        </Service>
+        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+          <div className="flex gap-5 items-center md:block ">
+            <div className="md:hidden"><Image src={Blog} width="30" height="20" /></div>
+            <div className="hidden md:block"><Image src={Blog} width="35" height="30" /></div>
+            <div>
+            <Subdescription>모두다 커뮤니티</Subdescription>
+            <SubTitle>
+              <SubTitle>모두다 행정사 카페 </SubTitle>
+              <div style={{display:'flex', height:'22px'}}>
+                <SubTitle>비로 가기</SubTitle>
                 <ArrowImage><Image src={Arrow} width={21.11} height={22}></Image></ArrowImage>
               </div> 
             </SubTitle>
