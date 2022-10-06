@@ -8,6 +8,7 @@ import MobLogo from '../images/mobileLogo.png';
 import { NavButton, NormalButton } from 'css/button';
 import Ham from '../images/ham_menu.png';
 import Wphone from '../images/Wphone.png';
+
 const Container= styled.div`
 
 `;
@@ -105,10 +106,10 @@ const MobileContainer = styled.div`
 
 const MobileMenu = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
-  padding: 10px 0px 0px 10px;
+  margin: 10px 0px 0px 0px;
 `;
 
 export const Nav = () => {
@@ -128,16 +129,16 @@ export const Nav = () => {
 
       <MobileContainer>
         <MobileMenu>
-          <MobileLogo>
-            <div className="cursor-pointer" onClick={() => history.push('/')}>
+          <MobileLogo className='mx-auto '>
+            <div className="cursor-pointer  " onClick={() => history.push('/')}>
               <Image src={MobLogo}  width={192} height={44} layout="fixed"/>
             </div>
           </MobileLogo>
-          <HamMenu>
+          {/* <HamMenu>
             <div className="cursor-pointer" onClick={() => history.push('/')}>
               <Image src={Ham}  width={30} height={30} layout="fixed"/>
             </div>
-          </HamMenu>
+          </HamMenu> */}
         </MobileMenu>
       </MobileContainer>
 
