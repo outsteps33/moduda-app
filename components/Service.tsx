@@ -42,10 +42,15 @@ const Title = styled.div`
 
 const SubTitle = styled.div`
   display: flex;
-
+  font-size: 2rem;
   @media (min-width: 720px) {
     display: block;
-    font-size: 23px;
+    font-size: 18px;
+  }
+
+  @media (min-width: 900px) {
+    display: block;
+    font-size: 20px;
   }
 
   @media (min-width: 1200px) {

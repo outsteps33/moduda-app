@@ -27,49 +27,55 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
-  answer Answer[]
 }
 
-//평판 질문 table
-model Question {
+model Diagnosis {
   id Int @id @default(autoincrement())
-  category String
-  question String
+  name String   //이름
+  phone String  //폰
+  alcohol String  //혈중알콜농도 (호흡 또는 체혈)
+  license String    //면허취득년도 
+  alcohol_history Boolean //과거 음주운전 전력
+  demerit String //벌점
+  distance String // 음주운전으로 이동한 거리
+  crackDown String  //적발일자
+  policeInterview String  //조사 날짜
+  reason String //  불가피한 운전 사유
+  job String  //직업 (월급, 월수입)
+  need String //운전이 필요한 이유
+  comment String //문의사항(면허구제,벌금감경,의견서작성 등)
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  answer Answer[]
 }
 
-//입시자원자 table
-model Applier {
+model Review {
+  id Int @id @default(autoincrement())
+  title String
+  thumbnail String
+  contents String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lecture {
+  id Int @id @default(autoincrement())
+  title String
+  thumbnail String
+  contents String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Counsel {
   id Int @id @default(autoincrement())
   name String
-  role String  //직무
   phone String
+  contents String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  answer Answer[]
 }
 
-//평판데이터 table
-model Answer {
-  id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int
-  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  questionId Int
-  applier Applier @relation(fields: [applierId], references: [id], onDelete: Cascade)
-  applierId Int
-  answer String @db.MediumText
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([questionId])
-  @@index([applierId])
-}
 
 
 

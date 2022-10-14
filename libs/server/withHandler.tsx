@@ -20,9 +20,9 @@ export default function withHandler(
       return res.status(405).end();
     }
     
-    if(isPrivate && !req.session.user) {
-      return res.status(401).json({ ok: false, error:'please log in' });
-    }
+    // if(isPrivate && !req.session.user) {
+    //   return res.status(401).json({ ok: false, error:'please log in' });
+    // }
     try {
       await handler(req, res);
     } catch(error) {

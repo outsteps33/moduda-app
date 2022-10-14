@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Sms from '../images/sms.png';
 import { useForm } from "react-hook-form";
+import useMutation from '@libs/client/useMutation';
 
 const FormContainer = styled.div`
   display: grid;
@@ -31,9 +32,14 @@ const Textarea = styled.textarea`
 `;
 
 export const ApplyForm = () => {
+  const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
     console.log(data)
+    sendEmail({
+      type:"상담신청",
+      ...data
+    })
   }
   const inValid = () => {
     console.log(errors)
@@ -46,19 +52,16 @@ export const ApplyForm = () => {
         <div style={{color:'white', fontSize:'12px'}}>MODUDA SMS QUICK COUNSELING</div>
         <form className="space-y-2 mt-5" onSubmit={handleSubmit(onSubmit, inValid)}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-white">
-                성함
+              <label htmlFor="name" className="block text-sm font-medium text-white">
+                이름
               </label>
               <div className="mt-1">
                 <Input
-                  {...register("email", {
-                    required: "이메일을 입력해주세요",
-                    minLength: 10,
-                    validate: (email) =>email.includes("@")
+                  {...register("name", {
+                    required: "이름을 입력해주세요",
                   })}
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  name="name"
+                  type="name"
                   required
                   style={{background: 'rgba(255, 255, 255, 0.51)'}}
                 />
@@ -66,40 +69,38 @@ export const ApplyForm = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-white">
+              <label htmlFor="phone" className="block text-sm font-medium text-white">
                 연락처( - 없이 입력 )
               </label>
               <div className="mt-1">
                 <Input
-                  {...register("password", {
-                    required: "비밀번호를 입력해주세요"
+                  {...register("phone", {
+                    required: "폰번호를 입력해주세요"
                   })}
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
+                  name="phone"
+                  type="phone"
                   required
                   style={{background: 'rgba(255, 255, 255, 0.51)'}}
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-white">
+              <label htmlFor="comment" className="block text-sm font-medium text-white">
                 상담 내용 입력
               </label>
               <div className="mt-1">
                 <Textarea
-                  {...register(`answer2`, {
+                  {...register(`comment`, {
                     required: "남기고 싶은 말을 적어주세요",
                   })}
-                  name="answer2"
-                  defaultValue={''}
+                  name="comment"
                   style={{background: 'rgba(255, 255, 255, 0.51)'}}
                 />
               </div>
             </div>
-            <Button className="text-white py-3 text-center">
+            <button className="w-full text-white py-3 text-center cursor-pointer bg-[#0054EB] rounded-md hover:bg-[#3d7cf1]">
               상담 신청하기
-            </Button>
+            </button>
           </form>
       </Title>
     </FormContainer>

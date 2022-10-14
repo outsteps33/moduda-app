@@ -9,7 +9,7 @@ import IntroMImage from '../images/IntroMImage.png';
 import HistoryImage from '../images/historyImage.png';
 import styled from 'styled-components';
 import Youtube from 'react-youtube';
-function classNames(...classes: any[]) {
+export function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 

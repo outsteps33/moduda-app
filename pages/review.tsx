@@ -80,74 +80,8 @@ const Review: NextPage = () =>{
     date: '2022.07.21'
   }];
 
-  function Items({ currentItems }: any) {
-    return (
-      <>
-        {currentItems &&
-          currentItems.map((item: any, i: number) => (
-            <div>
-              <div className="px-10 py-3 sm:hidden">
-                <Image src={item.thumb} width="100" height="66" layout="responsive" />
-                <div>{item.title}</div>
-                <div>{item.date}</div>
-                <div className="underline">자세히 보기</div>
-              </div>
-              <Div >
-                  <div className=" py-3 hidden sm:block sm:px-2 ">
-                    <Image src={Example} width="100" height="66" layout="responsive" />
-                    <div>{i}. {item.title}</div>
-                    <div>{item.date}</div>
-                    <div className="underline">자세히 보기</div>
-                  </div>
-                </Div>
-              </div>
-          ))}
-      </>
-    );
-  }
+  
 
-  function PaginatedItems({ itemsPerPage }: any) {
-    // We start with an empty list of items.
-    const [currentItems, setCurrentItems] = useState<any>(null);
-    const [pageCount, setPageCount] = useState(0);
-    // Here we use item offsets; we could also use page offsets
-    // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
-
-    useEffect(() => {
-      // Fetch items from another resources.
-      const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-      setCurrentItems(items.slice(itemOffset, endOffset));
-      setPageCount(Math.ceil(items.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
-
-    // Invoke when user click to request another page.
-    const handlePageClick = (event: any) => {
-      const newOffset = (event.selected * itemsPerPage) % items.length;
-      console.log(
-        `User requested page number ${event.selected}, which is offset ${newOffset}`
-      );
-      setItemOffset(newOffset);
-    };
-
-    return (
-      <>
-        <Items currentItems={currentItems} />
-        <div className="">
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={6}
-            pageCount={pageCount}
-            previousLabel="< previous"
-            // renderOnZeroPageCount={null}
-          />
-        </div>
-      </>
-    );
-  }
   return (
     <div>
       <Nav />
@@ -181,8 +115,7 @@ const Review: NextPage = () =>{
           ))}
         </div>
         <Pagination />
-          {/* <PaginatedItems itemsPerPage={5} /> */}
-        
+        {/* <div>더 보기</div> */}
       </div>
 
       <div className="pb-20"></div>

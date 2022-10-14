@@ -1,12 +1,31 @@
 import { MobileFooter } from "@components/MobileFooter";
 import { Nav } from "@components/nav";
+import useMutation from "@libs/client/useMutation";
 import { NextPage } from "next";
 import { useForm } from "react-hook-form";
 
 
+// name String   //이름
+//   phone String  //폰
+//   alcohol String  //혈중알콜농도 (호흡 또는 체혈)
+//   license String    //면허취득년도 
+//   alcohol_history Boolean //과거 음주운전 전력
+//   demerit String //벌점
+//   distance String // 음주운전으로 이동한 거리
+//   crackDown String  //적발일자
+//   policeInterview String  //조사 날짜
+//   reason String //  불가피한 운전 사유
+//   job String  //직업 (월급, 월수입)
+//   need String //운전이 필요한 이유
+//   comment String //문의사항(면허구제,벌금감경,의견서작성 등)
 const Apply: NextPage = () => {
+  const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
+    sendEmail({
+      type: "진단신청",
+      ...data
+    })
     console.log(data)
   }
   const inValid = () => {
@@ -30,71 +49,52 @@ const Apply: NextPage = () => {
         <form className="space-y-2 mt-5 md:pr-48 md:pt-28" onSubmit={handleSubmit(onSubmit, inValid)}>
           <div>
             <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
-                선택항목
+              <label htmlFor="name" className="block text-sm mb-1 ">
+                이름
               </label>
               <input
-                {...register("email", {
-                  required: "이메일을 입력해주세요",
-                  minLength: 10,
-                  validate: (email: any) =>email.includes("@")
-                })}
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="w-full"
-              />
-            </div>
-          </div>
-          <div>
-            <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
-                성명
-              </label>
-              <input
-                {...register("password", {
+                {...register("name", {
                   required: "비밀번호를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="name"
+                type="name"
                 required
-                className="w-full"
+                placeholder="이름"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
+              <label htmlFor="phone" className="block text-sm mb-1 ">
                 연락처
               </label>
               <input
-                {...register("password", {
+                {...register("phone", {
                   required: "비밀번호를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="phone"
+                type="phone"
                 required
-                className="w-full"
+                placeholder="ex) 010-1234-5678"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
+              <label htmlFor="alhoc" className="block text-sm mb-1 ">
                 혈중 알콜농도 (호흡 또는 체혈)
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("alcohol", {
+                  required: "혈중 알콜농도를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="alcohol"
+                type="alcohol"
                 required
-                className="w-full"
+                placeholder=" 0.1%"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
@@ -104,14 +104,14 @@ const Apply: NextPage = () => {
                 면허 취득 년도
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("license", {
+                  required: "면저취득년도를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="license"
+                type="license"
                 required
-                className="w-full"
+                placeholder="ex) 2022-10-12"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
@@ -121,48 +121,31 @@ const Apply: NextPage = () => {
                 과거 음주운전 전력
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("alcohol_history", {
+                  required: "과거 음주운전 전력 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="alcohol_history"
+                type="alcohol_history"
                 required
-                className="w-full"
+                placeholder="ex) 있다 / 없다"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
               <label htmlFor="email" className="block text-sm mb-1 ">
-                음주운전 중 사고여부
+                벌점
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("demerit", {
+                  required: "벌점을 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="demerit"
+                type="demerit"
                 required
-                className="w-full"
-              />
-            </div>
-          </div>
-          <div>
-            <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
-                1년 이내 받은 벌점 (모를 시 '모름'으로 표시)
-              </label>
-              <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
-                })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="w-full"
+                placeholder="ex) 200점"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
@@ -172,14 +155,14 @@ const Apply: NextPage = () => {
                 음주운전으로 이동한 거리
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("distance", {
+                  required: "음주운전으로 이동한 거리를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="distance"
+                type="distance"
                 required
-                className="w-full"
+                placeholder="ex) 1km"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
@@ -189,14 +172,14 @@ const Apply: NextPage = () => {
                 적발 일자
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("crackDown", {
+                  required: "적발 일자를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="crackDown"
+                type="crackDown"
                 required
-                className="w-full"
+                placeholder="ex) 2022-10-12"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
@@ -206,74 +189,76 @@ const Apply: NextPage = () => {
                 경찰 조사 일자(혹은 조사 예정일)
               </label>
               <input
-                {...register("password", {
-                  required: "비밀번호를 입력해주세요"
+                {...register("policeInterview", {
+                  required: "경찰 조사 일자를 입력해주세요"
                 })}
-                name="password"
-                type="password"
-                autoComplete="current-password"
+                name="policeInterview"
+                type="policeInterview"
                 required
-                className="w-full"
+                placeholder="ex) 2022-10-12"
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
+              <label htmlFor="reason" className="block text-sm mb-1 ">
                 불가피한 운전 사유
               </label>
               <textarea
-                {...register(`answer2`, {
+                {...register(`reason`, {
                   required: "남기고 싶은 말을 적어주세요",
                 })}
-                name="answer2"
-                defaultValue={''}
-                className="w-full"
+                name="reason"
+                placeholder="불가피한 운전 사유를 입력해주세요."
+                className="w-full border border-gray-400 h-24 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
               <label htmlFor="email" className="block text-sm mb-1 ">
-                직업(월수입)
+                직업 (월급, 월수입)
               </label>
-              <textarea
-                {...register(`answer2`, {
-                  required: "남기고 싶은 말을 적어주세요",
+              <input
+                {...register("jov", {
+                  required: "직업 (월급, 월수입)을 입력해주세요"
                 })}
-                name="answer2"
-                defaultValue={''}
-                className="w-full"
+                name="jov"
+                type="jov"
+                required
+                placeholder="직업 및 월수입을 입력해주세요."
+                className="w-full border border-gray-400 h-10 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
+              <label htmlFor="need" className="block text-sm mb-1 ">
                 운전이 필요한 이유
               </label>
               <textarea
-                {...register(`answer2`, {
+                {...register(`need`, {
                   required: "남기고 싶은 말을 적어주세요",
                 })}
-                name="answer2"
-                defaultValue={''}
-                className="w-full"
+                name="need"
+                placeholder="운전이 필요한 이유를 입력해주세요."
+                className="w-full border border-gray-400 h-24 px-2"
               />
             </div>
           </div>
           <div>
             <div className="mt-2 px-5">
-              <label htmlFor="email" className="block text-sm mb-1 ">
-                문의한 사항
+              <label htmlFor="comment" className="block text-sm mb-1 ">
+                문의사항(면허구제,벌금감경,의견서작성 등)
               </label>
               <textarea
-                {...register(`answer2`, {
+                {...register(`comment`, {
                   required: "남기고 싶은 말을 적어주세요",
                 })}
-                name="answer2"
-                defaultValue={''}
-                className="w-full"
+                name="comment"
+                placeholder="문의사항을 입력해주세요."
+                className="w-full border border-gray-400 h-24 px-2"
               />
             </div>
           </div>

@@ -52,7 +52,7 @@ export const MobileFooter = () => {
         </div>
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Write} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  onClick={() => history.push('/lecture') }>사이다 강의</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  onClick={() => history.push('/lecture') }>핵심 강의</span>
         </div>
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Open} width={24} height={24} layout="fixed"/></div>

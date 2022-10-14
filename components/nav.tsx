@@ -151,7 +151,7 @@ export const Nav = () => {
             <Features>
               <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/intro')}>모두다 소개</div>
               {/* <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/')}>업무 소개</div> */}
-              <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/lecture')}>사이다 강의</div>
+              <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/lecture')}>핵심 강의</div>
               <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/review')}>성공사례</div>
               <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/apply')}>상담신청</div>
               {/* <NavButton>회원가입 / 로그인</NavButton> */}
