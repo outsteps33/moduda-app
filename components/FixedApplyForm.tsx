@@ -116,7 +116,7 @@ export const FixedApplyForm = () => {
         </Title>
         
       </FormContainer>
-      <div className="grid justify-center rounded-md mt-1">
+      <div className="grid justify-center rounded-md mt-1 cursor-pointer" onClick={() =>window.open('https://talk.naver.com/ct/wcc4wq')}>
         <Image className="mt-10 " src={TalkTalk} width={200} height={50} layout="fixed" />
       </div>
     </Container>

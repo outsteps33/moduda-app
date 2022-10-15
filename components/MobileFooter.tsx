@@ -6,7 +6,8 @@ import Write from '../images/write.png';
 import Open from '../images/open.png';
 import User from '../images/user.png';
 import { useRouter } from 'next/router';
-
+import Talk from '../images/Naver_Talk.png';
+import Call from '../images/call.png';
 const Footer = styled.div`
   position: fixed;
   bottom: 0px;
@@ -40,7 +41,12 @@ export const MobileFooter = () => {
   const history = useRouter();
   return (
     <Footer>
-
+      <div className="fixed bottom-[80px] right-[10px] sm:hidden" onClick={() =>window.open('https://talk.naver.com/ct/wcc4wq')}>
+        <Image className="rounded-full" src={Talk} width={50} height={50} layout="fixed"/>
+      </div>
+      <div className="fixed bottom-[140px] right-[10px] sm:hidden" onClick={()=> window.location.href = 'tel:010-8662-5465'}>
+        <Image className="rounded-full p-3" src={Call} width={50} height={50} layout="fixed"/>
+      </div>
       <Container >
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Home} width={24} height={24} layout="fixed"/></div>
