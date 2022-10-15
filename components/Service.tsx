@@ -42,7 +42,7 @@ const Title = styled.div`
 
 const SubTitle = styled.div`
   display: flex;
-  font-size: 2rem;
+  font-size: 1rem;
   @media (min-width: 720px) {
     display: block;
     font-size: 18px;
@@ -50,12 +50,12 @@ const SubTitle = styled.div`
 
   @media (min-width: 900px) {
     display: block;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   @media (min-width: 1200px) {
     display: block;
-    font-size: 30px;
+    font-size: 25px;
   }
 `;
 
@@ -134,13 +134,13 @@ export const Services = () => {
           <div className="flex gap-2 items-center md:block">
             <div className="md:hidden"><Image src={Dig} width="20" height="20" /></div>
             <div className="hidden md:block"><Image src={Dig} width="30" height="30" /></div>
-            <div>
+            <div className="pl-[21px] md:pl-0">
               <Subdescription>모두다 진단</Subdescription>
               <SubTitle>
                 <SubTitle>구제 가능성 진단</SubTitle>
                 <div style={{display:'flex', height:'22px'}}>
                   <SubTitle>바로 가기</SubTitle>
-                  <ArrowImage><Image src={Arrow} width={21.11} height={22}></Image></ArrowImage>
+                  <ArrowImage><Image src={Arrow} width={19.11} height={20}></Image></ArrowImage>
                   
                 </div>  
               </SubTitle>
@@ -158,7 +158,7 @@ export const Services = () => {
               <SubTitle>면허구제 E-book</SubTitle>
               <div style={{display:'flex', height:'22px'}}>
                 <SubTitle>받아 보기</SubTitle>
-                <ArrowImage><Image src={Arrow} width={21.11} height={22}></Image></ArrowImage>
+                <ArrowImage><Image src={Arrow} width={19.11} height={20}></Image></ArrowImage>
               </div> 
             </SubTitle>
             </div>
@@ -174,7 +174,7 @@ export const Services = () => {
               <SubTitle>유튜브 영상</SubTitle>
               <div style={{display:'flex', height:'22px'}}>
                 <SubTitle>보러 가기</SubTitle>
-                <ArrowImage><Image src={Arrow} width={21.11} height={22}></Image></ArrowImage>
+                <ArrowImage><Image src={Arrow} width={19.11} height={20}></Image></ArrowImage>
               </div> 
             </SubTitle>
             </div>
@@ -190,7 +190,7 @@ export const Services = () => {
               <SubTitle>모두다 행정사 카페 </SubTitle>
               <div style={{display:'flex', height:'22px'}}>
                 <SubTitle>비로 가기</SubTitle>
-                <ArrowImage><Image src={Arrow} width={21.11} height={22}></Image></ArrowImage>
+                <ArrowImage><Image src={Arrow} width={19.11} height={20}></Image></ArrowImage>
               </div> 
             </SubTitle>
             </div>

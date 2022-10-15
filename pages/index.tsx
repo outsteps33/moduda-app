@@ -119,7 +119,7 @@ const Main: NextPage = () => {
       <div className="hidden sm:block">
         <FixedApplyForm />
       </div>
-      <MobilePhone>
+      <MobilePhone onClick={()=> window.location.href = 'tel:010-8662-5465'}>
         <Image src={Phone} width="100%" height="17" layout="responsive" />
       </MobilePhone>
       <Hero />

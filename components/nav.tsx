@@ -8,6 +8,7 @@ import MobLogo from '../images/mobileLogo.png';
 import { NavButton, NormalButton } from 'css/button';
 import Ham from '../images/ham_menu.png';
 import Wphone from '../images/Wphone.png';
+import Phone from '../images/phoneImg.png';
 
 const Container= styled.div`
 
@@ -112,6 +113,14 @@ const MobileMenu = styled.div`
   margin: 10px 0px 0px 0px;
 `;
 
+const MobilePhone = styled.div`
+  display: block;
+  padding-top: 70px;
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
+
 export const Nav = () => {
   const history = useRouter();
  
@@ -134,6 +143,9 @@ export const Nav = () => {
               <Image src={MobLogo}  width={192} height={44} layout="fixed"/>
             </div>
           </MobileLogo>
+          {/* <MobilePhone onClick={()=> window.location.href = 'tel:010-8662-5465'}>
+            <Image src={Phone} width="100%" height="17" layout="responsive" />
+          </MobilePhone> */}
           {/* <HamMenu>
             <div className="cursor-pointer" onClick={() => history.push('/')}>
               <Image src={Ham}  width={30} height={30} layout="fixed"/>
@@ -156,7 +168,7 @@ export const Nav = () => {
               <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/apply')}>상담신청</div>
               {/* <NavButton>회원가입 / 로그인</NavButton> */}
             </Features>
-              <div className="pt-3"><Image src={Wphone}  width={250} height={110} layout="fixed"/></div>
+              <div className="pt-3" onClick={()=> window.location.href = 'tel:010-8662-5465'}><Image src={Wphone}  width={250} height={110} layout="fixed"/></div>
           </Menu>
         </Menus>
       </DeskTopContainer>
