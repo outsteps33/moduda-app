@@ -22,11 +22,13 @@ const Apply: NextPage = () => {
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
-    sendEmail({
+     sendEmail({
       type: "진단신청",
       ...data
     })
     console.log(data)
+    alert('진단신청이 완료됐습니다.');
+    window.location.reload();
   }
   const inValid = () => {
     console.log(errors)

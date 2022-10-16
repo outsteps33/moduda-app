@@ -16,8 +16,8 @@ interface IForm {
 
 }
 
-const ToastEditor = () => {
-  const [ReviewUpload, { loading, data, error }] = useMutation("/api/reviewUpload");
+const ToastLectureEditor = () => {
+  const [LectureUpload, { loading, data, error }] = useMutation("/api/lecture");
   const editorRef = createRef<Editor>();
   const [ submit , setSubmit ]= useState('');
   const { register, getValues, handleSubmit, formState: { errors } } = useForm<IForm>();
@@ -73,7 +73,7 @@ const ToastEditor = () => {
     //   });
     // }
 
-    ReviewUpload({
+    LectureUpload({
       title,
       thumbnail: response.result.variants[0],
       contents: getContent_md
@@ -166,4 +166,4 @@ const ToastEditor = () => {
   )
 }
 
-export default ToastEditor;
+export default ToastLectureEditor;

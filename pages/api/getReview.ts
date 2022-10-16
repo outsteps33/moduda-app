@@ -1,29 +1,23 @@
 import client from '@libs/server/client';
 import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { withApiSession } from '@libs/server/withSession';
+import mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
-
 
 
 
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  console.log("sss")
-  const response = await (await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFARE_ACCOUNTID}/images/v2/direct_upload`,
-    {
-      method: 'POST',
-      headers: {
-        "Content-type": 'application/json',
-        Authorization : `Bearer ${process.env.CLOUDFARE_API_TOKEN}`
-      }
-    }
-  )).json();
-
-  console.log(response)
+  console.log((parseInt(req.query.page.toString())-1)*15);
+  const count = await client.review.count();
+  const review = await client.review.findMany({
+    take: 15,
+    skip: (parseInt(req.query.page.toString())-1)*15,
+    
+  });
   
-  res.json({ ok: true, ...response.result });
+  res.json({ ok: true , review, count});
 }
 
 export default withApiSession(withHandler({

@@ -11,6 +11,7 @@ import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from "react";
 import Example from '../images/sampleExample.png';
 import Pagination from "@components/Pagination";
+import useSWR, { useSWRConfig } from "swr";
 const Search = styled.input`
   display: flex;
   flex-direction: row;
@@ -45,42 +46,18 @@ const Div = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 `;
-const Review: NextPage = () =>{
-  const items= [{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  },{
-    thumb: Example,
-    title: '777. 택배기사 구제사례',
-    date: '2022.07.21'
-  }];
+interface ReviewResponse {
+  ok: boolean;
+  review: any[];
+  count: any;
+}
 
-  
+const Review: NextPage = () =>{
+  const { mutate } = useSWRConfig();
+  const [ page, setPage ] = useState(1);
+  const { data, mutate: boundMutate } = useSWR<ReviewResponse>(
+      `/api/getReview?page=${page}`
+  );
 
   return (
     <div>
@@ -93,11 +70,27 @@ const Review: NextPage = () =>{
 
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
-        {[0,0,0].map((v) => (
-          <ReviewComponent />
-
-        ))}
-        <Pagination />
+        {data?.review.map((v) => (
+            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail}  />
+          ))}
+        <div className="flex justify-center gap-[30px] items-center">
+          <div onClick={() => {
+            if(page !== 1) {
+              setPage(page-1)
+            } else {
+              alert('첫 페이지입니다.')
+            }}}
+            className="border rounded-md px-3 py-1 border-gray-500"
+          >이전</div>
+          <div>{page} / {data?.count}</div>
+          <div onClick={() => {
+             if(page === parseInt(data?.count)/15 +1) {
+              setPage(page+1)
+            } else {
+              alert('마지막 페이지입니다.')
+            }
+          } } className="border rounded-md px-3 py-1 border-gray-500">다음</div>
+        </div>
       </div>
 
       <div className="hidden sm:block">
@@ -109,12 +102,34 @@ const Review: NextPage = () =>{
           <Search placeholder="검색어를 입력해주세요." />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-24 md:px-32">
-          {[0,0,0,0,0,0,0,0,0].map((v) => (
-            <ReviewComponent />
-
+          {data?.review.map((v) => (
+            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />
           ))}
+          {/* {[0,0,0,0,0,0,0,0,0].map((v) => (
+            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />
+
+          ))} */}
         </div>
-        <Pagination />
+        <div className="flex justify-center gap-[30px] items-center">
+          <div onClick={() => {
+            if(page !== 1) {
+              setPage(page-1)
+            } else {
+              alert('첫 페이지입니다.')
+            }
+          }}
+            className="border rounded-md px-3 py-1 border-gray-500"
+          >이전</div>
+          <div>{page} / {data?.count} </div>
+          <div onClick={() => {
+            if(page === parseInt(data?.count)/15 +1) {
+              setPage(page+1)
+            } else {
+              alert('마지막 페이지입니다.')
+            }
+          } } className="border rounded-md px-3 py-1 border-gray-500">다음</div>
+        </div>
+
         {/* <div>더 보기</div> */}
       </div>
 

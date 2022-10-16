@@ -1,29 +1,21 @@
 import client from '@libs/server/client';
 import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { withApiSession } from '@libs/server/withSession';
+import mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
-
 
 
 
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  console.log("sss")
-  const response = await (await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFARE_ACCOUNTID}/images/v2/direct_upload`,
-    {
-      method: 'POST',
-      headers: {
-        "Content-type": 'application/json',
-        Authorization : `Bearer ${process.env.CLOUDFARE_API_TOKEN}`
-      }
+  const lecture = await  client.lecture.findUnique({
+    where: {
+      id: parseInt(req.query.id.toString())
     }
-  )).json();
-
-  console.log(response)
+  });
   
-  res.json({ ok: true, ...response.result });
+  res.json({ ok: true , lecture});
 }
 
 export default withApiSession(withHandler({

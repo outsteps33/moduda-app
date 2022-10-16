@@ -10,6 +10,9 @@ import WLecture from '../images/lectureBanner.png';
 import MLecture from '../images/lectureMBanner.png';
 import CiderComponent from "@components/CiderComponent";
 import styled from "styled-components";
+import { useState } from "react";
+import useSWR from "swr";
+import LectureComponent from "@components/LectureComponent";
 
 const Search = styled.input`
   display: flex;
@@ -41,7 +44,17 @@ const MSearch = styled.input`
   border: 0.5px solid #AEAEAE;
 `;
 
+interface LecutreResponse {
+  ok: boolean;
+  lecture: any[];
+  count: any;
+}
+
 const Lecture: NextPage = () =>{
+  const [ page, setPage ] = useState(1);
+  const { data, mutate: boundMutate } = useSWR<LecutreResponse>(
+      `/api/getLecture?page=${page}`
+  );
   return (
     <div>
       <Nav />
@@ -53,10 +66,27 @@ const Lecture: NextPage = () =>{
 
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
-        {[0,0,0].map((v) => (
-          <CiderComponent />
-
-        ))}
+        {data?.lecture.map((v) => (
+            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail}   />
+          ))}
+        <div className="flex justify-center gap-[30px] items-center">
+          <div onClick={() => {
+            if(page !== 1) {
+              setPage(page-1)
+            } else {
+              alert('첫 페이지입니다.')
+            }}}
+            className="border rounded-md px-3 py-1 border-gray-500"
+          >이전</div>
+          <div>{page} / {data?.count}</div>
+          <div onClick={() => {
+             if(page === parseInt(data?.count)/15 +1) {
+              setPage(page+1)
+            } else {
+              alert('마지막 페이지입니다.')
+            }
+          } } className="border rounded-md px-3 py-1 border-gray-500">다음</div>
+        </div>
       </div>
 
       <div className="hidden sm:block">
@@ -68,10 +98,27 @@ const Lecture: NextPage = () =>{
           <Search placeholder="검색어를 입력해주세요." />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-24 md:px-32">
-          {[0,0,0,0,0,0,0,0,0].map((v) => (
-            <CiderComponent />
-
+          {data?.lecture.map((v) => (
+            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail}   />
           ))}
+        </div>
+        <div className="flex justify-center gap-[30px] items-center">
+          <div onClick={() => {
+            if(page !== 1) {
+              setPage(page-1)
+            } else {
+              alert('첫 페이지입니다.')
+            }}}
+            className="border rounded-md px-3 py-1 border-gray-500"
+          >이전</div>
+          <div>{page} / {data?.count}</div>
+          <div onClick={() => {
+             if(page === parseInt(data?.count)/15 +1) {
+              setPage(page+1)
+            } else {
+              alert('마지막 페이지입니다.')
+            }
+          } } className="border rounded-md px-3 py-1 border-gray-500">다음</div>
         </div>
       </div>
 

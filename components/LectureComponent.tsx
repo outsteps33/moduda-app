@@ -9,10 +9,10 @@ interface Props {
   title: string
   thumbnail: string
 }
-const ReviewComponent: FC<Props> = ({ id, title, thumbnail}) => {
+const LectureComponent: FC<Props> = ({ id, title, thumbnail}) => {
   const router = useRouter();
   return (
-    <div onClick={() => router.push(`/review/${id}`)}>
+    <div onClick={() => router.push(`/lecture/${id}`)}>
       <div className="px-10 py-3 sm:hidden">
         <Image src={thumbnail} width="100" height="66" layout="responsive" unoptimized={true}/>
         <div>{title}</div>
@@ -27,4 +27,4 @@ const ReviewComponent: FC<Props> = ({ id, title, thumbnail}) => {
   )
 }
 
-export default ReviewComponent;
+export default LectureComponent;

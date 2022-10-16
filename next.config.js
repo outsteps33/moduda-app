@@ -11,8 +11,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    disableStaticImages: true
-  }
+    domains: ["localhost", "*"],
+    disableStaticImages: true,
+    formats: ["image/webp"],
+  },
 }
 module.exports = withPlugins([
   images
