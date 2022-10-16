@@ -8,11 +8,12 @@ interface Props {
   id: any
   title: string
   thumbnail: string
+  createdAt: any
 }
-const ReviewComponent: FC<Props> = ({ id, title, thumbnail}) => {
+const ReviewComponent: FC<Props> = ({ id, title, thumbnail, createdAt}) => {
   const router = useRouter();
   return (
-    <div onClick={() => router.push(`/review/${id}`)}>
+    <div onClick={() => router.push(`/review/${id}`)} className="cursor-pointer">
       <div className="px-10 py-3 sm:hidden">
         <Image src={thumbnail} width="100" height="66" layout="responsive" unoptimized={true}/>
         <div>{title}</div>
@@ -21,6 +22,7 @@ const ReviewComponent: FC<Props> = ({ id, title, thumbnail}) => {
       <div className=" py-3 hidden sm:block sm:px-2 ">
         <Image src={thumbnail} width="100" height="66" layout="responsive"unoptimized={true} />
         <div>{title}</div>
+        <div>{new Date(createdAt).getFullYear()}.{new Date(createdAt).getMonth()}.{new Date(createdAt).getDate()}</div>
         <div className="underline">자세히 보기</div>
       </div>
     </div>

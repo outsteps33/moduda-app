@@ -67,7 +67,7 @@ const Lecture: NextPage = () =>{
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
         {data?.lecture.map((v) => (
-            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail}   />
+            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />
           ))}
         <div className="flex justify-center gap-[30px] items-center">
           <div onClick={() => {
@@ -99,7 +99,7 @@ const Lecture: NextPage = () =>{
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-24 md:px-32">
           {data?.lecture.map((v) => (
-            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail}   />
+            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />
           ))}
         </div>
         <div className="flex justify-center gap-[30px] items-center">

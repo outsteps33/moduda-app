@@ -11,7 +11,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ["localhost", "*"],
+    domains: ["localhost", "https://imagedelivery.net/"],
     disableStaticImages: true,
     formats: ["image/webp"],
   },

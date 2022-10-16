@@ -4,6 +4,8 @@ import Image from 'next/image';
 import PlusImage from '../images/plus.png';
 import After from '../images/after.png';
 import Previous from '../images/previous.png';
+import { FC } from 'react';
+import { useRouter } from 'next/router';
 
 const MobileReivewContainer  = styled.div`
 
@@ -47,7 +49,7 @@ const ReviewBox = styled.div`
   
   @media (min-width: 640px) { 
     padding: 36px 40px;
-    width: 382px;
+    width: 282px;
     height: 180px;
   }
 
@@ -131,9 +133,13 @@ const Box = styled.div`
   border-radius: 18px;
 `;
 
+interface ReviewProps {
+  review: any[] | undefined;
+}
 
 const Title = styled.div``;
-export const Review = () => {
+export const Review: FC<ReviewProps> = ({review}) => {
+  const router= useRouter();
   return (
     <div className="">
       <MobileReivewContainer className="py-10">
@@ -147,12 +153,12 @@ export const Review = () => {
           </div>
           <div className="px-2 text-xs mb-4"> MODUDA SUCCESSFUL CASE</div>
           <MContainer >
-          {[0,0,0,0,0,0,0,0,0].map((v) => (
-            <ReviewBox >
+          {review && review.map((v) => (
+            <ReviewBox onClick={() => router.push(`/review/${v.id}`)} className="cursor-pointer hover:text-white">
               <div style={{display:'grid',padding: '15px', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
-                <Text15>택배기사 구제 사례</Text15>
+                <Text15>{v.title}</Text15>
                 <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <Text15 style={{color:'#BDBEBE'}}>2022.05.18</Text15>
+                  <Text15 style={{color:'#BDBEBE'}}>{new Date(v.createdAt).getFullYear()}.{new Date(v.createdAt).getMonth()}.{new Date(v.createdAt).getDate()}</Text15>
                   <Plus><Image src={PlusImage} width={14} height={14} /></Plus>
                 </div>
               </div>
@@ -169,12 +175,12 @@ export const Review = () => {
           <Button><Text15> 성공사례 모두 보러 가기</Text15></Button>
         </div>
         <Container >
-          {[0,0,0,0,0,0,0,0,0].map((v) => (
-            <ReviewBox >
+          {review && review.map((v) => (
+            <ReviewBox onClick={() => router.push(`/review/${v.id}`)} className="cursor-pointer hover:text-white" >
               <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
-                <Text20>택배기사 구제 사례</Text20>
+                <Text20>{v.title}</Text20>
                 <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <Text20 style={{color:'#BDBEBE'}}>2022.05.18</Text20>
+                  <Text20 style={{color:'#BDBEBE'}}>{new Date(v.createdAt).getFullYear()}.{new Date(v.createdAt).getMonth()}.{new Date(v.createdAt).getDate()}</Text20>
                   <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
                 </div>
               </div>

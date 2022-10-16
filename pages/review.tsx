@@ -71,7 +71,7 @@ const Review: NextPage = () =>{
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
         {data?.review.map((v) => (
-            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail}  />
+            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
           ))}
         <div className="flex justify-center gap-[30px] items-center">
           <div onClick={() => {
@@ -103,7 +103,7 @@ const Review: NextPage = () =>{
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-24 md:px-32">
           {data?.review.map((v) => (
-            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />
+            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}
           {/* {[0,0,0,0,0,0,0,0,0].map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />

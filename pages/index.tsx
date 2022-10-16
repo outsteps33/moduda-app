@@ -16,6 +16,7 @@ import Phone from '../images/phoneImg.png';
 import Ebook from '../images/ebookbanner.png';
 import DesktopEbookImage from '../images/ebookbanner_web.png';
 import { FixedApplyForm } from "@components/FixedApplyForm";
+import useSWR from "swr";
 const temp_reputation = [{
   question: 'Q1. 업무에 필요한 지식과 기술을 갖추고, 업무에 실제로 활용하나요?',
   reputation: ["기본적인 업무 역량이 부족하다.", "업무를 수행하는데에 문제가 없다.", "업무 지식과 스킬이 뛰어나다."]
@@ -110,8 +111,17 @@ const DesktopEbook = styled.div`
     display: block;
   }
 `;
+
+interface ReviewResponse {
+  ok: boolean;
+  review: any[];
+  count: any;
+}
+
 const Main: NextPage = () => {
-  
+  const { data, mutate: boundMutate } = useSWR<ReviewResponse>(
+    `/api/getReview?page=1`
+  );
   
   return (
     <div >
@@ -131,7 +141,7 @@ const Main: NextPage = () => {
         <Image src={WebKakao} width="100%" height="25" layout="responsive" />
       </KaKao>
       
-      <Review />
+      <Review review={data?.review}/>
       <div>
         <MobileEbook>
           <Image src={Ebook} width="100%" height="20" layout="responsive" />
