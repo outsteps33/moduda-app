@@ -39,7 +39,9 @@ export const ApplyForm = () => {
     sendEmail({
       type:"상담신청",
       ...data
-    })
+    });
+    alert('상담신청이 완료됐습니다.');
+    window.location.reload();
   }
   const inValid = () => {
     console.log(errors)
