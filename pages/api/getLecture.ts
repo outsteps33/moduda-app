@@ -18,6 +18,7 @@ async function handler (
       id: true,
       title: true,
       thumbnail: true,
+      createdAt: true
     }
   });
   

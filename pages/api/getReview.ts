@@ -14,7 +14,12 @@ async function handler (
   const review = await client.review.findMany({
     take: 15,
     skip: (parseInt(req.query.page.toString())-1)*15,
-    
+    select: {
+      id: true,
+      title: true,
+      thumbnail: true,
+      createdAt: true
+    }
   });
   
   res.json({ ok: true , review, count});

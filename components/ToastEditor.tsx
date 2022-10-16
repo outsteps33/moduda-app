@@ -77,13 +77,10 @@ const ToastEditor = () => {
       title,
       thumbnail: response.result.variants[0],
       contents: getContent_md
-    })
-    //title : 제목,
+    });
 
-    // response.result.variants[0] : 썸네일
-    //getContent_md: text
-  
-    //mutation (upload) ==> thumbnail: url
+    alert('제출되었습니다.');
+    window.location.reload();
     }
 
     const inValid = () => {

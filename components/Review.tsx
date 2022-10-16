@@ -149,7 +149,7 @@ export const Review: FC<ReviewProps> = ({review}) => {
               모두다행정사 
               <div style={{color:'#0054EB'}} className="text-md ml-1"> 성공사례</div>
             </div>
-            <More>성공사례 모두 보러 가기</More>
+            <More onClick={() => router.push('/review')}>성공사례 모두 보러 가기</More>
           </div>
           <div className="px-2 text-xs mb-4"> MODUDA SUCCESSFUL CASE</div>
           <MContainer >
@@ -172,7 +172,7 @@ export const Review: FC<ReviewProps> = ({review}) => {
           <Text36>모두다행정사</Text36>
           <Text36 style={{color:'#0054EB'}}>성공 사례</Text36>
           MODUDA SUCCESSFUL CASE
-          <Button><Text15> 성공사례 모두 보러 가기</Text15></Button>
+          <Button onClick={() => router.push('/review')} className=" hover:bg-gray-500 cursor-pointer hover:text-white"><Text15 className=""> 성공사례 모두 보러 가기</Text15></Button>
         </div>
         <Container >
           {review && review.map((v) => (

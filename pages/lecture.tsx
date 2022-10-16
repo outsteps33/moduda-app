@@ -111,7 +111,7 @@ const Lecture: NextPage = () =>{
             }}}
             className="border rounded-md px-3 py-1 border-gray-500"
           >이전</div>
-          <div>{page} / {data?.count}</div>
+          <div>{page} / {Math.floor(parseInt(data?.count)/15) +1}</div>
           <div onClick={() => {
              if(page === parseInt(data?.count)/15 +1) {
               setPage(page+1)
