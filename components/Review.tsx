@@ -158,7 +158,7 @@ export const Review: FC<ReviewProps> = ({review}) => {
               <div style={{display:'grid',padding: '15px', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
                 <Text15>{v.title}</Text15>
                 <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <Text15 style={{color:'#BDBEBE'}}>{new Date(v.createdAt).getFullYear()}.{new Date(v.createdAt).getMonth()}.{new Date(v.createdAt).getDate()}</Text15>
+                  <Text15 style={{color:'#BDBEBE'}}>{new Date(v.createdAt).getFullYear()}.{new Date(v.createdAt).getMonth()+1}.{new Date(v.createdAt).getDate()}</Text15>
                   <Plus><Image src={PlusImage} width={14} height={14} /></Plus>
                 </div>
               </div>
@@ -180,7 +180,7 @@ export const Review: FC<ReviewProps> = ({review}) => {
               <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
                 <Text20>{v.title}</Text20>
                 <div style={{display:'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <Text20 style={{color:'#BDBEBE'}}>{new Date(v.createdAt).getFullYear()}.{new Date(v.createdAt).getMonth()}.{new Date(v.createdAt).getDate()}</Text20>
+                  <Text20 style={{color:'#BDBEBE'}}>{new Date(v.createdAt).getFullYear()}.{new Date(v.createdAt).getMonth()+1}.{new Date(v.createdAt).getDate()}</Text20>
                   <Plus><Image src={PlusImage} width={19} height={19} /></Plus>
                 </div>
               </div>
