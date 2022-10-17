@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Sms from '../images/sms.png';
 import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
-import TalkTalk from '../images/talktalk.png';
+import TalkTalk from '../images/talktalk.jpg';
 import Image from 'next/image';
 
 const Container = styled.div`
