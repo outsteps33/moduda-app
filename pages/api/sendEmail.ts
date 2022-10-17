@@ -18,8 +18,8 @@ async function handler (
 
     email = await mail.send({
       from: 'jejunho820@gmail.com',
-      to: 'jejunho820@gmail.com',
-      // to: 'modudahang@naver.com',
+      // to: 'jejunho820@gmail.com',
+      to: 'modudahang@naver.com',
       subject: '무료 구제 성공 가능성 진단',
       text: '무료 구제 성공 가능성 진단',
       html: 
@@ -45,8 +45,8 @@ async function handler (
     console.log("s")
     email = await mail.send({
       from: 'jejunho820@gmail.com',
-      to: 'jejunho820@gmail.com',
-      // to: 'modudahang@naver.com',
+      // to: 'jejunho820@gmail.com',
+      to: 'modudahang@naver.com',
       subject: 'SMS 빠른 상담신청 ',
       text: 'SMS 빠른 상담신청 ',
       html: 
