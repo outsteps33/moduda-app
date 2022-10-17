@@ -180,7 +180,7 @@ export const Services = () => {
             </div>
           </div>
         </Service>
-        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open('https://cafe.naver.com/youngname2011')}>
           <div className="flex gap-5 items-center md:block ">
             <div className="md:hidden"><Image src={Blog} width="30" height="20" /></div>
             <div className="hidden md:block"><Image src={Blog} width="35" height="30" /></div>

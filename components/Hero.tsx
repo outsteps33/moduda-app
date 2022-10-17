@@ -17,11 +17,11 @@ export const Hero = () => {
     <HeroContainer className="sm:pt-10">
       <Carousel 
         infiniteLoop={true} 
-        showStatus={false} 
+        showStatus={true} 
         showArrows={false} 
         showIndicators={false} 
         showThumbs={false} 
-        autoPlay={false}
+        autoPlay={true}
         useKeyboardArrows={false}
         stopOnHover={true}
       >
