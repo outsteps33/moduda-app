@@ -6,7 +6,7 @@ import { useState } from "react";
 import Banner from '../images/introBanner.png';
 import IntroImage from '../images/introImage.png';
 import IntroMImage from '../images/IntroMImage.png';
-import HistoryImage from '../images/historyImage.png';
+import HistoryImage from '../images/historyImages.png';
 import styled from 'styled-components';
 import Youtube from 'react-youtube';
 export function classNames(...classes: any[]) {
@@ -66,9 +66,15 @@ const Intro: NextPage = () =>{
         
       </>}
       {tab ==='연혁' && <div className="grid justify-center mt-20">
-        
-        <History className="hidden sm:grid" style={{width:'800px'}}>
-          <Image src={HistoryImage} width="20" height="55" layout="responsive" />
+        <div className="grid justify-center mt-20 text-center mb-20">
+          <div  style={{color:'#797979', fontSize:'25px'}}>약력</div>
+          <div className="grid justify-center mt-5">
+            <div className="" style={{width:'29px', height:'4px', backgroundColor:'#797979'}}></div>
+          </div>
+          <div className="mt-10 text-lg" style={{color:'#9B9B9B'}} > <span style={{color:'#0B45AE'}}>운전면허 취소구제</span>만을 위해 꾸준히 달려왔습니다.</div>
+        </div>
+        <History className="hidden sm:grid" style={{width:'900px'}}>
+          <Image src={HistoryImage} width="20" height="46" layout="responsive" />
         </History>
         <History className=" sm:hidden" style={{width:'98vw'}}>
           <Image src={HistoryImage} width="20" height="55" layout="responsive" />
