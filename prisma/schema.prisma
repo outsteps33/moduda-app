@@ -53,7 +53,7 @@ model Review {
   id Int @id @default(autoincrement())
   title String
   thumbnail String
-  contents String
+  contents String @db.LongText
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -62,7 +62,7 @@ model Notice {
   id Int @id @default(autoincrement())
   title String
   thumbnail String
-  contents String
+  contents String @db.LongText
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -73,7 +73,7 @@ model Lecture {
   id Int @id @default(autoincrement())
   title String
   thumbnail String
-  contents String
+  contents String @db.LongText
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
