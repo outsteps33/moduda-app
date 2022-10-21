@@ -53,13 +53,18 @@ interface ReviewResponse {
   count: any;
 }
 
+interface NoticeResponse {
+  ok: boolean;
+  notice: any
+}
+
 const Review: NextPage = () =>{
   const { mutate } = useSWRConfig();
   const [ page, setPage ] = useState(1);
   const { data, mutate: boundMutate } = useSWR<ReviewResponse>(
       `/api/getReview?page=${page}`
   );
-  const { data: Notice, mutate: boundsMutate } = useSWR<any>(
+  const { data: Notice, mutate: boundsMutate } = useSWR<NoticeResponse>(
     `/api/getNotice`
 );
 
