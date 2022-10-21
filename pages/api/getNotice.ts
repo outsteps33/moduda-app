@@ -11,9 +11,15 @@ async function handler (
 ) {
   const notice = await client.notice.findFirst({
     take:1
-  })
+  });
+
+  if(notice) {
+
+    res.json({ ok: true , notice});
+  } else {
+    res.json({ok: false});
+  }
   
-  res.json({ ok: true , notice});
 }
 
 export default withApiSession(withHandler({

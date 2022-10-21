@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import Example from '../images/sampleExample.png';
 import Pagination from "@components/Pagination";
 import useSWR, { useSWRConfig } from "swr";
-import NoticeComponent from "@components/noticeComponent";
+import NoticeComponent from "@components/NoticeComponent";
 const Search = styled.input`
   display: flex;
   flex-direction: row;
