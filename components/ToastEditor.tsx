@@ -8,6 +8,7 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import { createRef, useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useMutation from '@libs/client/useMutation';
+import { classNames } from 'pages/intro';
 
 interface IForm {
   title: string;
@@ -157,7 +158,7 @@ const ToastEditor = () => {
         />
       <button 
         onClick={() => onSubmit()}
-        className="border mb-[200px] mt-20 w-1/12 mx-auto text-white bg-green-500 px-5 py-3 text-xl text-center"
+        className={classNames(loadings ? 'bg-red-500' : 'bg-green-500' ,"border mb-[200px] mt-20 w-1/12 mx-auto text-white bg-green-500 px-5 py-3 text-xl text-center")}
       >{loadings ? '제출중': '제출'}</button>
       <div>{loadings ? '제출중이니 조금만 기다려주세요' : '' }</div>
       {submit}
