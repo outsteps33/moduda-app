@@ -14,7 +14,8 @@ const LectureAdmin: NextPage = () => {
 
   return (
     <div>
-      <AdminNav />
+      {/* <AdminNav /> */}
+      <div className="mt-[23px] ml-[100px] flex items-center cursor-pointer hover:text-green-500" onClick={() => router.push('/admin')}>{'<'} 뒤로가기</div>
       <div className="w-[90%] mx-auto mt-[100px]"> 
         <div className="text-center text-2xl mb-10">핵심 강의 컨텐츠 글쓰기</div>  
         <Editor />
