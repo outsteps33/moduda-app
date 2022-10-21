@@ -13,7 +13,7 @@ async function handler (
   const count = await client.review.count();
   const notice = await client.review.findFirst({
     where: {
-      notice: true
+      notice: true,
     }
   });
   const review = await client.review.findMany({
