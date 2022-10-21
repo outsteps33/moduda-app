@@ -17,6 +17,7 @@ interface IForm {
 }
 
 const ToastLectureEditor = () => {
+  const [ loadings, setLoadings] = useState(false);
   const [LectureUpload, { loading, data, error }] = useMutation("/api/lecture");
   const editorRef = createRef<Editor>();
   const [ submit , setSubmit ]= useState('');
@@ -30,7 +31,7 @@ const ToastLectureEditor = () => {
   }
 
   const onSubmit = async () => {
-    
+    setLoadings(true);
     const { title, thumbnail } = getValues();
     if( !(title  && thumbnail)) {
       alert('제목 / 썸네일은 필수입니다.');
@@ -78,6 +79,7 @@ const ToastLectureEditor = () => {
       thumbnail: response.result.variants[0],
       contents: getContent_md
     });
+    setLoadings(false);
     alert('제출되었습니다.');
     window.location.reload();
     }
@@ -156,7 +158,8 @@ const ToastLectureEditor = () => {
       <button 
         onClick={() => onSubmit()}
         className="border mb-[200px] mt-20 w-1/12 mx-auto text-white bg-green-500 px-5 py-3 text-xl text-center"
-      >제 출</button>
+      >{loadings ? '제출중': '제출'}</button>
+      <div>{loadings ? '제출중이니 조금만 기다려주세요' : '' }</div>
       {submit}
     </div>
   )

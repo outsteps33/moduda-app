@@ -17,6 +17,7 @@ interface IForm {
 }
 
 const ToastEditor = () => {
+  const [ loadings, setLoadings] = useState(false);
   const [ReviewUpload, { loading, data, error }] = useMutation("/api/reviewUpload");
   const editorRef = createRef<Editor>();
   const [ submit , setSubmit ]= useState('');
@@ -30,7 +31,7 @@ const ToastEditor = () => {
   }
 
   const onSubmit = async () => {
-    
+    setLoadings(true);
     const { title, thumbnail } = getValues();
     if( !(title  && thumbnail)) {
       alert('제목 / 썸네일은 필수입니다.');
@@ -78,7 +79,7 @@ const ToastEditor = () => {
       thumbnail: response.result.variants[0],
       contents: getContent_md
     });
-
+    setLoadings(false);
     alert('제출되었습니다.');
     window.location.reload();
     }
@@ -157,7 +158,8 @@ const ToastEditor = () => {
       <button 
         onClick={() => onSubmit()}
         className="border mb-[200px] mt-20 w-1/12 mx-auto text-white bg-green-500 px-5 py-3 text-xl text-center"
-      >제 출</button>
+      >{loadings ? '제출중': '제출'}</button>
+      <div>{loadings ? '제출중이니 조금만 기다려주세요' : '' }</div>
       {submit}
     </div>
   )
