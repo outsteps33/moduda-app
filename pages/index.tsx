@@ -16,6 +16,8 @@ import Phone from '../images/phoneImg.png';
 import Ebook from '../images/ebookbanner.png';
 import DesktopEbookImage from '../images/ebookbanner_web.png';
 import { FixedApplyForm } from "@components/FixedApplyForm";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import useSWR from "swr";
 const temp_reputation = [{
   question: 'Q1. 업무에 필요한 지식과 기술을 갖추고, 업무에 실제로 활용하나요?',

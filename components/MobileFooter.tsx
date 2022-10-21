@@ -48,25 +48,25 @@ export const MobileFooter = () => {
         <Image className="rounded-full p-3" src={Call} width={50} height={50} layout="fixed"/>
       </div>
       <Container >
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column'}} onClick={() => history.push('/') }>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Home} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}} onClick={() => history.push('/') }>홈</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}} >홈</span>
         </div>
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column'}} onClick={() => history.push('/intro')} >
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Search} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}} onClick={() => history.push('/intro') }>모두다 소개</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'} }>모두다 소개</span>
         </div>
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column'}} onClick={() => history.push('/lecture') }>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Write} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  onClick={() => history.push('/lecture') }>핵심 강의</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  >핵심 강의</span>
         </div>
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column'}}  onClick={() => history.push('/review') }>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={Open} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  onClick={() => history.push('/review') }>성공사례</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}} >성공사례</span>
         </div>
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column'}} onClick={() => history.push('/apply') }>
           <div style={{display:'grid', justifyContent:'center'}}><Image  src={User} width={24} height={24} layout="fixed"/></div>
-          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  onClick={() => history.push('/apply') }>상담신청</span>
+          <span style={{textAlign: 'center', fontSize:'13px', color:'#828282'}}  >상담신청</span>
         </div>
       </Container>
     </Footer>
