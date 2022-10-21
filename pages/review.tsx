@@ -51,6 +51,7 @@ interface ReviewResponse {
   ok: boolean;
   review: any[];
   count: any;
+  notice: any;
 }
 
 interface NoticeResponse {
@@ -64,9 +65,7 @@ const Review: NextPage = () =>{
   const { data, mutate: boundMutate } = useSWR<ReviewResponse>(
       `/api/getReview?page=${page}`
   );
-  const { data: Notice, mutate: boundsMutate } = useSWR<NoticeResponse>(
-    `/api/getNotice`
-);
+  
 
   return (
     <div>
@@ -78,6 +77,7 @@ const Review: NextPage = () =>{
         <div className="grid justify-center mb-[29px] mt-[22px]">
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
+        <NoticeComponent id={data?.notice.id} title={data?.notice.title} thumbnail={data?.notice.thumbnail} createdAt={data?.notice.createdAt}/>
         {data?.review.map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
           ))}
@@ -111,8 +111,9 @@ const Review: NextPage = () =>{
           <Search placeholder="검색어를 입력해주세요." />
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-24 md:px-32">
+          <NoticeComponent id={data?.notice.id} title={data?.notice.title} thumbnail={data?.notice.thumbnail} createdAt={data?.notice.createdAt}/>
           {data?.review.map((v) => (
-            <NoticeComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
+            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}
           {/* {[0,0,0,0,0,0,0,0,0].map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />
