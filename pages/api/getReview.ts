@@ -19,6 +19,9 @@ async function handler (
   const review = await client.review.findMany({
     take: 15,
     skip: (parseInt(req.query.page.toString())-1)*15,
+    where: {
+      notice: false
+    },
     select: {
       id: true,
       title: true,
