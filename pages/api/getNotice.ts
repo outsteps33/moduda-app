@@ -16,7 +16,6 @@ async function handler (
   });
 
   if(notice) {
-
     res.json({ ok: true , notice});
   } else {
     res.json({ok: false});
