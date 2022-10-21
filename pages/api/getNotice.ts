@@ -9,8 +9,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  const notice = await client.notice.findFirst({
-    take:1
+  const notice = await client.notice.findUnique({
+    where: {
+      id: 1
+    }
   });
 
   if(notice) {
