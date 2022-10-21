@@ -10,13 +10,16 @@ interface Props {
   thumbnail: string
   createdAt: any
 }
-const ReviewComponent: FC<Props> = ({ id, title, thumbnail, createdAt}) => {
+const NoticeComponent: FC<Props> = ({ id, title, thumbnail, createdAt}) => {
   const router = useRouter();
   return (
     <div onClick={() => router.push(`/review/${id}`)} className="cursor-pointer">
       
       <div className="px-10 py-3 sm:hidden">
-        <Image src={thumbnail} width="100" height="66" layout="responsive" unoptimized={true}/>
+        <div className="relative">
+          <div className="absolute top-[10px] left-[10px] z-30 w-fit px-2 py-1 bg-red-500 text-white">공지사항</div>
+          <Image src={thumbnail} width="100" height="66" layout="responsive" unoptimized={true}/>
+        </div>
         <div>{title}</div>
         <div className="underline">자세히 보기</div>
       </div>
@@ -30,4 +33,4 @@ const ReviewComponent: FC<Props> = ({ id, title, thumbnail, createdAt}) => {
   )
 }
 
-export default ReviewComponent;
+export default NoticeComponent;

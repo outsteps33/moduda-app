@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import Example from '../images/sampleExample.png';
 import Pagination from "@components/Pagination";
 import useSWR, { useSWRConfig } from "swr";
+import NoticeComponent from "@components/noticeComponent";
 const Search = styled.input`
   display: flex;
   flex-direction: row;
@@ -58,6 +59,9 @@ const Review: NextPage = () =>{
   const { data, mutate: boundMutate } = useSWR<ReviewResponse>(
       `/api/getReview?page=${page}`
   );
+  const { data: Notice, mutate: boundsMutate } = useSWR<any>(
+    `/api/getNotice`
+);
 
   return (
     <div>
@@ -67,12 +71,12 @@ const Review: NextPage = () =>{
           <Image src={Banner} width="100%" height="30px" layout="responsive" />
         </div>
         <div className="grid justify-center mb-[29px] mt-[22px]">
-
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
         {data?.review.map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
           ))}
+          
         <div className="flex justify-center gap-[30px] items-center">
           <div onClick={() => {
             if(page !== 1) {
@@ -103,7 +107,7 @@ const Review: NextPage = () =>{
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-24 md:px-32">
           {data?.review.map((v) => (
-            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
+            <NoticeComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}
           {/* {[0,0,0,0,0,0,0,0,0].map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />

@@ -28,6 +28,7 @@ export const AdminNav = () => {
           {/* <div className={classNames(tab === '' ? 'text-green-500' : 'text-black', 'text-lg cursor-pointer hover:text-gray-500')} onClick={() =>{ router.push('/admin/lectureAdmin'); setTab('lecture')} }>핵심 강의 컨텐츠 수정</div> */}
           <div className={classNames(tab === 'lecture' ? 'text-green-500' : 'text-black', 'text-xl border border-black px-4 py-2 rounded-md cursor-pointer hover:text-green-500 hover:border-green-500')} onClick={() =>{ router.push('/admin/lectureAdmin'); setTab('lecture')} }>핵심 강의 컨텐츠 발행</div>
           <div className={classNames(tab === 'review' ? 'text-green-500' : 'text-black', 'text-xl border border-black px-4 py-2 rounded-md cursor-pointer hover:text-green-500 hover:border-green-500')}  onClick={() => {router.push('/admin/reviewAdmin'); setTab('review')  }}>성공 사례 컨텐츠 발행</div>
+          <div className={classNames(tab === 'notice' ? 'text-green-500' : 'text-black', 'text-xl border border-black px-4 py-2 rounded-md cursor-pointer hover:text-green-500 hover:border-green-500')}  onClick={() => {router.push('/admin/noticeAdmin'); setTab('notice')  }}>성공 사례 컨텐츠 발행</div>
       </div>
     </div>
   )
