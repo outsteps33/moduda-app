@@ -86,7 +86,7 @@ const ToastEditor = () => {
     setTimeout(() => {
       window.location.reload();
       alert('제출되었습니다.')
-    }, 3000);
+    }, 2000);
     }
 
     const inValid = () => {
