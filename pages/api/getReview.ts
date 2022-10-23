@@ -11,8 +11,10 @@ async function handler (
 ) {
   console.log((parseInt(req.query.page.toString())-1)*15);
   const count = await client.review.count();
-  const notice = await client.notice.findFirst({
-    
+  const notice = await client.review.findFirst({
+    where: {
+      notice: true
+    }
   });
   const review = await client.review.findMany({
     take: 15,
@@ -22,6 +24,9 @@ async function handler (
       title: true,
       thumbnail: true,
       createdAt: true
+    },
+    where: {
+      notice: false
     }
   });
   
