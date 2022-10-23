@@ -15,7 +15,8 @@ async function handler (
     data: {
       title,
       thumbnail,
-      contents
+      contents,
+      notice: false
     }
   })
   res.json({ ok: true, review });
