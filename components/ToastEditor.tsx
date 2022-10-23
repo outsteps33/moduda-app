@@ -85,6 +85,7 @@ const ToastEditor = () => {
     // alert('제출되었습니다.');
     setTimeout(() => {
       window.location.reload();
+      alert('제출되었습니다.')
     }, 3000);
     }
 
