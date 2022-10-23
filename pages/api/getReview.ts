@@ -14,6 +14,9 @@ async function handler (
   const notice = await client.review.findFirst({
     where: {
       notice: true
+    },
+    orderBy: {
+      createdAt: 'desc'
     }
   });
   const review = await client.review.findMany({

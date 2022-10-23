@@ -6,6 +6,7 @@ import After from '../images/after.png';
 import Previous from '../images/previous.png';
 import { FC } from 'react';
 import { useRouter } from 'next/router';
+import Slider from "react-slick";
 
 const MobileReivewContainer  = styled.div`
 
@@ -84,8 +85,9 @@ const More = styled.div`
 `;
 
 const Container = styled.div`
+
   overflow: hidden; 
-  overflow-x: scroll; 
+  overflow-x: auto; 
   display: flex; 
   padding: 10px 20px;
   gap: 20px;
@@ -137,6 +139,42 @@ interface ReviewProps {
   review: any[] | undefined;
 }
 
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
+const prev = () => {
+  const s = document.getElementById('review')
+ if(s !== null){
+   s.scrollBy({
+    top: 0,
+    left: -400,
+    behavior: 'smooth'
+  }) ;
+
+ }
+
+  
+}
+
+const Next = () => {
+  const s = document.getElementById('review')
+ if(s !== null){
+   s.scrollBy({
+    top: 0,
+    left: 400,
+    behavior: 'smooth'
+  }) ;
+
+ }
+
+  
+}
+
 const Title = styled.div``;
 export const Review: FC<ReviewProps> = ({review}) => {
   const router= useRouter();
@@ -174,7 +212,7 @@ export const Review: FC<ReviewProps> = ({review}) => {
           MODUDA SUCCESSFUL CASE
           <Button onClick={() => router.push('/review')} className=" hover:bg-gray-500 cursor-pointer hover:text-white"><Text15 className=""> 성공사례 모두 보러 가기</Text15></Button>
         </div>
-        <Container >
+        <Container id="review">
           {review && review.map((v) => (
             <ReviewBox onClick={() => router.push(`/review/${v.id}`)} className="cursor-pointer hover:text-white" >
               <div style={{display:'grid', flexDirection: 'column', alignContent:'space-between', height:'120px', width: '200px'}}>
@@ -192,8 +230,8 @@ export const Review: FC<ReviewProps> = ({review}) => {
 
       </DesktopReviewContainer>
       <div className="hidden gap-3 justify-end pr-[100px] pt-[26px] sm:flex" style={{backgroundColor:'#F5F5F4', height:'150px'}}>
-        <div><Image src={Previous} width={36} height={36} layout="fixed"/></div>
-        <div><Image src={After} width={36} height={36} layout="fixed"/></div>
+        <div className="cursor-pointer"><Image src={Previous} width={36} height={36} layout="fixed"  onClick={() => prev()}/></div>
+        <div className="cursor-pointer"><Image src={After} width={36} height={36} layout="fixed" onClick={() => Next()} /></div>
       </div>
     </div>
   )

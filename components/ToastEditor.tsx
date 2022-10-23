@@ -14,7 +14,7 @@ interface IForm {
   title: string;
   content: string;
   thumbnail: FileList;
-
+  notice: boolean;
 }
 
 const ToastEditor = () => {
@@ -32,8 +32,8 @@ const ToastEditor = () => {
   }
 
   const onSubmit = async () => {
-    setLoadings(true);
-    const { title, thumbnail } = getValues();
+    // setLoadings(true);
+    const { title, thumbnail, notice } = getValues();
     if( !(title  && thumbnail)) {
       alert('제목 / 썸네일은 필수입니다.');
       return;
@@ -75,14 +75,17 @@ const ToastEditor = () => {
     //   });
     // }
 
-    ReviewUpload({
+     ReviewUpload({
       title,
       thumbnail: response.result.variants[0],
-      contents: getContent_md
+      contents: getContent_md,
+      notice
     });
-    setLoadings(false);
-    alert('제출되었습니다.');
-    window.location.reload();
+    // setLoadings(false);
+    // alert('제출되었습니다.');
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
     }
 
     const inValid = () => {
@@ -123,6 +126,20 @@ const ToastEditor = () => {
               placeholder="제목을 입력해주세요." 
             />
           </div>
+          <div className=" mx-auto">
+          <div className="mt-5 text-lg"> 공지사항 여부</div>
+            <input 
+              {...register("notice", {
+                required: "공지사항 duqn 입력해주세요. ",
+                // validate: (author) => author.includes("gmail.com")
+              })}
+              type="checkbox" 
+              name="notice" 
+              required 
+              className="w-fit ring-0 mx-auto border-2 border-gray-300 mt-3 py-2 px-2 rounded-md text-base text-gray-900"
+              placeholder="제목을 입력해주세요." 
+            />
+          </div>
           <div className="mx-auto mb-5">
             <div className="mt-5 text-lg">썸네일 업로드</div>
             <input 
@@ -158,8 +175,8 @@ const ToastEditor = () => {
         />
       <button 
         onClick={() => onSubmit()}
-        className={classNames(loadings ? 'bg-red-500' : 'bg-green-500' ,"border mb-[200px] mt-20 w-1/12 mx-auto text-white bg-green-500 px-5 py-3 text-xl text-center")}
-      >{loadings ? '제출중': '제출'}</button>
+        className="border mb-[200px] mt-20 w-1/12 mx-auto text-white bg-green-500 px-5 py-3 text-xl text-center"
+      >제출</button>
       <div>{loadings ? '제출중이니 조금만 기다려주세요' : '' }</div>
       {submit}
     </div>
