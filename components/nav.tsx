@@ -19,7 +19,7 @@ const DeskTopContainer = styled.div`
   display: none;
   
 
-  @media (min-width: 640px) { 
+  @media (min-width: 768px) { 
     display: block;
     width: 100vw;
     height: 100px;
@@ -100,7 +100,7 @@ const MobileContainer = styled.div`
   height: 72px;
   border-bottom: 0.5px solid #8A8A8A;
   z-index: 99;
-  @media (min-width: 640px) { 
+  @media (min-width: 768px) { 
     display: none;
   }
 `;
@@ -116,7 +116,7 @@ const MobileMenu = styled.div`
 const MobilePhone = styled.div`
   display: block;
   padding-top: 70px;
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;

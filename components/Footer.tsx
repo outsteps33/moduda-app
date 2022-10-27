@@ -9,7 +9,7 @@ const FooterContainer = styled.div`
   width: 100vw;
   padding-top:10px;
   margin-bottm: 200px;
-  @media (max-width: 640px) { 
+  @media (max-width: 768px) { 
     padding-bottm: 10px;
   }
   bottom: 0;
@@ -28,7 +28,7 @@ const FooterDescriptions = styled.div`
 `;
 
 const FooterDescription = styled.div`
-  @media (min-width: 640px) { 
+  @media (min-width: 768px) { 
     text-align: center;
     width: 100vw;
     font-family: 'Pretendard';

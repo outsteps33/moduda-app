@@ -31,7 +31,7 @@ const Container = styled.div`
 
   border-top: 0.3px solid #828282;
 
-  @media (min-width: 640px) { 
+  @media (min-width: 768px) { 
     display: none;
   }
 `;
