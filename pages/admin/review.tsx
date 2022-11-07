@@ -5,14 +5,12 @@ import ReviewComponent from "@components/ReviewComponent";
 import { NextPage } from "next";
 import Image from "next/image";
 import styled from "styled-components";
-import Banner from '../images/examplebanner.png';
-import WebExample from '../images/sampleExmaple_web.png';
-import ReactPaginate from 'react-paginate';
+import Banner from '../../images/examplebanner.png';
+import WebExample from '../../images/sampleExmaple_web.png';
 import { useEffect, useState } from "react";
-import Example from '../images/sampleExample.png';
-import Pagination from "@components/Pagination";
 import useSWR, { useSWRConfig } from "swr";
-import NoticeComponent from "@components/NoticeComponent";
+import AdminReviewComponent from "@components/AdminReviewComponent";
+import AdminNoticeComponent from "@components/AdminNoticeComponent";
 const Search = styled.input`
   display: flex;
   flex-direction: row;
@@ -77,9 +75,9 @@ const Review: NextPage = () =>{
         <div className="grid justify-center mb-[29px] mt-[22px]">
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
-        <NoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
+        <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
         {data?.review.map((v) => (
-            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
+            <AdminReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
           ))}
           
         <div className="flex justify-center gap-[30px] items-center">
@@ -111,9 +109,9 @@ const Review: NextPage = () =>{
           <Search placeholder="검색어를 입력해주세요." />
         </div>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 px-12 md:px-32">
-          <NoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
+          <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
           {data?.review.map((v) => (
-            <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
+            <AdminReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}
           {/* {[0,0,0,0,0,0,0,0,0].map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />

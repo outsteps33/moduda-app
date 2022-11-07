@@ -32,7 +32,9 @@ const ToastLectureEditor = () => {
   }
 
   const onSubmit = async () => {
-    setLoadings(true);
+    if(loading) {
+      return;
+    }
     const { title, thumbnail } = getValues();
     if( !(title  && thumbnail)) {
       alert('제목 / 썸네일은 필수입니다.');
@@ -80,7 +82,6 @@ const ToastLectureEditor = () => {
       thumbnail: response.result.variants[0],
       contents: getContent_md
     });
-    setLoadings(false);
     alert('제출되었습니다.');
     window.location.reload();
     }

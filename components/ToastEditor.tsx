@@ -33,6 +33,9 @@ const ToastEditor = () => {
 
   const onSubmit = async () => {
     // setLoadings(true);
+    if(loading) {
+      return;
+    }
     const { title, thumbnail, notice } = getValues();
     if( !(title  && thumbnail)) {
       alert('제목 / 썸네일은 필수입니다.');
