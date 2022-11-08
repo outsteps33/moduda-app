@@ -13,6 +13,7 @@ interface Props {
 const NoticeComponent: FC<Props> = ({ id, title, thumbnail, createdAt}) => {
   const router = useRouter();
   return (
+   
     <div onClick={() => router.push(`/review/${id}`)} className="cursor-pointer">
       
       <div className="px-10 py-3 sm:hidden">

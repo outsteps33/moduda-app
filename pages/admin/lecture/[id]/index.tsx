@@ -1,3 +1,4 @@
+import { AdminNav2 } from "@components/AdminNav2";
 import { Footer } from "@components/Footer";
 import { MobileFooter } from "@components/MobileFooter";
 import { Nav } from "@components/nav";
@@ -13,38 +14,38 @@ interface ContentProps {
 
 interface ReviewResponse {
   ok: boolean;
-  review: any;
+  lecture: any;
 }
 
-const Review: NextPage = () => {
+const Lecture: NextPage = () => {
   const router = useRouter();
   const [ isDelete, setIsDelete ] = useState(false);
   const { data, mutate: boundMutate } = useSWR<ReviewResponse>(
-    `/api/getOneReview?id=${router.query.id}`
+    `/api/getOneLecture?id=${router.query.id}`
 );
 
-const [DeleteReview, { loading, data: deleteReview, error }] = useMutation("/api/deleteReview");
+const [DeleteLecture, { loading, data: deleteLecture, error }] = useMutation("/api/deleteLecture");
 
 const Delete = () => {
   if(loading){
     return;
   }
-  DeleteReview({
+  DeleteLecture({
     id: router.query.id
   });
 
 }
 
 useEffect(() => {
-  if(deleteReview?.ok) {
+  if(deleteLecture?.ok) {
     alert('삭제되었습니다.');
-    router.push(`/admin/review`);
+    router.push(`/admin/lecture`);
   };
-},[ deleteReview, router])
+},[ deleteLecture, router])
 
   return (
     <div>
-      <Nav />
+      <AdminNav2 />
       {isDelete &&
         <div className="absolute w-screen h-screen flex justify-center items-center z-50 bg-gray-100 ">
           <div className="bg-white w-[500px] h-[500px] border flex justify-center items-center opacity-100">
@@ -61,13 +62,13 @@ useEffect(() => {
       }
       <div className="pt-[150px]"></div>
       <div className="flex gap-[50px] justify-center mb-[30px]">
-        <div className="ring ring-5 ring-gray-300 rounded-full px-4 cursor-pointer hover:bg-green-500 " onClick={() => router.push(`/admin/review/${router.query.id}/edit`)}>수정</div>
+        <div className="ring ring-5 ring-gray-300 rounded-full px-4 cursor-pointer hover:bg-green-500 " onClick={() => router.push(`/admin/lecture/${router.query.id}/edit`)}>수정</div>
 
         <div className="ring ring-5 ring-gray-300 rounded-full px-4 cursor-pointer hover:bg-green-500 " onClick={() => setIsDelete(true)} >삭제</div>
       </div>
       <div className="grid justify-center">
-        <div className="text-black flex justify-center text-3xl mb-20">{data?.review.title}</div>
-        <div className="" dangerouslySetInnerHTML={{__html: data?.review.contents}} />
+        <div className="text-black flex justify-center text-3xl mb-20">{data?.lecture?.title}</div>
+        <div className="" dangerouslySetInnerHTML={{__html: data?.lecture?.contents}} />
       </div>
       <Footer />
       <MobileFooter />
@@ -76,4 +77,4 @@ useEffect(() => {
 }
 
 
-export default Review
+export default Lecture

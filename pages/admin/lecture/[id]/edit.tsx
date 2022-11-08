@@ -8,16 +8,15 @@ import useUser from '@libs/client/useUser';
 import useSWR from 'swr';
 import { AdminNav2 } from '@components/AdminNav2';
 
-const Editor = dynamic(() => import('@components/ToastReviewUpdateEditor'), { 
+const Editor = dynamic(() => import('@components/ToastLectureUpdateEditor'), { 
   ssr: false 
 });
 
 const Write:NextPage = () => {
   const router = useRouter();
   const { data, mutate: boundMutate } = useSWR( router.query.id ?
-    `/api/getOneReview?id=${router.query.id}` : null
+    `/api/getOneLecture?id=${router.query.id}` : null
 );
-  const [ type, setType ] = useState('기능구현');
   
   console.log(data)
 
@@ -25,7 +24,7 @@ const Write:NextPage = () => {
   return (
     <div>
       <AdminNav2 />
-      <Editor id={data?.review?.id} previousTitle={data?.review?.title} previousthumb={data?.review?.thumbnail} contents={data?.review?.contents}  />
+      <Editor id={data?.lecture?.id} previousTitle={data?.lecture?.title} previousthumb={data?.lecture?.thumbnail} contents={data?.lecture?.contents}  />
     </div>
   );
 }

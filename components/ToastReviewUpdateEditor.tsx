@@ -37,6 +37,7 @@ const ToastReviewUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, c
   }, []);
 
   const onSubmit = async () => {
+    console.log("1ff")
     if(loading) {
       return;
     }
@@ -82,14 +83,14 @@ const ToastReviewUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, c
       id,
       title,
       thumbnail: response ? response.result.variants[0] :  previousthumb,
-      content: getContent_md,
+      contents: getContent_md,
     });
   }
 
   useEffect(() => {
     if (data?.ok) {
       alert('블로그가 업데이트 되었습니다.');
-      router.push(`/lecture`)
+      router.push(`/admin/reivew`)
     }
   }, [data, router]);
 
@@ -134,9 +135,9 @@ const ToastReviewUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, c
           </div>
           <div className="mt-[24px]">
             <div className="mt-5 text-lg"> 썸네일 첨부 * </div>
-            <div>
+            {/* <div>
               <Image src={previousthumb} width={'150'} height={'100'} layout="fixed" />
-            </div>
+            </div> */}
             <div className="flex items-center ">
               <div className="w-full ">
                 <input 
@@ -175,8 +176,8 @@ const ToastReviewUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, c
         />
       </div>
       <div className="flex justify-center items-center gap-[12px] my-[40px]">
-        <div className="bg-white border-[#3F3F3F] border text-white w-[207px] h-[55px] flex items-center justify-center rounded-[60px] ">
-          <div  onClick={() =>onSubmit}>포스트 발행</div>
+        <div className="bg-[#3F3F3F] border-[#3F3F3F] border text-white w-[207px] h-[55px] flex items-center justify-center rounded-[60px] ">
+          <div  onClick={() =>onSubmit()}>포스트 발행</div>
         </div>
       </div>
     </div>

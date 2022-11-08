@@ -77,7 +77,7 @@ const Review: NextPage = () =>{
         <div className="grid justify-center mb-[29px] mt-[22px]">
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
-        <NoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
+        {data?.notice ?   <NoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/> : null}
         {data?.review.map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
           ))}
@@ -87,7 +87,7 @@ const Review: NextPage = () =>{
             if(page !== 1) {
               setPage(page-1)
             } else {
-              alert('첫 페이ㅎ지입니다.')
+              alert('첫 페이지입니다.')
             }}}
             className="border rounded-md px-3 py-1 border-gray-500"
           >이전</div>
@@ -111,7 +111,7 @@ const Review: NextPage = () =>{
           <Search placeholder="검색어를 입력해주세요." />
         </div>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 px-12 md:px-32">
-          <NoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
+        {data?.notice ?   <NoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/> : null}
           {data?.review.map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}

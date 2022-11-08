@@ -4,15 +4,15 @@ import { Nav } from "@components/nav";
 import ReviewComponent from "@components/ReviewComponent";
 import { NextPage } from "next";
 import Image from "next/image";
-import Banner from '../images/examplebanner.png';
-import WebExample from '../images/sampleExmaple_web.png';
-import WLecture from '../images/lectureBanner.png';
-import MLecture from '../images/lectureMBanner.png';
+import Banner from '../../images/examplebanner.png';
+import WLecture from '../../images/lectureBanner.png';
+import MLecture from '../../images/lectureMBanner.png';
 import CiderComponent from "@components/CiderComponent";
 import styled from "styled-components";
 import { useState } from "react";
 import useSWR from "swr";
-import LectureComponent from "@components/LectureComponent";
+import AdminLectureComponent from "@components/AdminLectureComponent";
+import { AdminNav2 } from "@components/AdminNav2";
 
 const Search = styled.input`
   display: flex;
@@ -57,7 +57,7 @@ const Lecture: NextPage = () =>{
   );
   return (
     <div>
-      <Nav />
+      <AdminNav2 />
       <div className="sm:hidden">
         <div className="pt-20 mb-10">
           <Image src={MLecture} width="100%" height="30px" layout="responsive" />
@@ -67,7 +67,7 @@ const Lecture: NextPage = () =>{
           <MSearch placeholder="검색어를 입력해주세요.s" />
         </div>
         {data?.lecture.map((v) => (
-            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />
+            <AdminLectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />
           ))}
         <div className="flex justify-center gap-[30px] items-center">
           <div onClick={() => {
@@ -99,7 +99,7 @@ const Lecture: NextPage = () =>{
         </div>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 px-12 md:px-32">
           {data?.lecture.map((v) => (
-            <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />
+            <AdminLectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />
           ))}
         </div>
         <div className="flex justify-center gap-[30px] items-center">

@@ -11,7 +11,7 @@ async function handler (
 ) {
   const { id,  title, thumbnail, contents} = req.body;
  
-  const lecture = await client.review.update({
+  const review = await client.review.update({
     data: {
       title,
       thumbnail,
@@ -21,7 +21,7 @@ async function handler (
       id: +id.toString()
     }
   })
-  res.json({ ok: true, lecture });
+  res.json({ ok: true, review });
 }
 
 export default withApiSession(withHandler({

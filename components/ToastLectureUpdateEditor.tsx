@@ -9,7 +9,7 @@ import { createRef, FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Back from '@images/blog/arrow_back.png';
+// import Back from '@images/blog/arrow_back.png';
 import useMutation from '@libs/client/useMutation';
 
 interface IForm {
@@ -25,7 +25,7 @@ interface Props {
   contents: any;
 }
 
-const ToastUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, contents }) => {
+const ToastLectureUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, contents }) => {
   const editorRef = createRef<Editor>();
   const router = useRouter();
   const [ReviewUpload, { loading, data, error }] = useMutation("/api/editLecture");
@@ -37,6 +37,7 @@ const ToastUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, content
   }, []);
 
   const onSubmit = async () => {
+    console.log("1ff")
     if(loading) {
       return;
     }
@@ -82,14 +83,14 @@ const ToastUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, content
       id,
       title,
       thumbnail: response ? response.result.variants[0] :  previousthumb,
-      content: getContent_md,
+      contents: getContent_md,
     });
   }
 
   useEffect(() => {
     if (data?.ok) {
-      alert('블로그가 업데이트 되었습니다.');
-      router.push(`/lecture`)
+      alert('핵심강의가 업데이트 되었습니다.');
+      router.push(`/admin/lecture`)
     }
   }, [data, router]);
 
@@ -113,9 +114,9 @@ const ToastUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, content
     <div className="">
       <div className="mt-[120px] mx-auto w-[1180px] ">
         <div className="">
-          <div onClick={() => router.push(`/developer/${router.query.developerId}`)}>
+          {/* <div onClick={() => router.push(`/developer/${router.query.developerId}`)}>
             <Image src={Back} width={72} height={72} layout="fixed" />
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col justify-center w-[900px] mx-auto" onSubmit={handleSubmit(onSubmit, inValid)}>
           <div className="mt-[42px]">
@@ -134,9 +135,9 @@ const ToastUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, content
           </div>
           <div className="mt-[24px]">
             <div className="mt-5 text-lg"> 썸네일 첨부 * </div>
-            <div>
+            {/* <div>
               <Image src={previousthumb} width={'150'} height={'100'} layout="fixed" />
-            </div>
+            </div> */}
             <div className="flex items-center ">
               <div className="w-full ">
                 <input 
@@ -175,12 +176,12 @@ const ToastUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, content
         />
       </div>
       <div className="flex justify-center items-center gap-[12px] my-[40px]">
-        <div className="bg-white border-[#3F3F3F] border text-white w-[207px] h-[55px] flex items-center justify-center rounded-[60px] ">
-          <div  onClick={() =>onSubmit}>포스트 발행</div>
+        <div className="bg-[#3F3F3F] border-[#3F3F3F] border text-white w-[207px] h-[55px] flex items-center justify-center rounded-[60px] cursor-pointer">
+          <div  onClick={() =>onSubmit()}>포스트 발행</div>
         </div>
       </div>
     </div>
   )
 }
 
-export default ToastUpdateEditor;
+export default ToastLectureUpdateEditor;

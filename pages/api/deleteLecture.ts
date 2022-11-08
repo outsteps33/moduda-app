@@ -9,19 +9,15 @@ import { NextApiRequest, NextApiResponse } from 'next';
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  const { id,  title, thumbnail, contents} = req.body;
- console.log(id)
-  const lecture = await client.lecture.update({
-    data: {
-      title,
-      thumbnail,
-      contents
-    },
+  const { id } = req.body;
+ 
+  const lecture = await client.lecture.delete({
+
     where: {
       id: +id.toString()
     }
   })
-  res.json({ ok: true, lecture });
+  res.json({ ok: true });
 }
 
 export default withApiSession(withHandler({

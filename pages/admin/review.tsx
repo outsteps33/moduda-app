@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import AdminReviewComponent from "@components/AdminReviewComponent";
 import AdminNoticeComponent from "@components/AdminNoticeComponent";
+import { AdminNav2 } from "@components/AdminNav2";
 const Search = styled.input`
   display: flex;
   flex-direction: row;
@@ -67,7 +68,7 @@ const Review: NextPage = () =>{
 
   return (
     <div>
-      <Nav />
+      <AdminNav2 />
       <div className="sm:hidden">
         <div className="pt-20 mb-10">
           <Image src={Banner} width="100%" height="30px" layout="responsive" />
@@ -75,7 +76,7 @@ const Review: NextPage = () =>{
         <div className="grid justify-center mb-[29px] mt-[22px]">
           <MSearch placeholder="검색어를 입력해주세요." />
         </div>
-        <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
+        {data?.notice ? <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>: null}
         {data?.review.map((v) => (
             <AdminReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt} />
           ))}
@@ -109,7 +110,7 @@ const Review: NextPage = () =>{
           <Search placeholder="검색어를 입력해주세요." />
         </div>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 px-12 md:px-32">
-          <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>
+        {data?.notice ? <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>: null}
           {data?.review.map((v) => (
             <AdminReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}
