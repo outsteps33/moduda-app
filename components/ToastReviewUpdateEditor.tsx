@@ -90,7 +90,7 @@ const ToastReviewUpdateEditor:FC<Props> = ({ id, previousTitle, previousthumb, c
   useEffect(() => {
     if (data?.ok) {
       alert('블로그가 업데이트 되었습니다.');
-      router.push(`/admin/reivew`)
+      router.push(`/admin/review`)
     }
   }, [data, router]);
 

@@ -51,8 +51,8 @@ useEffect(() => {
             <div>
               <div className="text-center pb-12 text-[20px] font-normal">정말 삭제하시겠습니까?</div>
               <div className="flex justify-around gap-[30px]">
-                <div className="bg-green-500 rounded-lg text-white px-5 py-2 " onClick={() =>setIsDelete(false)}>아니요</div>
-                <div className="bg-red-500 rounded-lg text-white px-5 py-2 " onClick={() => Delete()}>예,삭제합니다.</div>
+                <div className="bg-green-500 rounded-lg text-white px-5 py-2 cursor-pointer " onClick={() =>setIsDelete(false)}>아니요</div>
+                <div className="bg-red-500 rounded-lg text-white px-5 py-2 cursor-pointer " onClick={() => Delete()}>예,삭제합니다.</div>
               </div>
             </div>
           </div>
