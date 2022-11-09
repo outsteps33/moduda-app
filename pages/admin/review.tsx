@@ -92,7 +92,7 @@ const Review: NextPage = () =>{
           >이전</div>
           <div>{page} / {Math.floor(parseInt(data?.count)/15) +1}</div>
           <div onClick={() => {
-             if(page === parseInt(data?.count)/15 +1) {
+             if(page !== parseInt(data?.count)/15 +1) {
               setPage(page+1)
             } else {
               alert('마지막 페이지입니다.')
@@ -131,7 +131,7 @@ const Review: NextPage = () =>{
           >이전</div>
           <div>{page} / {Math.floor(parseInt(data?.count)/15) +1} </div>
           <div onClick={() => {
-            if(page === parseInt(data?.count)/15 +1) {
+            if(page !== parseInt(data?.count)/15 +1) {
               setPage(page+1)
             } else {
               alert('마지막 페이지입니다.')
