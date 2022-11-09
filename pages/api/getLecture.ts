@@ -19,6 +19,9 @@ async function handler (
       title: true,
       thumbnail: true,
       createdAt: true
+    },
+    orderBy: {
+      createdAt: 'desc'
     }
   });
   

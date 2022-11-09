@@ -30,6 +30,9 @@ async function handler (
     },
     where: {
       notice: false
+    },
+    orderBy: {
+      createdAt: 'desc'
     }
   });
   
