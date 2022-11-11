@@ -23,8 +23,8 @@ const Review: NextPage = () => {
   return (
     <div>
       <Nav />
-      <div className="pt-[150px]"></div>
-      <div className="grid justify-center">
+      <div className="pt-[150px] lg:w-9/12 mx-auto"></div>
+      <div className="grid justify-center w-11/12  md:w-9/12 mx-auto">
         <div className="text-black flex justify-center text-3xl mb-20">{data?.review.title}</div>
         <div className="" dangerouslySetInnerHTML={{__html: data?.review.contents}} />
       </div>

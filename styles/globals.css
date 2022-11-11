@@ -132,6 +132,11 @@ p {
   line-height: 1.6;
 }
 
+img {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
   body {
     font-family: 'Inter';
@@ -189,7 +194,6 @@ p {
     font-family: 'Inter';
   }
 }
-
 
 
 a {

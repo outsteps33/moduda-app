@@ -24,7 +24,7 @@ const Lecture: NextPage = () => {
     <div>
       <Nav />
       <div className="pt-[150px]"></div>
-      <div className="grid justify-center">
+      <div className="grid justify-center w-11/12  md:w-9/12 mx-auto">
         <div className="text-black flex justify-center text-3xl mb-20">{data?.lecture.title}</div>
         <div className="" dangerouslySetInnerHTML={{__html: data?.lecture.contents}} />
       </div>
