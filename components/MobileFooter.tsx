@@ -7,6 +7,8 @@ import Open from '../images/open.png';
 import User from '../images/user.png';
 import { useRouter } from 'next/router';
 import Talk from '../images/Naver_Talk.png';
+import Kakao from '../images/kaimg.png';
+
 import Call from '../images/call.png';
 const Footer = styled.div`
   position: fixed;
@@ -44,7 +46,10 @@ export const MobileFooter = () => {
       <div className="fixed bottom-[80px] right-[10px] sm:hidden" onClick={() =>window.open('https://talk.naver.com/ct/wcc4wq')}>
         <Image className="rounded-full" src={Talk} width={50} height={50} layout="fixed"/>
       </div>
-      <div className="fixed bottom-[140px] right-[10px] sm:hidden" onClick={()=> window.location.href = 'tel:010-8662-5465'}>
+      <div className="fixed bottom-[140px] right-[10px] sm:hidden" onClick={() =>window.open('https://pf.kakao.com/_NxagQl')}>
+        <Image className="rounded-full" src={Kakao} width={50} height={50} layout="fixed"/>
+      </div>
+      <div className="fixed bottom-[200px] right-[10px] sm:hidden" onClick={()=> window.location.href = 'tel:010-8662-5465'}>
         <Image className="rounded-full p-3" src={Call} width={50} height={50} layout="fixed"/>
       </div>
       <Container >

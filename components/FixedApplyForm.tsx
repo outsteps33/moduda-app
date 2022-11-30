@@ -3,6 +3,8 @@ import Sms from '../images/sms.png';
 import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
 import TalkTalk from '../images/talktalk.jpg';
+import Kakao from '../images/kakaoImg.png';
+
 import Image from 'next/image';
 
 const Container = styled.div`
@@ -121,6 +123,10 @@ export const FixedApplyForm = () => {
       <div className="grid justify-center rounded-md mt-1 cursor-pointer" onClick={() =>window.open('https://talk.naver.com/ct/wcc4wq')}>
         <Image className="mt-10 " src={TalkTalk} width={200} height={50} layout="fixed" />
       </div>
+      <div className="grid justify-center rounded-md mt-1 cursor-pointer" onClick={() =>window.open('https://pf.kakao.com/_NxagQl')}>
+        <Image className="mt-10 " src={Kakao} width={200} height={50} layout="fixed" />
+      </div>
+      
     </Container>
   )
 }
