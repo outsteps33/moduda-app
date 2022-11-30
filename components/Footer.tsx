@@ -55,8 +55,8 @@ export const Footer = () => {
           </div>
           <div className="text-[12px] sm:text-[15px] text-center mt-[2px] text-gray-500">
 
-            사업자등록번호 : 416-08-53233 <br /> 대표자 : 송범석 | 개인정보보호책임자 : 송범석 <br />
-            대표번호 : 010-8992-5465 ( AM 08:00 - PM 11:00 )<br />
+            사업자등록번호 : 418-08-53233 <br /> 대표자 : 송범석 | 개인정보보호책임자 : 송범석 <br />
+            대표번호 : 010-8662-5465 ( AM 08:00 - PM 11:00 )<br />
               © 2022 CCS, Inc. All rights reserved.<br />
               Copyright 2022 모두다행정사 All Right Reserved <br />
   모두다행정사는 ‘전자상거래 등의에서의 소비자보호에 관한 법률’에 따라 통신판매업 신고 등록을 마친 전문가 입니다.<br />
