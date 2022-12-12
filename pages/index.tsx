@@ -145,10 +145,10 @@ const Main: NextPage = () => {
       
       <Review review={data?.review}/>
       <div>
-        <MobileEbook onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <MobileEbook className="cursor-pointer" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
           <Image src={Ebook} width="100%" height="20" layout="responsive" />
         </MobileEbook>
-        <DesktopEbook onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <DesktopEbook className="cursor-pointer" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
           <Image src={DesktopEbookImage} width="100%" height="9" layout="responsive" />
         </DesktopEbook>
       </div>

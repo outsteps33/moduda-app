@@ -64,7 +64,7 @@ const Lecture: NextPage = () =>{
         </div>
         <div className="grid justify-center mb-[29px] mt-[22px]">
 
-          <MSearch placeholder="검색어를 입력해주세요.s" />
+          <MSearch placeholder="검색어를 입력해주세요." />
         </div>
         {data?.lecture.map((v) => (
             <LectureComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}  />

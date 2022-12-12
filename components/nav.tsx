@@ -168,7 +168,7 @@ export const Nav = () => {
               <div className="cursor-pointer hover:text-gray-600" onClick={() => history.push('/apply')}>상담신청</div>
               {/* <NavButton>회원가입 / 로그인</NavButton> */}
             </Features>
-              <div className="pt-3" onClick={()=> window.location.href = 'tel:010-8662-5465'}><Image src={Wphone}  width={250} height={110} layout="fixed"/></div>
+              <div className="pt-3 cursor-pointer" onClick={()=> window.location.href = 'tel:010-8662-5465'}><Image src={Wphone}  width={250} height={110} layout="fixed"/></div>
           </Menu>
         </Menus>
       </DeskTopContainer>
