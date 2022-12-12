@@ -136,19 +136,19 @@ const Main: NextPage = () => {
       </MobilePhone>
       <Hero />
       <Services />
-      <MobKakao className="cursor-pointer" onClick={() => window.open("https://pf.kakao.com/_NxagQl")}>
+      <MobKakao className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open("https://pf.kakao.com/_NxagQl")}>
         <Image src={MobileKakao} width="100%" height="50" layout="responsive" />
       </MobKakao>
-      <KaKao className="cursor-pointer" onClick={() => window.open("https://pf.kakao.com/_NxagQl")}>
+      <KaKao className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open("https://pf.kakao.com/_NxagQl")}>
         <Image src={WebKakao} width="100%" height="25" layout="responsive" />
       </KaKao>
       
       <Review review={data?.review}/>
       <div>
-        <MobileEbook className="cursor-pointer" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <MobileEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
           <Image src={Ebook} width="100%" height="20" layout="responsive" />
         </MobileEbook>
-        <DesktopEbook className="cursor-pointer" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <DesktopEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
           <Image src={DesktopEbookImage} width="100%" height="9" layout="responsive" />
         </DesktopEbook>
       </div>
