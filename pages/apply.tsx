@@ -137,6 +137,23 @@ const Apply: NextPage = () => {
           <div>
             <div className="mt-2 px-5">
               <label htmlFor="email" className="block text-sm mb-1 ">
+                음주운전 사고 여부
+              </label>
+              <input
+                {...register("accident", {
+                  required: "과거 음주운전 전력 입력해주세요"
+                })}
+                name="accident"
+                type="accident"
+                required
+                placeholder="Ex) 단독 / 대물 / 대인 - 피해자 병원에 간 때"
+                className="w-full border border-gray-400 h-10 px-2"
+              />
+            </div>
+          </div>
+          <div>
+            <div className="mt-2 px-5">
+              <label htmlFor="email" className="block text-sm mb-1 ">
                 벌점
               </label>
               <input

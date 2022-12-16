@@ -11,7 +11,7 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   console.log(req.body)
-  const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment  } = req.body;
+  const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
   
   let email;
   if(type === '진단신청') {
@@ -29,14 +29,15 @@ async function handler (
         3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} <br />
         4. 면허취득년도: ${license}<br />
         5. 과거 음주운전 전력: ${alcohol_history} <br />
-        6. 벌점: ${demerit} <br />
-        7. 음주운전으로 이동한 거리: ${distance} <br />
-        8. 적발일자: ${crackDown} <br />
-        9. 조사 날짜: ${policeInterview} <br />
-        10.불가피한 운전 사유: ${reason} <br />
-        11.직업 (월급, 월수입): ${job} <br />
-        12.운전이 필요한 이유: ${need} <br />
-        13.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
+        6. 음주운전 사고 여부: ${accident} <br />
+        7. 벌점: ${demerit} <br />
+        8. 음주운전으로 이동한 거리: ${distance} <br />
+        9. 적발일자: ${crackDown} <br />
+        10. 조사 날짜: ${policeInterview} <br />
+        11.불가피한 운전 사유: ${reason} <br />
+        12.직업 (월급, 월수입): ${job} <br />
+        13.운전이 필요한 이유: ${need} <br />
+        14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
         `
     });
   
