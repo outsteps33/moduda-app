@@ -240,11 +240,11 @@ const Apply: NextPage = () => {
                 직업 (월급, 월수입)
               </label>
               <input
-                {...register("jov", {
+                {...register("job", {
                   required: "직업 (월급, 월수입)을 입력해주세요"
                 })}
-                name="jov"
-                type="jov"
+                name="job"
+                type="job"
                 required
                 placeholder="직업 및 월수입을 입력해주세요."
                 className="w-full border border-gray-400 h-10 px-2"
