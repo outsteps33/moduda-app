@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <meta property="og:url" content="http://www.moduda-life.com"></meta>
           </meta>
           <meta name="naver-site-verification" content="566cff16301ad21a65297a04da6dcaa3c99379ca" />
+
         </Head>
         <Component {...pageProps} />
       </div>
