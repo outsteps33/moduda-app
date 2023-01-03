@@ -31,7 +31,7 @@ const Apply: NextPage = () => {
     window.location.reload();
   }
   const inValid = () => {
-    console.log(errors)
+    console.log(errors);
   }
   return (
     <div >
