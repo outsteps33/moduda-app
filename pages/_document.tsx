@@ -34,9 +34,9 @@ export default class MyDocument extends Document {
         <Head>
           <style />
           <title>모두다행정사</title>
-          <meta name="description" content="페이지 설명"></meta>
-          <meta property="og:image" content="http://www.moduda-life.com/myimages/mobileLogo.png"></meta>
-          <meta property="og:url" content="http://www.moduda-life.com"></meta>
+          <meta name="description" content="모두다행정사, 나홀로 하는 행정심판 저자"></meta>
+          <meta property="og:image" content="https://www.moduda-life.com/myimages/mobileLogo.png"></meta>
+          <meta property="og:url" content="https://www.moduda-life.com"></meta>
           <meta name="naver-site-verification" content="566cff16301ad21a65297a04da6dcaa3c99379ca" />
         </Head>
         <body>
