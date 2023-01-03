@@ -33,8 +33,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <style />
-          <title>모두다행정사</title>
-          <meta name="title" content="모두다행정사"></meta>
+          <title>모두다 행정사</title>
           <meta name="description" content="모두다행정사, 나홀로 하는 행정심판 저자"></meta>
           <meta property="og:image" content="https://www.moduda-life.com/myimages/mobileLogo.png"></meta>
           <meta property="og:url" content="https://www.moduda-life.com"></meta>
