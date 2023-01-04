@@ -37,7 +37,9 @@ export default class MyDocument extends Document {
           <meta name="description" content="전국에서 음주운전 구제를 가장 많이 진행한 음주운전 면허 취소 구제 전문가 '모두다행정사'"></meta>
           <meta property="og:image" content="https://www.moduda-life.com/myimages/mobileLogo.png"></meta>
           <meta property="og:url" content="https://www.moduda-life.com"></meta>
+          <meta name="naver-site-verification" content="33890257119de722dc41009e8b9014fdce04c04f" />
           <meta name="naver-site-verification" content="566cff16301ad21a65297a04da6dcaa3c99379ca" />
+
         </Head>
         <body>
           <Main />
