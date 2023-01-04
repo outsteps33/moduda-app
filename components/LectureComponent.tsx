@@ -17,13 +17,13 @@ const LectureComponent: FC<Props> = ({ id, title, thumbnail, createdAt}) => {
       <div className="px-10 py-3 sm:hidden">
         <Image src={thumbnail} width="100" height="66" layout="responsive" unoptimized={true}/>
         <div>{title}</div>
-        <div>{new Date(createdAt).getFullYear()}.{new Date(createdAt).getMonth()}.{new Date(createdAt).getDate()}</div>
+        <div>{new Date(createdAt).getFullYear()}.{new Date(createdAt).getMonth()+1}.{new Date(createdAt).getDate()}</div>
         <div className="underline">자세히 보기</div>
       </div>
       <div className=" py-3 hidden sm:block sm:px-2 ">
         <Image src={thumbnail} width="100" height="66" layout="responsive"unoptimized={true} />
         <div>{title}</div>
-        <div>{new Date(createdAt).getFullYear()}.{new Date(createdAt).getMonth()}.{new Date(createdAt).getDate()}</div>
+        <div>{new Date(createdAt).getFullYear()}.{new Date(createdAt).getMonth()+1}.{new Date(createdAt).getDate()}</div>
         <div className="underline">자세히 보기</div>
       </div>
     </div>
