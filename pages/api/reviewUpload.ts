@@ -9,7 +9,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
-  const { title, thumbnail, contents, notice} = req.body;
+  const { title, thumbnail, contents, notice } = req.body;
  
   const review = await client.review.create({
     data: {
