@@ -33,11 +33,11 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <Script strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          <Script strategy="afterInteractive" dangerouslySetInnerHTML={{ __html:`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-KPHPVV7');`}}></Script>
+          })(window,document,'script','dataLayer','GTM-5GCLVXC');`}}></Script>
           <style />
           <title>모두다 행정사</title>
           <meta name="description" content="전국에서 음주운전 구제를 가장 많이 진행한 음주운전 면허 취소 구제 전문가 '모두다행정사'"></meta>
