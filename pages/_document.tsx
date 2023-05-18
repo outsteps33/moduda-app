@@ -48,7 +48,7 @@ export default class MyDocument extends Document {
 
         </Head>
         <body>
-          <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPHPVV7"
+          <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GCLVXC"
           height="0" width="0" style={"display:none;visibility:hidden" || undefined}></iframe>`}}></noscript>
           <Main />
           <NextScript />
