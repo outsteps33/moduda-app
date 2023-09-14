@@ -4,8 +4,8 @@ import { withApiSession } from '@libs/server/withSession';
 import mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-mail.setApiKey(process.env.SENDGRID_KEY!);
 
+mail.setApiKey(process.env.SENDGRID_KEY!);
 
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
