@@ -4,20 +4,21 @@ import { withApiSession } from '@libs/server/withSession';
 import mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-mail.setApiKey('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');
+mail.setApiKey(process.env.SENDGRID_KEY!);
 
 
 async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   console.log(req.body)
+  console.log(process.env.SENDGRID_KEY)
   const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
   
-  let email;
+  let email: any;
   if(type === '진단신청') {
 
     email = await mail.send({
-      from: 'jejunho820@gmail.com',
+      from: 'modudahang@naver.com',
       // to: 'jejunho820@gmail.com',
       to: 'modudahang@naver.com',
       subject: '무료 구제 성공 가능성 진단',
@@ -45,7 +46,7 @@ async function handler (
   } else {
     console.log("s")
     email = await mail.send({
-      from: 'jejunho820@gmail.com',
+      from: 'modudahang@naver.com',
       // to: 'jejunho820@gmail.com',
       to: 'modudahang@naver.com',
       subject: 'SMS 빠른 상담신청 ',

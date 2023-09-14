@@ -6,6 +6,7 @@ import TalkTalk from '../images/talktalk.jpg';
 import Kakao from '../images/kakaoImg.png';
 
 import Image from 'next/image';
+import { useState } from 'react';
 
 const Container = styled.div`
 display: grid;
@@ -45,6 +46,7 @@ const Textarea = styled.textarea`
 `;
 
 export const FixedApplyForm = () => {
+  const [check, setCheck] = useState(false);
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
@@ -113,9 +115,25 @@ export const FixedApplyForm = () => {
                 />
               </div>
             </div>
-            <button className="w-full text-white py-1 text-center cursor-pointer bg-[#0054EB] rounded-md hover:bg-[#3d7cf1]">
-              상담 신청하기
-            </button>
+            <div className="mt-2 ">
+              <label htmlFor="email" className="block text-sm mb-1 text-white ">
+                {check ?
+                <input type="checkbox" className="mr-2" checked onClick={() => setCheck(!check)}/> :
+                 <input type="checkbox" className="mr-2" onClick={() => {setCheck(!check); window.open('https://plip.kr/pcc/86eb0bd9-5729-44bf-a0db-50cdd685c363/consent/3.html')}} />
+                
+                }
+                 개인정보의 수집 및 이용목적
+              </label>
+            
+            </div>
+            {check ?
+              <button className="w-full text-white py-2 text-center cursor-pointer bg-[#0054EB] rounded-md hover:bg-[#3d7cf1]">
+                상담 신청하기
+              </button> :
+              <button className="w-full text-white py-2 text-center cursor-pointer bg-gray-500 rounded-md hover:bg-[#3d7cf1]" disabled>
+                상담 신청하기
+              </button> 
+            }
           </form>
         </Title>
         

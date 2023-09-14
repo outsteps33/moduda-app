@@ -2,6 +2,7 @@ import { MobileFooter } from "@components/MobileFooter";
 import { Nav } from "@components/nav";
 import useMutation from "@libs/client/useMutation";
 import { NextPage } from "next";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 
@@ -20,6 +21,7 @@ import { useForm } from "react-hook-form";
 //   comment String //문의사항(면허구제,벌금감경,의견서작성 등)
 const Apply: NextPage = () => {
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
+  const [check, setCheck] = useState(false);
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
      sendEmail({
@@ -284,15 +286,25 @@ const Apply: NextPage = () => {
           <div>
             <div className="mt-2 px-5">
               <label htmlFor="email" className="block text-sm mb-1 ">
-                개인정보의 수집 및 이용목적
+                {check ?
+                <input type="checkbox" className="mr-2" checked onClick={() => setCheck(!check)}/> :
+                 <input type="checkbox" className="mr-2" onClick={() => {setCheck(!check); window.open('https://plip.kr/pcc/86eb0bd9-5729-44bf-a0db-50cdd685c363/consent/2.html')}} />
+                
+                }
+                 개인정보의 수집 및 이용목적
               </label>
             
             </div>
           </div>
           <div className="px-5">
-            <button className="text-white py-3 text-center mb-40 rounded-md  w-full" style={{backgroundColor: '#0054EB'}}>
+            {check ?
+              <button className="text-white py-3 text-center mb-40 rounded-md  w-full" style={{backgroundColor: '#0054EB'}}>
+                진단서 제출하기
+              </button> :
+              <button className="text-white py-3 text-center mb-40 rounded-md  w-full bg-gray-400" disabled >
               진단서 제출하기
             </button>
+            }
           </div>
         </form> 
       </div>

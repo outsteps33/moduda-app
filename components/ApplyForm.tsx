@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Sms from '../images/sms.png';
 import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
+import { useState } from 'react';
 
 const FormContainer = styled.div`
   display: grid;
@@ -32,6 +33,7 @@ const Textarea = styled.textarea`
 `;
 
 export const ApplyForm = () => {
+  const [check, setCheck] = useState(false);
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
@@ -100,9 +102,27 @@ export const ApplyForm = () => {
                 />
               </div>
             </div>
-            <button className="w-full text-white py-3 text-center cursor-pointer bg-[#0054EB] rounded-md hover:bg-[#3d7cf1]">
-              상담 신청하기
-            </button>
+            <div>
+            <div className="mt-2 ">
+              <label htmlFor="email" className="block text-sm mb-1 text-white ">
+                {check ?
+                <input type="checkbox" className="mr-2" checked onClick={() => setCheck(!check)}/> :
+                 <input type="checkbox" className="mr-2" onClick={() => {setCheck(!check); window.open('https://plip.kr/pcc/86eb0bd9-5729-44bf-a0db-50cdd685c363/consent/3.html')}} />
+                
+                }
+                 개인정보의 수집 및 이용목적
+              </label>
+            
+            </div>
+          </div>
+            {check ?
+              <button className="w-full text-white py-3 text-center cursor-pointer bg-[#0054EB] rounded-md hover:bg-[#3d7cf1]">
+                상담 신청하기
+              </button> :
+              <button className="w-full text-white py-3 text-center cursor-pointer bg-gray-500 rounded-md hover:bg-[#3d7cf1]" disabled>
+                상담 신청하기
+              </button> 
+            }
           </form>
       </Title>
     </FormContainer>
