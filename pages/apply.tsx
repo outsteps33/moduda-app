@@ -20,7 +20,7 @@ import { useForm } from "react-hook-form";
 //   need String //운전이 필요한 이유
 //   comment String //문의사항(면허구제,벌금감경,의견서작성 등)
 const Apply: NextPage = () => {
-  const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
+  const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail2");
   const [check, setCheck] = useState(false);
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
   const onSubmit = (data:any) => {
