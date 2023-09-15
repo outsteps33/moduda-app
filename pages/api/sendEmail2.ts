@@ -18,8 +18,8 @@ async function handler (
  
     const transporter = nodemailer.createTransport({
       service: 'gmail',
-      host: 'smtp.gmail.com',
-      port: 587,
+      host: 'smtp.moduda-life.com',
+      port: 25,
       secure: false,
       //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
       auth: {
