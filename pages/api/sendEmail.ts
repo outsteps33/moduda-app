@@ -71,36 +71,50 @@ async function handler (
     },
   });
   // 메일 옵션
-  var mailOptions = {
-    from: "outsteps2023@gmail.com", // 보내는 메일의 주소
-    to: "modudahang@naver.com", // 수신할 이메일
-    html: 
-    type === '진단신청' ?
-     `<h2><strong>[무료 구제 성공 가능성 진단]</strong><h2>
-      1. 이름: ${name} <br />
-      2. 번호: ${phone}<br />
-      3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} <br />
-      4. 면허취득년도: ${license}<br />
-      5. 과거 음주운전 전력: ${alcohol_history} <br />
-      6. 음주운전 사고 여부: ${accident} <br />
-      7. 벌점: ${demerit} <br />
-      8. 음주운전으로 이동한 거리: ${distance} <br />
-      9. 적발일자: ${crackDown} <br />
-      10. 조사 날짜: ${policeInterview} <br />
-      11.불가피한 운전 사유: ${reason} <br />
-      12.직업 (월급, 월수입): ${job} <br />
-      13.운전이 필요한 이유: ${need} <br />
-      14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
-    `: 
-    `<h2><strong>[SMS 빠른 상담신청]</strong><h2>
-         1.이름: ${name} <br />
-         2. 번호: ${phone}<br />
-         3. 상담내용: ${comment}<br />
-    `,
-    subject:type === '진단신청' ? '무료 구제 성공 가능성 진단': 'SMS 빠른 상담신청 ', // 메일 제목
-    // text: param.text, // 메일 내용
-    
-  };
+
+  let mailOptions: any ;
+  if(alcohol_history === undefined) {
+    mailOptions = {
+      from: "outsteps2023@gmail.com", // 보내는 메일의 주소
+      to: "modudahang@naver.com", // 수신할 이메일
+      html: 
+      `<h2><strong>[SMS 빠른 상담신청]</strong><h2>
+           1.이름: ${name} <br />
+           2. 번호: ${phone}<br />
+           3. 상담내용: ${comment}<br />
+      `,
+      subject : 'SMS 빠른 상담신청 ', // 메일 제목
+      // text: param.text, // 메일 내용
+      
+    };
+  } else {
+    mailOptions = {
+      from: "outsteps2023@gmail.com", // 보내는 메일의 주소
+      to: "modudahang@naver.com", // 수신할 이메일
+      html: 
+      
+       `<h2><strong>[무료 구제 성공 가능성 진단]</strong><h2>
+        1. 이름: ${name} <br />
+        2. 번호: ${phone}<br />
+        3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} <br />
+        4. 면허취득년도: ${license}<br />
+        5. 과거 음주운전 전력: ${alcohol_history} <br />
+        6. 음주운전 사고 여부: ${accident} <br />
+        7. 벌점: ${demerit} <br />
+        8. 음주운전으로 이동한 거리: ${distance} <br />
+        9. 적발일자: ${crackDown} <br />
+        10. 조사 날짜: ${policeInterview} <br />
+        11.불가피한 운전 사유: ${reason} <br />
+        12.직업 (월급, 월수입): ${job} <br />
+        13.운전이 필요한 이유: ${need} <br />
+        14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
+      `,
+      subject : '무료 구제 성공 가능성 진단', // 메일 제목
+      // text: param.text, // 메일 내용
+      
+    };
+  }
+  
   
   // 메일 발송    
   transporter.sendMail(mailOptions, function (error, info) {
