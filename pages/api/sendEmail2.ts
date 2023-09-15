@@ -28,34 +28,31 @@ async function handler (
       },
     });
     // 메일 옵션
-  
+    const t = 
+    `
+          [무료 구제 성공 가능성 진단] 
+          1. 이름: ${name} 
+          2. 번호: ${phone}
+          3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} 
+          4. 면허취득년도: ${license}
+          5. 과거 음주운전 전력: ${alcohol_history} 
+          6. 음주운전 사고 여부: ${accident} 
+          7. 벌점: ${demerit} 
+          8. 음주운전으로 이동한 거리: ${distance} 
+          9. 적발일자: ${crackDown} 
+          10. 조사 날짜: ${policeInterview} 
+          11.불가피한 운전 사유: ${reason} 
+          12.직업 (월급, 월수입): ${job} 
+          13.운전이 필요한 이유: ${need} 
+          14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} `;
     
-      console.log("12")
+      console.log(t)
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
-        html: 
-         `
-          <h1 style="color : blue">[무료 구제 성공 가능성 진단] </h1>
-          <hr/>
-          1. 이름: ${name} <br />
-          2. 번호: ${phone}<br />
-          3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} <br />
-          4. 면허취득년도: ${license}<br />
-          5. 과거 음주운전 전력: ${alcohol_history} <br />
-          6. 음주운전 사고 여부: ${accident} <br />
-          7. 벌점: ${demerit} <br />
-          8. 음주운전으로 이동한 거리: ${distance} <br />
-          9. 적발일자: ${crackDown} <br />
-          10. 조사 날짜: ${policeInterview} <br />
-          11.불가피한 운전 사유: ${reason} <br />
-          12.직업 (월급, 월수입): ${job} <br />
-          13.운전이 필요한 이유: ${need} <br />
-          14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
-         
-        `,
+       
         subject : '구제 성공 가능성 진단', // 메일 제목
-        // text: param.text, // 메일 내용
+        text: t, // 메일 내용
         
       };
 
