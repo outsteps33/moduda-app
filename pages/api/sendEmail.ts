@@ -25,9 +25,8 @@ async function handler (
     });
     // 메일 옵션
   
-    let mailOptions: any ;
     if(alcohol_history === undefined) {
-      mailOptions = {
+      const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
         html: 
@@ -40,8 +39,16 @@ async function handler (
         // text: param.text, // 메일 내용
         
       };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
     } else {
-      mailOptions = {
+      const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
         html: 
@@ -72,23 +79,20 @@ async function handler (
         // text: param.text, // 메일 내용
         
       };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
     }
     
     
     // 메일 발송 
     
-    const sendMail = async() => {
-      await transporter.sendMail(mailOptions, function (error, info) {
-       if (error) {
-         console.log(error);
-       } else {
-         console.log('Email sent: ' + info.response);
-       }
-     });
-    }
-    Promise.all([
-      sendMail()
-    ])
+    
   } catch(e) {
     console.log(e);
   }
