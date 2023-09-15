@@ -48,9 +48,8 @@ async function handler (
          `
          <html>
           <body style ="width : 500px">
-          <h1 style="color : blue">${name}님 가입을 환영합니다. </h1>
+          <h1 style="color : blue">[무료 구제 성공 가능성 진단] </h1>
           <hr/>
-          [무료 구제 성공 가능성 진단]<br />
           1. 이름: ${name} <br />
           2. 번호: ${phone}<br />
           3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} <br />
