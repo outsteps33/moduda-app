@@ -27,6 +27,9 @@ async function handler (
     });
     // 메일 옵션
   
+    setTimeout(() => {
+        
+    }, 2000);
     if(type ==='진단신청') {
 
       const mailOptions = {
@@ -61,6 +64,10 @@ async function handler (
         
       };
 
+      setTimeout(() => {
+        
+      }, 2000);
+
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
@@ -71,7 +78,7 @@ async function handler (
 
 
     }
-    
+
     if(type ==='상담신청') {
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
@@ -107,7 +114,7 @@ async function handler (
   
   
   
-  res.json({ ok: true, email });
+  res.json({ ok: true,  });
 }
 
 export default withApiSession(withHandler({
