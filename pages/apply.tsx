@@ -32,7 +32,7 @@ const Apply: NextPage = () => {
     alert('진단신청이 완료됐습니다.');
     setTimeout(()=>{
       window.location.reload();
-    }, 2000)
+    }, 1000)
   }
   const inValid = () => {
     console.log(errors);
