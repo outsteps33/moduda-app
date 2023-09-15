@@ -30,7 +30,7 @@ async function handler (
         
     }, 2000);
     if(alcohol) {
-
+      console.log("12")
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
@@ -66,7 +66,7 @@ async function handler (
       setTimeout(() => {
         
       }, 2000);
-
+      console.log("23")
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
