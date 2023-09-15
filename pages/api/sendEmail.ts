@@ -75,6 +75,7 @@ async function handler (
     from: "jejunho820@gmail.com", // 보내는 메일의 주소
     to: "modudahang@naver.com", // 수신할 이메일
     html: 
+    type === '진단신청' ?
      `<h2><strong>[무료 구제 성공 가능성 진단]</strong><h2>
       1. 이름: ${name} <br />
       2. 번호: ${phone}<br />
@@ -90,8 +91,13 @@ async function handler (
       12.직업 (월급, 월수입): ${job} <br />
       13.운전이 필요한 이유: ${need} <br />
       14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
+    `: 
+    `<h2><strong>[SMS 빠른 상담신청]</strong><h2>
+         1.이름: ${name} <br />
+         2. 번호: ${phone}<br />
+         3. 상담내용: ${comment}<br />
     `,
-    subject:'무료 구제 성공 가능성 진단', // 메일 제목
+    subject:type === '진단신청' ? '무료 구제 성공 가능성 진단': 'SMS 빠른 상담신청 ', // 메일 제목
     // text: param.text, // 메일 내용
     
   };
