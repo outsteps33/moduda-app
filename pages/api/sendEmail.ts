@@ -75,7 +75,7 @@ async function handler (
   let mailOptions: any ;
   if(alcohol_history === undefined) {
     mailOptions = {
-      from: "modudahang@naver.com", // 보내는 메일의 주소
+      from: "outsteps2023@gmail.com", // 보내는 메일의 주소
       to: "modudahang@naver.com", // 수신할 이메일
       html: 
       `<h2><strong>[SMS 빠른 상담신청]</strong><h2>
@@ -89,7 +89,7 @@ async function handler (
     };
   } else {
     mailOptions = {
-      from: "modudahang@naver.com", // 보내는 메일의 주소
+      from: "outsteps2023@gmail.com", // 보내는 메일의 주소
       to: "modudahang@naver.com", // 수신할 이메일
       html: 
       
