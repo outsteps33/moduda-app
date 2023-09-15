@@ -29,8 +29,7 @@ async function handler (
     });
     // 메일 옵션
   
-  
-    if(alcohol) {
+    
       console.log("12")
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
@@ -73,7 +72,7 @@ async function handler (
       });
 
 
-    }
+    
   
   
   
