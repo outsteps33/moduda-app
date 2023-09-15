@@ -11,7 +11,6 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   console.log(req.body)
-  console.log(process.env.SENDGRID_KEY)
   const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
   
   let email: any;
@@ -61,9 +60,7 @@ async function handler (
 
   // }
   var transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,//port 587의 경우, secure가 false로 유지
+    service: 'gmail',
     //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
     auth: {
       user: "outsteps2023@gmail.com",
