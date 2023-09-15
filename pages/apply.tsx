@@ -2,9 +2,9 @@ import { MobileFooter } from "@components/MobileFooter";
 import { Nav } from "@components/nav";
 import useMutation from "@libs/client/useMutation";
 import { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import emailjs from '@emailjs/browser';
 
 // name String   //이름
 //   phone String  //폰
@@ -23,7 +23,13 @@ const Apply: NextPage = () => {
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail2");
   const [check, setCheck] = useState(false);
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
+  useEffect(() => emailjs.init("lepBhzcS0J5OepybO8a5w"), []);
+
+
   const onSubmit = (data:any) => {
+    emailjs.send('service_3n0nj5p', 'template_e53gtnw', {
+      ...data
+    });
      sendEmail({
       type: "진단신청",
       ...data

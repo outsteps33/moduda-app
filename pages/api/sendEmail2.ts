@@ -5,6 +5,7 @@ import mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import { SMTPClient } from 'emailjs';
+import emailjs from '@emailjs/browser';
 
 
 mail.setApiKey(process.env.SENDGRID_KEY!);
@@ -13,9 +14,9 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   console.log(req.body)
-  const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
+  const {  name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
+
   
- 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       host: 'smtp.gmail.com',

@@ -22,15 +22,15 @@ async function handler (
         secure: false,
       //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
       auth: {
-        user: "jejunho820@gmail.com",
-        pass: "kvrfqnvaydubskbm",
+        user: "outsteps2023@gmail.com",
+        pass: "zklzecllduxapkvx",
       },
     });
     // 메일 옵션
   
 
       const mailOptions = {
-        from: "jejunho820@gmail.com", // 보내는 메일의 주소
+        from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
         html: 
         `<h2><strong>[SMS 빠른 상담신청]</strong><h2>
