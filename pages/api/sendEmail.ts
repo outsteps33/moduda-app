@@ -15,7 +15,6 @@ async function handler (
   console.log(req.body)
   const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
   
-  let email: any;
   try {
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -30,7 +29,7 @@ async function handler (
     setTimeout(() => {
         
     }, 2000);
-    if(type ==='진단신청') {
+    if(alcohol) {
 
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
