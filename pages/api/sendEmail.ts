@@ -16,7 +16,7 @@ async function handler (
   const { type, name, phone, comment,   } = req.body;
   
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: 'Naver',
       host: 'smtp.naver.com',
       port: 587,
       secure: false,

@@ -17,7 +17,7 @@ async function handler (
   
  
     const transporter = nodemailer.createTransport({
-      service: 'naver',
+      service: 'Naver',
       host: 'smtp.naver.com',
       port: 587,
       //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
