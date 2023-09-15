@@ -23,17 +23,30 @@ const Apply: NextPage = () => {
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail2");
   const [check, setCheck] = useState(false);
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
-  useEffect(() => emailjs.init("lepBhzcS0J5OepybO8a5w"), []);
+  useEffect(() => emailjs.init("ai2bawCDF6bZwcuWx"), []);
 
 
-  const onSubmit = (data:any) => {
-    emailjs.send('service_3n0nj5p', 'template_e53gtnw', {
-      ...data
+  const onSubmit =async (data:any) => {
+    await emailjs.send('service_3n0nj5p', 'template_e53gtnw', {
+      name: data.name,
+      phone: data.phone,
+      alcohol: data.alcohol,
+      license: data.license,
+      alcohol_history: data.alcohol_history,
+      accident: data.accident,
+      demerit: data.demerit,
+      distance: data.distance,
+      crackDown: data.crackDown,
+      policeInterview: data.policeInterview,
+      reason: data.reason,
+      job: data.job,
+      need: data.need,
+      comment: data.comment,
     });
-     sendEmail({
-      type: "진단신청",
-      ...data
-    })
+    //  sendEmail({
+    //   type: "진단신청",
+    //   ...data
+    // })
     console.log(data)
     alert('진단신청이 완료됐습니다.');
     setTimeout(()=>{
