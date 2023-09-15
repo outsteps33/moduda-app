@@ -74,7 +74,7 @@ async function handler (
 
     }
 
-    if(license === undefined) {
+    if(type ==='상담신청') {
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
