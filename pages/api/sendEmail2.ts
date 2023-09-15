@@ -17,14 +17,13 @@ async function handler (
   
  
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      host: 'smtp.moduda-life.com',
+      service: 'naver',
+      host: 'smtp.naver.com',
       port: 587,
-      secure: false,
       //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
       auth: {
-        user: "outsteps2023@gmail.com",
-        pass: "zklzecllduxapkvx",
+        user: "modudahang@naver.com",
+        pass: "bogota8989",
       },
     });
     // 메일 옵션
@@ -48,7 +47,7 @@ async function handler (
     
       console.log(t)
       const mailOptions = {
-        from: "outsteps2023@gmail.com", // 보내는 메일의 주소
+        from: "modudahang@naver.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
        
         subject : '구제 성공 가능성 진단', // 메일 제목
