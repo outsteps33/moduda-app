@@ -30,9 +30,9 @@ const Apply: NextPage = () => {
     })
     console.log(data)
     alert('진단신청이 완료됐습니다.');
-    // setTimeout(()=>{
-    //   window.location.reload();
-    // }, 1000)
+    setTimeout(()=>{
+      window.location.reload();
+    }, 1000)
   }
   const inValid = () => {
     console.log(errors);
