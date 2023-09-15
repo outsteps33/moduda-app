@@ -67,7 +67,7 @@ async function handler (
     //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
     auth: {
       user: "outsteps2023@gmail.com",
-      pass: "cfqlqbvhlyffkub",
+      pass: "cfqlqbvhnlyffkub",
     },
   });
   // 메일 옵션
