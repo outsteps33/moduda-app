@@ -16,7 +16,7 @@ async function handler (
   const { type, name, phone, alcohol, license,alcohol_history, demerit, distance, crackDown, policeInterview, reason, job, need, comment, accident  } = req.body;
   
   try {
-    var transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       //secure가 false라고 해서 암호화된 연결을 사용하지 않는다는 의미가 아닙니다.
       auth: {
@@ -36,8 +36,6 @@ async function handler (
         to: "modudahang@naver.com", // 수신할 이메일
         html: 
          `
-         <html>
-          <body style ="width : 500px">
           <h1 style="color : blue">[무료 구제 성공 가능성 진단] </h1>
           <hr/>
           1. 이름: ${name} <br />
@@ -54,11 +52,9 @@ async function handler (
           12.직업 (월급, 월수입): ${job} <br />
           13.운전이 필요한 이유: ${need} <br />
           14.문의사항(면허구제,벌금감경,의견서작성 등): ${comment} <br />
-          </body>
-          </html>
          
         `,
-        subject : '무료 구제 성공 가능성 진단', // 메일 제목
+        subject : '구제 성공 가능성 진단', // 메일 제목
         // text: param.text, // 메일 내용
         
       };
@@ -78,7 +74,7 @@ async function handler (
 
     }
 
-    if(license !== undefined) {
+    if(license === undefined) {
       const mailOptions = {
         from: "outsteps2023@gmail.com", // 보내는 메일의 주소
         to: "modudahang@naver.com", // 수신할 이메일
