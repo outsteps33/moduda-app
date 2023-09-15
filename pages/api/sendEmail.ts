@@ -93,7 +93,7 @@ async function handler (
       to: "modudahang@naver.com", // 수신할 이메일
       html: 
       
-       `<h2><strong>[무료 구제 성공 가능성 진단]</strong><h2>
+       `[무료 구제 성공 가능성 진단]<br />
         1. 이름: ${name} <br />
         2. 번호: ${phone}<br />
         3. 혈중알콜농도 (호흡 또는 체혈): ${alcohol} <br />
