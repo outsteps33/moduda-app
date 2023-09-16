@@ -23,11 +23,11 @@ const Apply: NextPage = () => {
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail2");
   const [check, setCheck] = useState(false);
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
-  useEffect(() => emailjs.init("ai2bawCDF6bZwcuWx"), []);
+  useEffect(() => emailjs.init("fDQGySa8OCVxFYFdz"), []);
 
 
   const onSubmit =async (data:any) => {
-    await emailjs.send('service_3n0nj5p', 'template_e53gtnw', {
+    await emailjs.send('service_cd3skzm', 'template_9vmjw5a', {
       name: data.name,
       phone: data.phone,
       alcohol: data.alcohol,

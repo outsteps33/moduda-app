@@ -50,9 +50,9 @@ export const FixedApplyForm = () => {
   const [check, setCheck] = useState(false);
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
-  useEffect(() => emailjs.init("ai2bawCDF6bZwcuWx"), []);
+  useEffect(() => emailjs.init("fDQGySa8OCVxFYFdz"), []);
   const onSubmit =  async(data:any) => {
-  await emailjs.send('service_3n0nj5p', 'template_j9bodtc', {
+  await emailjs.send('service_cd3skzm', 'template_7myjcou', {
     name: data.name,
     phone: data.phone,
     comment: data.comment,
