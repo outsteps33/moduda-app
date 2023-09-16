@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import Sms from '../images/sms.png';
 import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const FormContainer = styled.div`
   display: grid;
@@ -36,12 +37,18 @@ export const ApplyForm = () => {
   const [check, setCheck] = useState(false);
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
-  const onSubmit = (data:any) => {
-    console.log(data)
-    sendEmail({
-      type:"상담신청",
-      ...data
+  useEffect(() => emailjs.init("ai2bawCDF6bZwcuWx"), []);
+  const onSubmit = async (data:any) => {
+    await emailjs.send('service_3n0nj5p', 'template_j9bodtc', {
+      name: data.name,
+      phone: data.phone,
+      comment: data.comment,
     });
+    
+    // sendEmail({
+    //   type:"상담신청",
+    //   ...data
+    // });
     alert('상담신청이 완료됐습니다.');
     window.location.reload();
   }

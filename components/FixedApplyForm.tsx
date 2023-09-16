@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
 import TalkTalk from '../images/talktalk.jpg';
 import Kakao from '../images/kakaoImg.png';
+import emailjs from '@emailjs/browser';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Container = styled.div`
 display: grid;
@@ -49,12 +50,13 @@ export const FixedApplyForm = () => {
   const [check, setCheck] = useState(false);
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail");
   const { register, getValues, handleSubmit, control, formState: { errors } } = useForm();
-  const onSubmit = (data:any) => {
-    console.log(data)
-    sendEmail({
-      type:"상담신청",
-      ...data
-    });
+  useEffect(() => emailjs.init("ai2bawCDF6bZwcuWx"), []);
+  const onSubmit =  async(data:any) => {
+  await emailjs.send('service_3n0nj5p', 'template_j9bodtc', {
+    name: data.name,
+    phone: data.phone,
+    comment: data.comment,
+  });
     alert('상담신청이 완료됐습니다.');
     window.location.reload();
   }
