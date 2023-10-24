@@ -145,10 +145,10 @@ const Main: NextPage = () => {
       
       <Review review={data?.review}/>
       <div>
-        <MobileEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <MobileEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('https://naver.me/5ok38zUs/')}>
           <Image src={Ebook} width="100%" height="20" layout="responsive" />
         </MobileEbook>
-        <DesktopEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('http://moduda2021.cafe24.com/')}>
+        <DesktopEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('https://naver.me/5ok38zUs/')}>
           <Image src={DesktopEbookImage} width="100%" height="9" layout="responsive" />
         </DesktopEbook>
       </div>
