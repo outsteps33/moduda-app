@@ -130,7 +130,7 @@ const Apply: NextPage = () => {
               </label>
               <input
                 {...register("license", {
-                  required: "면저취득년도를 입력해주세요"
+                  required: "면허취득년도를 입력해주세요"
                 })}
                 name="license"
                 type="license"
