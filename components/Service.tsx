@@ -148,7 +148,7 @@ export const Services = () => {
           </div>
         </Service>
 
-        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open("https://form.office.naver.com/form/responseView.cmd?formkey=MDdjOTI3MDQtZGVkNy00NDdjLWJkMTMtZWYxMmI4ZTZlZjFl&sourceId=urlshare")}>
+        <Service className="cursor-pointer hover:text-gray-500" onClick={() => window.open('https://form.office.naver.com/form/responseView.cmd?formkey=MDdjOTI3MDQtZGVkNy00NDdjLWJkMTMtZWYxMmI4ZTZlZjFl&sourceId=urlshare')}>
           <div className="flex gap-6 items-center md:block">
             <div className="md:hidden"><Image src={Ebook} width="25" height="20" /></div>
             <div className="hidden md:block"><Image src={Ebook} width="37.5" height="30" /></div>
