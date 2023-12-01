@@ -6,7 +6,7 @@ import { useState } from "react";
 import Banner from '../images/introBanner.png';
 import IntroImage from '../images/introImage.png';
 import IntroMImage from '../images/IntroMImage.png';
-import HistoryImage from '../images/historyImages.png';
+import HistoryImage from '../images/historyImages2.png';
 import styled from 'styled-components';
 import Youtube from 'react-youtube';
 export function classNames(...classes: any[]) {
