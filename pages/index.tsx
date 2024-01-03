@@ -145,10 +145,10 @@ const Main: NextPage = () => {
       
       <Review review={data?.review}/>
       <div>
-        <MobileEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('https://naver.me/5ok38zUs')}>
+        <MobileEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSeqzx2OScAqfSjXmSAJQ0UotKNs69NvTts-2szxpvOfeVBPAw/viewform")}>
           <Image src={Ebook} width="100%" height="20" layout="responsive" />
         </MobileEbook>
-        <DesktopEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open('https://naver.me/5ok38zUs')}>
+        <DesktopEbook className="cursor-pointer transform hover:translate-y-2 duration-200" onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSeqzx2OScAqfSjXmSAJQ0UotKNs69NvTts-2szxpvOfeVBPAw/viewform")}>
           <Image src={DesktopEbookImage} width="100%" height="9" layout="responsive" />
         </DesktopEbook>
       </div>
