@@ -48,10 +48,14 @@ const Apply: NextPage = () => {
     //   ...data
     // })
     console.log(data)
-    alert('진단신청이 완료됐습니다.');
-    setTimeout(()=>{
-      window.location.reload();
-    }, 1000)
+alert('진단신청이 완료됐습니다.');
+{/* 수정: 제출 후 메시지 출력 */}
+{submitted && (
+ <div className="text-lg text-center text-blue-600">진단신청이 완료됐습니다.</div>
+)}
+setTimeout(()=>{
+  window.location.reload();
+}, 1000)
   }
   const inValid = () => {
     console.log(errors);
