@@ -37,6 +37,9 @@ const FooterDescription = styled.div`
 
 export const Footer = () => {
   const history = useRouter();
+
+    console.log('Footer component loaded');
+  
   return (
     <FooterContainer className="border-t-[1px]">
       <FooterDescriptions>
