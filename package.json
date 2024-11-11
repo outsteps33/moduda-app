@@ -16,7 +16,7 @@
     "@sendgrid/mail": "^7.7.0",
     "@tailwindcss/forms": "^0.4.0",
     "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
-    "@toast-ui/react-editor": "^3.2.2",
+    "@toast-ui/react-editor": "^3.2.3",
     "@types/react-paginate": "^7.1.1",
     "@types/styled-components": "^5.1.23",
     "atob": "^2.1.2",
@@ -60,7 +60,7 @@
     "postcss": "^8.4.7",
     "prisma": "^5.22.0",
     "tailwindcss": "^3.0.23",
-    "typescript": "4.5.5"
+    "typescript": "^5.6.3"
   },
   "resolutions": {
     "eslint-plugin-react": "7.28.0"
