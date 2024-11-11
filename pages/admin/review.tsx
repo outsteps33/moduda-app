@@ -112,7 +112,7 @@ const Review: NextPage = () =>{
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-3 md:gap-8 px-12 md:px-32">
         {data?.notice ? <AdminNoticeComponent id={data?.notice?.id} title={data?.notice?.title} thumbnail={data?.notice?.thumbnail} createdAt={data?.notice?.createdAt}/>: null}
           {data?.review.map((v) => (
-            <AdminReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
+            <AdminReviewComponent key={v} id={v.id} title={v.title} thumbnail={v.thumbnail} createdAt={v.createdAt}/>
           ))}
           {/* {[0,0,0,0,0,0,0,0,0].map((v) => (
             <ReviewComponent id={v.id} title={v.title} thumbnail={v.thumbnail} />

@@ -10,7 +10,8 @@ async function handler (
   req: NextApiRequest, res: NextApiResponse<ResponseType>
 ) {
   console.log((parseInt(req.query.page.toString())-1)*15);
-  const count = await client.review.count();
+  const reviews = await client.review.findMany();
+
   const notice = await client.review.findFirst({
     where: {
       notice: true
@@ -36,7 +37,7 @@ async function handler (
     }
   });
   
-  res.json({ ok: true , review, count, notice});
+  res.json({ ok: true , review, count: reviews.length, notice});
 }
 
 export default withApiSession(withHandler({

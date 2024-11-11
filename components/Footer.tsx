@@ -1,5 +1,5 @@
+/* eslint-disable react/jsx-key */
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Logo from '../images/black_logo.png';
@@ -42,7 +42,7 @@ export const Footer = () => {
       <FooterDescriptions>
         <FooterDescription>
           <div className="sm:pt-1 hidden sm:grid sm:justify-center mb-[3px]">
-            <Image src={Logo}  width={200} height={44.12} layout="fixed"/>
+            <Image src={Logo}  width={200} height={44.12} layout="fixed" />
           </div>
           <div className=" sm:hidden grid justify-center ">
             <Image src={Logo}  width={151} height={34.09} layout="fixed"/>

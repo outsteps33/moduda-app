@@ -67,7 +67,7 @@ const Apply: NextPage = () => {
             <div><span style={{color:'#0054EB'}}>구제 성공 가능성 진단</span>을 위해 오른쪽 양식을 작성해주세요.</div>
             <div>작성된 양식을 통해 구제 가능성 검토가 진행됩니다.</div>
             <div className="mt-4">확실한 진단을 위해 진실된 내용을 꼼꼼히 작성 부탁드립니다.</div>
-            <div>모두다행정사가 구제하는 것은 의뢰인의 '간절함'입니다.</div>
+            <div>모두다행정사가 구제하는 것은 의뢰인의 {"'"}간절함{"'"}입니다.</div>
             <div className="mt-4">꼭 도움이 되어 드리겠습니다.</div>
           </div>
         </div>
@@ -334,3 +334,6 @@ const Apply: NextPage = () => {
     </div>
   )
 }
+
+
+export default Apply;
