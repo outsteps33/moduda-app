@@ -4,7 +4,6 @@ import { withApiSession } from '@libs/server/withSession';
 import mail from '@sendgrid/mail';
 import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
-import { SMTPClient } from 'emailjs';
 
 
 mail.setApiKey(process.env.SENDGRID_KEY!);
