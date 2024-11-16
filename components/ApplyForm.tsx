@@ -3,7 +3,7 @@ import Sms from '../images/sms.png';
 import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
 import { useEffect, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 
 const FormContainer = styled.div`
   display: grid;

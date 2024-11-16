@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import useMutation from '@libs/client/useMutation';
 import TalkTalk from '../images/talktalk.jpg';
 import Kakao from '../images/kakaoImg.png';
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';

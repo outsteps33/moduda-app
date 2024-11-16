@@ -4,7 +4,8 @@ import useMutation from "@libs/client/useMutation";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
+
 
 // name String   //이름
 //   phone String  //폰
