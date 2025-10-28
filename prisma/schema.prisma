@@ -41,7 +41,7 @@ model Diagnosis {
   policeInterview String  //조사 날짜
   reason String //  불가피한 운전 사유
   job String  //직업 (월급, 월수입)
-  need String //운전이 필요한 이유
+  need String //운전면허가 없으면 어떤 점이 가장 문제가 되나요?
   comment String //문의사항(면허구제,벌금감경,의견서작성 등)
   
   createdAt DateTime @default(now())
