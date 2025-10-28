@@ -18,7 +18,7 @@ import emailjs from 'emailjs-com';
 //   policeInterview String  //조사 날짜
 //   reason String //  불가피한 운전 사유
 //   job String  //직업 (월급, 월수입)
-//   need String //운전이 필요한 이유
+//   need String //운전면허가 없으면 어떤 점이 가장 문제가 되나요?
 //   comment String //문의사항(면허구제,벌금감경,의견서작성 등)
 const Apply: NextPage = () => {
   const [sendEmail, { loading, data, error }] = useMutation("/api/sendEmail2");
@@ -278,14 +278,14 @@ const Apply: NextPage = () => {
           <div>
             <div className="mt-2 px-5">
               <label htmlFor="need" className="block text-sm mb-1 ">
-                운전이 필요한 이유
+                운전면허가 없으면 어떤 점이 가장 문제가 되나요?
               </label>
               <textarea
                 {...register(`need`, {
                   required: "남기고 싶은 말을 적어주세요",
                 })}
                 name="need"
-                placeholder="운전이 필요한 이유를 입력해주세요."
+                placeholder="운전면허가 없으면 어떤 점이 가장 문제가 되나요?"
                 className="w-full border border-gray-400 h-24 px-2"
               />
             </div>
