@@ -48,6 +48,20 @@ const Apply: NextPage = () => {
     //   type: "진단신청",
     //   ...data
     // })
+
+    // --- 네이버 신청완료(lead) SCRIPT 이식 시작 ---
+    if (typeof window !== "undefined" && (window as any).wcs) {
+      if (!(window as any).wcs_add) (window as any).wcs_add = {};
+      (window as any).wcs_add['wa'] = 's_22b8d0fae23f'; // 마스터님의 AccountId
+      
+      const _conv = {
+        type: 'lead' // 네이버 지정 '신청완료' 타입
+      };
+      
+      (window as any).wcs.trans(_conv); // 전환 신호 발송
+    }
+    // --- 네이버 신청완료(lead) SCRIPT 이식 종료 ---
+    
     console.log(data)
     alert('진단신청이 완료됐습니다.');
     setTimeout(()=>{
