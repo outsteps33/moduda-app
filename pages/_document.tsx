@@ -46,6 +46,22 @@ export default class MyDocument extends Document {
           <meta name="naver-site-verification" content="33890257119de722dc41009e8b9014fdce04c04f" />
           <meta name="naver-site-verification" content="566cff16301ad21a65297a04da6dcaa3c99379ca" />
 
+</script>
+          <Script 
+  src="//wcs.naver.net/wcslog.js" 
+  strategy="afterInteractive" 
+/>
+<Script id="naver-wcslog" strategy="afterInteractive">
+  {`
+    if(!wcs_add) var wcs_add = {};
+    wcs_add["wa"] = "s_22b8d0fae23f";
+    if(window.wcs) {
+      wcs.inflow(); 
+      wcs_do();
+    }
+  `}
+</Script>
+        
         </Head>
         <body>
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GCLVXC" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
