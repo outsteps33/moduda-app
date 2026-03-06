@@ -134,7 +134,7 @@ const ToastEditor = () => {
           <div className="mt-5 text-lg"> 공지사항 여부</div>
             <input 
               {...register("notice", {
-                required: "공지사항 duqn 입력해주세요. ",
+                required: "공지사항 여부 입력해주세요. ",
                 // validate: (author) => author.includes("gmail.com")
               })}
               type="checkbox" 
